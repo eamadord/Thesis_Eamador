@@ -1,0 +1,482 @@
+\chapter{State of the Art}
+\label{chap:soa}
+
+\section{Introduction}
+According to Augusto et al.: ``An Intelligent Environment is one in which the actions of numerous networked controllers is orchestrated by self-programming pre-emptive processes in such a way as to create an interactive holistic functionality that enhances occupants experiences'' \citep{augustoetal}. Although in this particular context the term \textit{``environment"} is popularly associated with homes, it also encompasses broader scenarios, such as buildings, streets or other areas. Intelligent environments are technologically based on the combination of several socio-technical innovations such as the Internet of Things (IoT), mobile Internet access, smartphones, data analytics, open data initiatives, and sharing economy models \citep{ANAND2018795}. These advances allow intelligent environments to manage assets and resources efficiently by services enhanced with intelligence such as traffic management or healthcare systems. 
+
+Developing responsive and smarter environments is one of the main present objectives, as shown by the number of research projects developed to pursue this goal, such as Km4City \citep{km4city} or RoomPathy~\citep{roompathy}. Although there exists a considerable heterogeneity among the existing works in terms of objectives, methods, and areas of application, the use of knowledge bases (KBs) or knowledge graphs (KGs) is in the core of a large number of these works.
+
+KBs play a key role in multiple ambient intelligence applications, as they are an essential part of the conversion of heterogeneous, numerical data provided by sensors into contextualized and semantic information. The transformation procedure is usually performed using ontologies, which enable the conversion of unstructured data into knowledge. The nature of this knowledge can be very diverse, depending on its source, its application domain, or its specific purpose. The use of KBs supports formal reasoning and the construction of machine learning models, both supervised and unsupervised. 
+
+This paper contributes with a systematic review of the main existing applications of KB across the different domains of application of ambient intelligence, studying which are the most common usages per area. Furthermore, we extract general features of the works existing within a particular area, as well as its main issues and shortcomings.  In addition, we emphasize the different decision-making and prediction methods identified in the literature, evaluating them according to some of the most relevant and desirable features of them: scalability, interpretability, predictive capability and resource~consumption.
+
+As a result of this review, we identify a significant opportunity in the use of KB for intelligent environments: improving the trade-off between scalability and predictive capability. We also propose the use of Knowledge Graph Embeddings (KGE) in the particular case of smart homes. The use of this technology, which supports scalable predictions with uncertain information \citep{WangMWG17}, is usually ignored by the specialized literature according to the systematic review presented here.
+
+
+%This proposal is capable of providing smart cities with prediction models that combine a high scalability with a high interpretability. The proposal is illustrated with a case study regarding a smart home and three different tasks in this domain: task recognition, symptom detection and personal assistance.  
+
+
+ 
+The remainder of the paper is structured as follows. After reviewing the research methodology in Section \ref{sec:method}, Section \ref{sec:usage} revises the usage of KB across several domains of application of ambient intelligence. Section \ref{sec:reasoning} focuses on reasoning and prediction models applied in these works.  Section \ref{casestudy} describes a use case to illustrate the use of KGE in smart homes. Finally, Section \ref{conclusion} draws the conclusions.
+ 
+
+
+
+
+%To solve this issue, a novel approach based on knowledge graph embedding is presented, providing examples of the application of this technique on some of the identified issues regarding smart homes. This approach shows the versatility of this model, as well as its capacity of scaling up to large databases, while still being interpretable and easy to implement. Moreover, it can capture the dependencies between the existing information in the knowledge base in a much more accurate way than the other proposed techniques, without losing any of its predictive capability or interpretability. Although there are several knowledge graph embedding approaches, such as RESCAL \citep{rescal} or the Neural Tensor Network \citep{ntn}, we use TransE \citep{transe} to illustrate our approach, as it is one of the simplest models available, yet capable of achieving state-of-the-art perfomance. Based on this idea, solutions for three of the potential tasks regarding eldercare in smart homes are presented: task recognition, symptom detection and personal assistance.
+
+
+
+\section{Research Methodology} \label{sec:method}
+
+The guidelines to review software engineering have been adapted to conduct this review \citep{Kitchenham07guidelinesfor}. According to them, a systematic literature review comprises three main steps: \textit{planning}, \textit{conducting} and \textit{reporting}. Furthermore, after the most relevant resources are identified, a more in-depth study about the employed decision-making and predictive techniques is presented. This study identifies the most used techniques, their advantages, and their flaws. Finally, an example of a reasoning system based on KGE applied to a smart home environment is presented. Figure \ref{fig:workflow} shows an overview of the entire paper contributions into its three different stages.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=12cm]{2_stateoftheart/figures/sys_methodology.pdf}
+\caption{Schema of the workflow of the conducted study. \label{fig:workflow}}
+\end{figure}   
+
+\subsection{Planning}
+Regarding the research planning, the primary goal is to clearly define the protocol, parameters, and scope in which the review is performed. The main goal of the review has to be defined before starting to plan so that the protocol defined afterward is perfectly aligned with this objective. In this case, the goal is to \textit{identify which are the fundamental current uses of knowledge bases in intelligent environments}. More specifically, we are interested in finding whether there are works where these KBs are exploited by a reasoning system to make predictions and decisions, as opposed to only serving as a source of information. It is also necessary to clarify that, in the given context, the term \textit{``knowledge''} refers to meaningful, structured information interconnected in a network structure.
+
+To achieve this goal, as well as providing a good overview of the current state-of-the-art in KBs applications for ambient intelligence, we propose the following research questions:
+
+\begin{itemize}                            
+\item[-] {How are knowledge bases for ambient intelligence generated?}
+\item[-] {Which are the principal sources of data for knowledge base generation?}
+\item[-] {Are ontologies involved in the creation procedure?}
+\item[-] {For what purposes are knowledge bases used?}
+\item[-] {What are the most used predictive techniques for knowledge bases in intelligent environments?}
+\item[-] {Why have those techniques been selected?}
+\end{itemize} 
+
+%  \paragraph{\textit{Search Strategy}}
+ %%Para la revisión, si piden más referencias, se puede estudiar temas de social computing, etc
+ 
+ %Este tio ha dado con la clave de la inferencia basada en reglas, IDOLO: These approaches work fine for the inferential process but they are very rigid, complex and time consuming.
+ 
+ %Los de Stanford también dicen esto que me parece tremendamente interesante:   Today, interaction designers instead create special-case rules and single-use maTchine learning models. 
+ 
+Then, we have to establish a search strategy, which consists of two steps. The first step is to ascertain which are the main search terms, as well as the queries to search into the different sources to obtain the desired resources. The most important terms are \textit{`knowledge base', `knowledge graph'} and \textit{`intelligent environment'}. However, the term \textit{`intelligent environment'} is too general, as more specific terms can be used to cover the different applications existing inside the field. To cover more relevant works, we have extended the search term list with concepts such as \textit{`smart waste', `smart grid', `smart lighting', `smart homes', `digital city'} and \textit{`smart city'}. Equivalent terms such as \textit{`ambient intelligence'} and \textit{`situational awareness'} are also included. In addition, to parallelize the systematic query process, we have made use of the Boolean operators (AND, OR) available in most of the existing online databases. All generated queries follow the pattern: \textit{(``knowledge base'' OR ``knowledge graph'') AND \textbf{``\{search term\}~''}}.
+% An example of a generated query could be: \textit{("knowledge base'' OR "knowledge graph'') AND "intelligent environment''}.
+
+Once we have defined the set of terms to look up, the following step is to determine which are the sources to use. In this work, we have selected five digital databases: SCOPUS, ACM, Arxiv, Web of Science and IEEE Xplore. Table \ref{tab1} presents the relation of total and selected resources per database. 
+ \unskip
+\begin{table}[H]
+\caption{Relation of total and selected results for each source.}
+%Please define any abbreviations used in the Table directly below the Table if appropriate
+\centering
+\begin{tabular}{ccc}
+\toprule
+\textbf{Source} & \textbf{Total Results} & \textbf{Selected Resources} \\ 
+\midrule
+SCOPUS          & 149                    & 21\\                           
+Arxiv           & 49                     & 4\\                            
+ACM             & 12                     & 0\\                           
+Web of Science  & 36                     & 1\\                            
+IEEE Xplore     & 87                     & 8\\                            
+\textbf{TOTAL}  & \textbf{333}           & \textbf{34}\\               
+\bottomrule
+\label{tab1}
+\end{tabular}
+%%MDPI comment: 1. please check the italics are neccesary or not.
+%%MDPI comment: 2. please check the bolds are neccesary or not.
+\end{table}
+\unskip
+Table \ref{tab:inclexclcrit} describes the inclusion and exclusion criteria adopted to determine which of the obtained results are valid for the review. Inclusion clauses are conjunctive, whereas the exclusion ones are disjunctive. Among the rejection criteria, the works published before 2012 are discarded. The motivation is that the term \textit{``knowledge graph''}, as we conceive it nowadays, was not coined until 2012 \citep{googlekg}. Therefore, all the papers employing this term to refer to KB organized in the structure of a graph date after this year. 
+
+Moreover, deep learning techniques started to have a hegemonic position among  the machine learning methods also during this year (In the ILSVRC-2012 competition on ImageNet, Convolutional Neural Networks achieved accuracies never seen before in computer vision). As stated, this review is particularly interested in the use of state of the art in machine learning and Natural Language Processing (NLP) techniques with predictive purposes in intelligent environments. In those cases where there exists a set of separate papers that are part of the same project, we consider them as a whole, referencing them by the name of the project they are involved. %footnote is not allowed in our journal, we moved it in main text, please confirm.
+
+\begin{table}[H]
+\caption{Established acceptance and rejection criteria. \label{tab:inclexclcrit}}
+\centering
+\resizebox{\linewidth}{!}{
+\begin{tabular}{L{7cm}L{7cm}}
+\toprule
+\textbf{Inclusion}                                                                  & \textbf{Exclusion}                                                                                             \\ \midrule
+Papers written in English                                                           & Papers not written in English                                                                                  \\ \hline
+Papers that provide a clear insight into the usage of the knowledge base             & Works published before 2012                                                                                     \\ \bottomrule
+Works that present a methodology for knowledge base generation in the given~context & Papers that include one of the search terms amongst its keywords but do not make any further reference to them \\ \bottomrule
+\end{tabular}
+}
+
+\end{table}
+
+\subsection{Conducting\label{para:relevance}}
+Considering the sparsity of the search terms, which leads to a considerable heterogeneity amongst the resulting works, we rank the extracted papers according to their correlation with the proposed objective as in Fernandez et al. \citep{FERNANDEZ2011789} and Khan et al. \citep{khan2003five}. A rank between 0 and 5 is assigned to each work to assess the relevance of each paper concerning the subject of the study, being 5 \textit{``extremely relevant''} and 0 \textit{``completely irrelevant''}. Five evaluation criteria are considered to evaluate the relevance of each resource, namely:
+\begin{itemize}      
+\item[-] {Clear explanation of the use of knowledge bases}.
+\item[-] {Ontology use for knowledge base generation}.
+\item[-] {Definition of the application domain}.
+\item[-] {Use of decision-making or predictive models}.
+\item[-] {Use of machine learning techniques for predictive purposes}.
+\end{itemize}    
+
+For each criterion, three different values can be given depending on the degree of fulfillment the paper provides: \textit{``completely fulfilled"}, \textit{``partially fulfilled"} and \textit{``unfulfilled"}. Each of these values is associated with the numerals 1, 0.5 and 0, respectively. Once the criteria have been evaluated for a resource, its final relevance factor is the sum of all the scores given for each criterion.
+% We propose the following five questions, which will be answered either with an affirmative, partial or negative answer, corresponding to values 1, 0.5 and 0, respectively. The final sum of all the partial scores will be the relevance factor of the paper. The proposed questions are:
+
+% -\textit{Is the usage of knowledge bases on the paper explained?}
+
+% -\textit{Are ontologies used to generate the knowledge base?}
+
+% -\textit{Is there an specific example of use provided?}
+
+% -\textit{Does the paper present any reasoning system?}
+
+% -\textit{Is the proposed reasoning system supported with machine learning?}
+% \newline
+
+This classification also serves as a filter for the following parts of the review where the reasoning techniques are studied more in depth. We only consider those works that achieve a score equal or higher than 2.5.
+
+
+\section{Ambient Intelligence Applications on Particular Domains\label{sec:usage}}
+Ambient intelligence is nowadays effectively applied, although there are works that date before 2003. The development of smarter sensors, as well as the implementation of these sensors in conventional devices, such as smartphones, has made it possible to collect a considerable amount of data to support intelligence services. Aside from the technological aspect, another crucial factor in this growth is the mass use of social media, becoming one of the most important information sources. Although this data is not obtained directly by sensors but provided by the own citizens, it is equally relevant for the development of intelligent environments, as noted in Goodchild \citep{goodchild2007citizens}. 
+% Even when the nature of the available data is very diverse, they provide a considerable amount of information that can be used to develop better and more intelligent systems to be integrated into our daily lives. 
+
+On the other hand, this heterogeneous data collected by sensors lacks context and semantics, hindering its use for automatic reasoning. KBs are a mainstream technology to provide context for this data, make it readable, and enable human-like reasoning over it. These bases not only can represent what is called \textit{common-sense knowledge}, which is the kind of reasoning that is innate to humans, but also can be used to synthesize the numerical heterogeneous data provided by sensors as information or facts, and combine these with the knowledge obtained from different sources, such as texts or social media posts.
+
+Tandon et al. \citep{Tandonetal} provide an insight on the multiple uses of commonsense knowledge for machine learning. Furthermore, one of the uses presented in their work explicitly concerns smart vehicles and the difficulties that they face in situations whose solutions are innate to humans. The introduction of commonsense knowledge could potentially enhance the decision-making process, as it would increase the contextual information available, which would lead to better responses. WordNet \citep{wordnet} and Cyc~\citep{cyckb} were some of the firstly developed commonsense knowledge bases. Whereas the nature of the information contained in WordNet is mostly semantic, Cyc is, according to their authors: ``a formalized representation of a vast quantity of fundamental human knowledge: facts, rules of thumb, and heuristics for reasoning about the objects and events of everyday life''. WordNet is to this day still one of the most used KBs, as it enables entity mapping across different KBs. This is the case of WebChild~\citep{webchild}, an open access and updated version of Cyc, whose entries are directly mapped to their matching ones in WordNet, easing their access. WebChild contains not only measurable and demonstrable facts but also abstract information, such as opinions or sensations, which can be particularly useful in the context of intelligent environments, such as smart homes. Finally, ConceptNet~\citep{conceptnet} emerges as a multilingual semantic knowledge graph, overcoming the main problem existing in WordNet: its particular limitation to English. Its use has been successfully tested on chatbots, enabling their understanding and generation of human-like responses. 
+
+Nonetheless, the usage of KBs in intelligent environments changes qualitatively across the different existing domains of application. Before a more conscious study, it is necessary to provide a taxonomy of the identified applications of KBs. Figure \ref{fig:taxonomy} presents the proposed taxonomy, composed of two disjoint categories and a more specific distinction for one of them. According to this classification, we can distinguish two main applications: 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=12cm]{2_stateoftheart/figures/kbusage.png}
+\caption{Classification of the main applications of knowledge bases on intelligent environments  \label{fig:taxonomy}}
+\end{figure}   
+
+
+\begin{itemize}     
+\item[-] {As an endpoint}: In this approach, the KB serves only as a source of information to consult, and conducts no further reasoning over this data. 
+\item[-] {As support for the predictive system}: In other cases, the information provided by KBs is used by a decision-making system to perform different tasks, such as making recommendations or predictions. Inside these approaches, we distinguish two different kinds: systems where the knowledge base is the principal or only source of information, and those where it is an additional or auxiliary source. In this second type, the predictions are based on heterogeneous data, and the KB serves only as a support for contextual information that is not necessarily employed.
+\end{itemize}     
+
+Table \ref{tab:qualassessment} presents the selected resources as well as the itemization of the quality assessment for each of them.
+
+
+\unskip
+\begin{table}[H]
+\caption{Quality assessment for each considered resource. The criteria is ranked as follows: X = 1 point, / = 0.5 points, empty cell = 0 points. The relevance factor is the addition of the singular values. Resources with scores lower than 2.5 are not reported. \label{tab:qualassessment}}
+\centering
+\resizebox{10cm}{!}{
+\begin{tabular}{ccccccc}
+\toprule
+\textbf{Resource}      & \textbf{C1} & \textbf{C2} & \textbf{C3} & \textbf{C4} & \textbf{C5} & \textbf{Relevance Factor} \\ \midrule
+Sii-Mobility \citep{siimobility-parking,siimobility-consult,siimobility-journal}              & X           & X           & X           & X           & X            & \textbf{5}                \\ 
+3cixty \citep{3cixty}                & X           & X           & X           &             &             & \textbf{3}                \\ 
+Persaud et al. \citep{persaudetal}         & X           &             & X           & X           & X           & \textbf{4}                \\ 
+Olszewski et al.  \citep{Olzewskietal}      & X           &             & X           & X           &             & \textbf{3}                \\
+Kim and Chung  \citep{KimandChang}        & X           &             & X           & X           &             & \textbf{3}                \\ 
+Xiaobo et al. \citep{xiaoboetal}         & X           & X           & X           &             &             & \textbf{3}                \\ 
+Giannakopoulou et al. \citep{giannakopouliuetal}  & X           &             & X           & X           &             & \textbf{3}                \\ 
+Or{\l}owski et al. \citep{orlowskietal}     & X           &             & X           & X           &             & \textbf{3}                \\ 
+Olszewski and Turek \citep{olszewskiturek}   & X           &             & X           & X           &             & \textbf{3}                \\ 
+Chung et al. \citep{chungetal}          & X           & X           & X           & /           &             & \textbf{3,5}              \\ 
+Barnwal et al. \citep{barnwaletal}        & X           &             & X           & X           &             & \textbf{3}                \\ 
+Bogale et al. \citep{bogaleetal}         & X           & X           &             & X           & X           & \textbf{4}                \\ 
+Zavala et al. \citep{zavalaetal}        & X           &             & X           & X           &             & \textbf{3}                \\ 
+Zhou et al. \citep{zhouetal}           & X           & X           & X           &             &             & \textbf{3}                \\ 
+Xu and Li  \citep{xuandli}            & X           &             & X           & X           &             & \textbf{3}                \\ 
+Duyen and Nhon  \citep{duyenandnhon}       & X           &             & X           & X           &             & \textbf{3}                \\
+Roffia et al.  \citep{roffiaetal}        & X           & X           & X           &             &             & \textbf{3}                \\ 
+Peral et al. \citep{peraletal}          & X           & X           & X           & X           &             & \textbf{4}                \\ 
+Qiu et al. \citep{qiuetal}            & X           &             &             & X           & X           & \textbf{3}                \\ 
+Shan and Cao \citep{shanandcao}          & X           &             &             & X           & X           & \textbf{3}                \\ 
+Santos et al. \citep{santosetal}         & X           & X           & X           &             &             & \textbf{3}                \\ 
+Schoonenberg and Farid \citep{santosetal} & X           & X           & X           &             &             & \textbf{3}                \\ 
+Aguilar et al. \citep{aguilaretal}         & X           & X           & X           & /           &             & \textbf{3,5}              \\ 
+Ali and Lee \citep{aliandlee}           & X           & X           & X           &             &             & \textbf{3}                \\ 
+Hao et al. \citep{haoetal}            & X           & X           & X           & X           & /           & \textbf{4,5}              \\ 
+Kim and Chung \citep{kimandchung}         & X           & X           & X           & X           & X           & \textbf{5}                \\ 
+Chung et al. \citep{chungetal2018}          & X           & X           & X           & X           & X           & \textbf{5}                \\ 
+Machado et al. \citep{machadoetal}        & X           & X           & X           & X           & X           & \textbf{5}                \\ 
+Dimitrov et al. \citep{dimitrovetal}       & X           & X           & X           & X           & X           & \textbf{5}                \\ 
+Rhee et al. \citep{rheeetal}            & X           & X           & X           &             &             & \textbf{3}                \\ 
+Martín-Ruiz et al. \citep{Martinruizetal}    & X           & X           & X           & X           &             & \textbf{4}                \\ 
+Sermet and Demir \citep{sermetetal}      & X           & X           & X           &             &             & \textbf{3}                \\ 
+Fast et al. \citep{fastetal}           & X           &             & X           & X           & X           & \textbf{4}                \\ 
+Riboni et al. \citep{ribonietal}         & X           & X           & X           & X           & X           & \textbf{5}                \\ \bottomrule
+\end{tabular}
+}
+\end{table}
+
+
+Once the selection process is finished, we proceed to classify the resulting resources according to their application domain. In this case, we have separated the considered works into seven different categories, being: \textit{health}, \textit{housing}, \textit{mobility}, \textit{risk and resource management}, \textit{education} and \textit{government}. This taxonomy is roughly based on the one presented by Ahmed et al. \citep{ahmedetal}, with the addition of the categories \textit{"government"} and \textit{"education"}. Those works where the exact application domain is not specified are classified as \textit{multidomain}. Although the presented categories are disjoint, some of the selected resources could be suitable for more than one category. This is particularly noticeable in the case of housing and health domains, as some of the works inside the housing domain are related to health monitorization and eldercare. Nonetheless, aside from this particular case, no other overlaps have been found. Classification is performed according to the specific application presented by the authors. Figure \ref{fig:domains} reflects the proportion of resources classified per domain. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=10cm]{2_stateoftheart/figures/canvas.eps}
+\caption{Pie chart representing the proportion of papers per identified domain. \label{fig:domains}}
+\end{figure}   
+
+\subsection{Health}
+Providing smarter healthcare solutions, usually referred to as \textit{e-health}, is one of the main concerns of ambient intelligence, as shown by the number of works dedicated to this particular issue. In the majority of the considered resources, KBs serve as the primary source of information for diagnosing systems. Rule-based expert systems are the most prolific in this domain due to its specialized nature, as they offer high interpretability and possess the capability of modeling uncertainty. In some of the selected resources \citep{aliandlee,Martinruizetal,KimandChang}, the fuzzy predictive rules of the system are designed manually by~experts. 
+
+In Kim and Chung \citep{KimandChang}, an estimation of the depression index of the population is obtained from crowdsourced information, in combination with the contextual information of the individuals and the knowledge provided by experts. The fuzzy model presented by Ali and Lee \citep{aliandlee} focuses on providing wellbeing recommendations to users, whereas the approach proposed by Martín-Ruiz et al. \citep{Martinruizetal} aims to monitor children's neurodevelopment in an intelligent environment for early diagnosis.
+
+Other approaches, such as Peral et al. \citep{peraletal} or Riboni et al. \citep{ribonietal}, rely on machine learning techniques for generating predictive models, proposing a classification tree and a random forest, respectively. These approaches allow diagnosing models to be automatically inferred from the data, improving the scalability of the previously presented works, while still maintaining a deep level of interpretability. 
+
+% These bases typically use some formalism such as first order or fuzzy logic \citep{aliandlee} \citep{KimandChang} \citep{Martinruizetal}. Some other approaches represent knowledge with representations suitable for predictions, such as Peral et al.\citep{peraletal} who use a classification tree, or Riboni et al. \citep{ribonietal} who employ a random forest. The reason behind the selection of logic, rule-based techniques, or interpretable machine learning models is that the domain is very expertise-oriented, and every decision procedure requires human supervision. To make the reasoning system reliable, experts usually design or supervise the generated rules. 
+
+\textls[-10]{Other works do not focus on diagnosing but on patient assistance and particularly} eldercare~\citep{kimandchung, chungetal}. In these works, the goal is not to detect whether the patient suffers or not from a specific disease, but to monitor and help them to conduct everyday tasks. For this purpose, ambient intelligence context-modeling is conducted, generating a clear and accurate overview of the environmental context of the patient, as to detect any potential anomalies in their behavior.
+
+The most common technique for KB generation on this field is combining the data collected by sensors with the information provided by the medical reports of the patients. It is usual that differently specific ontologies transform the data into contextualized information. Another distinctive feature is that most of these works provide software that is available to users, but KBs and collected data are typically private and not available for other researchers. 
+
+\subsection{Mobility}
+Transportation and urban mobility is another main category of ambient intelligence applications that leverage KBs. As opposed to the health domain, where most of the presented works followed similar guidelines and characteristics, there is considerable heterogeneity in this field. Among the identified works, the most relevant is the project Sii-Mobility \citep{siimobility-journal}. This project encompasses several papers presenting applications of KBs for different transportation issues. For instance, in Bellini~et~ al.~\citep{siimobility-consult}, a tool capable of extracting information via SPARQL queries from several existing KB endpoints is presented. The developed tool has been not only successfully used in Sii-Mobility for providing traffic-related information to users, but also for several other projects such as ECLAP \citep{eclap}. In Badii et al. \citep{siimobility-parking}, the information extracted from the Sii-Mobility KB, as well as the data provided by sensors, serves as an input for a Bayesian Regularization Neural Network capable of predicting available parking spots in garages. 
+
+
+% For instance, in \citep{siimobility-consult}, a KB is used as an endpoint for traffic-related queries, whereas in \citep{siimobility-parking} the KB is used to model a Bayesian Network capable of predicting available parking spots.  
+
+Except for 3cixty \citep{3cixty}, which presents a tool for consulting a tourism and transport knowledge graph, the rest of the selected papers in this review use KBs for predictive purposes. Giannakopoulou~et~al.~\citep{giannakopouliuetal}, Olszewski and Turek \citep{olszewskiturek} and Zavala~et~al.~\citep{zavalaetal} combine the KBs with data extracted from sensors and citizens, either from social media or by employing gamification techniques. Then, they combine this information for different purposes, namely predicting the best route available, diagnosing spatial problems on specific areas and context-modelling for smart vehicles, respectively. 
+
+Opposite to the previously presented works, where the selected predictive models were based either on rules or heuristics, Persaud et al. \citep{persaudetal} propose a deep learning model for self-driven vehicles where predictions are performed based on a combination of images, sensor data, and the information gathered in a commonsense KB that serves as a support. The KB presented in this work is obtained directly from WebChild \citep{webchild}, and it has been successfully evaluated on reduced-scale experiments. 
+
+% Then this knowledge is used by reasoning models to conduct tasks such as make predictions or planning routes. On the contrary to this symbolic approach, Persaud et al. \citep{persaudetal} propose a deep learning model for self-driven vehicles where predictions are based on images, sensor data, and the information provided by a common-sense KB that serves as support.
+
+\subsection{Risk and Resource Management}
+Works presented in this category are mainly aimed at risk prevention, addressing services such as city surveillance \citep{orlowskietal}, resource management \citep{barnwaletal}, or emergency simulation \citep{xuandli}. In some of them, KBs play a secondary role, serving as support for the predictive models as in the works by Orlowski~et~ al.~\citep{orlowskietal}, Barnwal et al. \citep{barnwaletal} or Xu and Li \citep{xuandli}. These systems present decision support systems that, for the application domain, have to be supervised by humans. Therefore, they are typically based on rule-based techniques and probabilistic distributions. They generate the presented KBs by combining existing data sources, with data provided by users via social media, and data collected by sensors subsequently contextualized into information using ontologies. 
+
+Roffia et al. \citep{roffiaetal} present tools for querying the created KBs, as well as sending notifications to users when certain events happen. These KBs only work as a persistent layer. The approach presented by Sermet and Demir \citep{sermetetal} is particularly interesting, as it presents a flood emergency system that includes a module based on NLP that is capable of interacting with the user in a question-answer fashion. This system retrieves the requested information from the KB according to the user's input in natural language and responds accordingly. It enables not only notifications when flooding occurs, as in Barnwal et al. \citep{barnwaletal}, but also real-time queries on the state of the system.
+
+Unlike in the health domain, generated data and tools are publicly available in the revised works.
+
+\subsection{Housing} 
+Smart homes are one of the main domains of application of ambient intelligence. Context-modelling is among the significant issues regarding intelligent environments, which in the housing domain is strongly associated with task recognition. Task recognition poses several challenges, such as user preference detection or component-dependency detection. In Rhee et al. \citep{rheeetal}, a rule-based system is presented to infer the user's preferences from their context to enhance an assistant system, whereas Dimitrov et al. \citep{dimitrovetal} use a Bayesian Network to model the dependencies between components to assist monitorization and error detection.
+
+In this field, data are collected by sensors and contextualized employing different ontologies to create a KB. Vision systems are also employed frequently to retrieve information. Over the generated KB, several predictive techniques can be applied that fit the existing issue. For example, Machado~et~al.~\citep{machadoetal} introduce an approach for task recognition based on Bayesian Networks, whereas Hao~et~al.~\citep{haoetal} rely on Formal Concept Analysis and vector similarity.
+
+Particularly remarkable is the work proposed by Fast et al. \citep{fastetal}, who present a novel approach for task recognition. In this approach, they generate a KB from publicly available stories published by users, using NLP techniques to detect which objects and actions are related and how. To do so, they define a set of actions that comprise a KB. From an image, the presented tool is capable of detecting the appearing components. Then, using the previously stored information, their tool identifies the occurring action by comparing the pattern of objects and actions presented with the ones allocated in the knowledge base.
+
+\subsection{Government} 
+Smart government is also one of the most growing and promising domains in ambient intelligence. With the increment of citizen participation and open governments, many new available data have been generated to be formalized by KBs, which then can be used to query them or for prediction making. 
+
+Olszewski et al. \citep{Olzewskietal} present a model for urban revitalization, in which they develop a KB from open and crowdsourced user data. From the generated KB, a fuzzy logic rule system is proposed to detect the main issues existing in the urban environment, as well as the preferences of the citizens. 
+
+However, most of the works considered aim for citizen query \citep{santosetal,chungetal,zhouetal}. In Santos et al. \citep{santosetal}, a city KG is generated such as dashboards can be automatically built upon to monitor the urban environment. Chung et al. \citep{chungetal} present an assistant system for distributing citizen complaints to their adequate~city~departments. 
+
+A remarkable particularity of these works is that, unlike the rest of the domains revised in this paper, the fundamental source of information is not sensors but crowdsourced data willingly provided by citizens.
+
+
+\subsection{Education}
+Only three works in the education domain have been considered relevant in this systematic review. Therefore, this hinders us from obtaining general conclusions.  For instance, the work presented by Xiaobo et al. \citep{xiaoboetal} can be classified under the querying branch of the taxonomy presented in Figure~ \ref{fig:taxonomy}, as they provide a method for creating a KB for languages teaching that users can query, but no further operations are performed. On the other hand, other works \citep{duyenandnhon, aguilaretal} provide a first-order logic decision-making model, as well as the KB creation methodology. 
+
+Aguilar et al. \citep{aguilaretal} perform context-modeling to enhance the educational experience of the students, by taking context-dependant decisions that trigger specific actions both in physical (smart blackboards, smart desks) and virtual actuators (software components). Duyen and Nhon \citep{duyenandnhon} present an intelligent guiding system for geometry teaching.
+
+% by Duyen and Nhon \citep{duyenandnhon} and Aguilar et al. \citep{aguilaretal} present a decision-making model, as well as the KB creation methodology. Both proposed approaches employ first-order logic.
+
+As in the government domain, data rarely come from sensors in these works but from existing KBs, experts, or text resources.
+ 
+ 
+\subsection{Multidomain}
+Some of the relevant works found in this review provide general solutions that can be adapted to some application domains. These papers provide approaches for KB generation that can be subsequently used both for querying and generating predictive models. Qiu et al. \citep{qiuetal}, Shan and Cao \citep{shanandcao}, and Schoonenberg and Farid \citep{schoonenbergandfarid} present frameworks for creating urban knowledge graphs, where all the components within the environment and the relations between them are represented. To generate these KGs, they employ different techniques. Qiu et al. \citep{qiuetal} use deep learning techniques, such as Word2Vec \citep{Mikolov:2013:DRW:2999792.2999959} to extract the relevant existing entities and the relations that connect them from textual and sensor-collected data. Shan and Cao \citep{shanandcao}, and Schoonenberg and Farid \citep{schoonenbergandfarid} formalize KGs in a matrix-like form where different transformation operations can be performed to homogenize~the~data. 
+
+Bogale et al. \citep{bogaleetal} not only propose a KG generation approach, but also discuss the use of machine learning techniques over KGs for different tasks, such as data acquisition or knowledge discovery. 
+
+Since works under this category do not cover a specific domain, they do not use ontologies to convert the data unlike most of the previously presented works.
+
+\subsection{General Aspects of Knowledge Base Development for Intelligent Environments}
+
+As stated in Section \ref{sec:method}, one of the goals of the presented review is to extract what are the most common practices on knowledge base creation for intelligent environments. From a simplistic point of view, we can distinguish between two main stages: data generation and contextualization. 
+
+
+
+Regarding data generation, sensors are the primary source of information. This affirmation is expected given the present domain, as sensors are on the foundation base of intelligent environments. However, it is  remarkable that citizens also play a significant role in data generation, providing information either in a passive way, as in the case of medical reports, or in an active way. Citizen participation is particularly significant in the \textit{government} and \textit{education} domains, where data provided by citizens severely outsizes the amount of data provided by sensors. In addition, in these areas, there is a tendency to reusing existing open KBs. 
+
+Commonsense KBs play an essential role in the development of ambient intelligence systems. This affirmation is made evident in works such as Peral et al. \citep{peraletal} or Fast et al. \citep{fastetal}, where WordNet is used to enhance the outputs of the decision-making system in the first case, and for data contextualization in the latter. The presence of commonsense KBs is particularly noticeable in Persaud et al. \citep{persaudetal}, where the developed KB for a self-driven vehicle is primarily founded on the information related to mobility extracted from WebChild.
+
+Citizen data also have a considerable influence in other areas, such as risk and resource management or mobility, where data are extracted mostly from social media platforms. An example of knowledge extraction from social media is illustrated in Puri et al. \citep{PurietAl}, which presents an algorithm for linking published tweets to existing ordinances. This linkage is done employing commonsense KBs, and each tweet is associated with an existing ordinance, subsequently creating new information stored in the KB. Figure \ref{fig:proportion} depicts the proportion of data per source on the presented domains.
+\unskip
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=12.5cm]{2_stateoftheart/figures/data_proportion.png}
+    \caption{Proportion of data per source across the studied domains according to the studied resources.}
+    \label{fig:proportion}
+\end{figure}
+
+Regarding contextualization, different domain ontologies are employed to generate the corresponding KBs. However, not all data gathered is contextualized, as in those works using KBs as a support for the predictive system. The information contained in the KB is mostly general and static over time. However, the study of the most used ontologies for intelligent environments is out of the scope of this work, although Refs.~\citep{Preuveneers2004TowardsAE, ontologiessmartcities,reviewontiot} reference different reviews on the issue.
+
+\section{Decision-Making and Predictive Models in Intelligent Environments \label{sec:reasoning}}
+After revising the main application domains of the relevant works found in the literature, this section details the decision-making and predictive techniques employed in the studied works.  An assessment of the advantages and disadvantages of each of the proposed predictive models is also presented to identify which are the most used techniques and why. For this purpose, we evaluate each of the presented techniques according to their scalability, their interpretability, their predictive capability, and their resource consumption. The importance of the KB on the decision-making or prediction process is also considered. Following similar criteria as the ones used to rank the relevance, we give a score according to the features mentioned earlier.   
+%In this study, we have only considered those papers where the reasoning model is used for predicting, and is presented in detail.
+
+As shown in Table \ref{tab:reasoning}, there is considerable heterogeneity among the employed methods, although most of them present a common and desirable feature: they are interpretable.  Olszewski and Turek~\citep{olszewskiturek} train a neural network that outperforms the accuracy of decision tree based models such as CART. However, the authors finally decide on the CART model because of its superior interpretability assuming a worse predictive power. This decision is significant, as there is a conscious loss on accuracy for the benefit of obtaining models that can be understandable by humans, and where decisions can be explained by means of their inputs.
+
+
+% start a new page
+\newpage
+% change it to landscape
+\paperwidth=\pdfpageheight
+\paperheight=\pdfpagewidth
+\pdfpageheight=\paperheight
+\pdfpagewidth=\paperwidth
+%\newgeometry{layoutwidth=297mm,layoutheight=210 mm, left=2.7cm,right=2.7cm,top=1.8cm,bottom=1.5cm, includehead,includefoot}
+\fancyheadoffset[LO,RE]{0cm}
+\fancyheadoffset[RO,LE]{0cm}
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{table}[H]
+\caption{Application domain and assessment of the works employing predictive techniques over knowledge bases. 
+%Define if appropriate
+The symbolism is as follows: X = yes/high, / = partly/medium, empty = no/low. \label{tab:reasoning}}
+\centering
+\tablesize{\scriptsize} 
+%\resizebox{\linewidth}{!}{
+\begin{tabular}{C{2.5cm}C{2cm}C{2cm}C{2cm}C{2cm}C{1.5cm}C{1.5cm}C{1.5cm}C{1.5cm}}
+\toprule
+{\textbf{Resource}} &
+{\textbf{Domain}} &
+\textbf{Predictive} \textbf{Technique} &
+{\textbf{Scalability}} &
+{\textbf{Interpretability}} &
+\textbf{Abstraction} \textbf{Capability} &
+\textbf{Low Resource} \textbf{Consumption} &
+\textbf{Relevance} \textbf{of KB} &
+\textbf{Overall} \textbf{Score} \\
+\midrule
+\textbf{Ali and Lee} \citep{aliandlee}         & \textit{Health}                   & \textit{Rules Manually Created by Experts}                           &                      & X                         &                                 & X                                 & X                        & 3                      \\
+\textbf{Barnwal et al.} \citep{barnwaletal}      & \textit{Risk/Resource Management} & \textit{Probabilistic distributions}                                 &                      & X                         &                                 & X                                 & X                        & 3                      \\ 
+\textbf{Bogale et al.} \citep{bogaleetal}       & \textit{Multidomain}              & \textit{Multivariate Linear Regression}                              & /                    & /                         & /                               & X                                 & X                        & 3.5                    \\ 
+\textbf{Chung et al.} \citep{chungetal2018}        & \textit{Health}                   & \textit{Deep Neural Network}                                         & X                    &                           & X                               &                                   & X                        & 3                      \\
+\textbf{Dimitrov et al.} \citep{dimitrovetal}     & \textit{Housing}                  & \textit{Bayesian Network} \citep{bayesiannetwork}                                             &                      & X                         &                                 & X                                 & X                        & 3                      \\ 
+\textbf{Duyen and Nhon} \citep{duyenandnhon}      & \textit{Education}                & \textit{If-then manually created rules}                              &                      & X                         &                                 & X                                 & X                        & 3                      \\ 
+\textbf{Fast et al.} \citep{fastetal}         & \textit{Housing}                  & \textit{Word2Vec vector generation + cosine distance comparison}     & X                    & X                         & X                               & /                                 & X                        & 4.5                    \\ 
+\textbf{Hao et al.} \citep{haoetal}          & \textit{Housing}                  & \textit{Half-Duplex Search algorithm}                                &                      & X                         &                                 & X                                 & X                        & 3                      \\ 
+\textbf{Kim and Chung} \citep{kimandchung}       & \textit{Health}                   & \textit{Neural Network}                                              & X                    &                           & X                               & /                                 &                          & 2.5                    \\ 
+\textbf{Kim and Chung} \citep{KimandChang}       & \textit{Health}                   & \textit{Pearson's correlation coefficient + Collaborative Filtering} \citep{pearsoncorrelation,collaborativefiltering,collaborativefiltering2} &                      & X                         &                                 & X                                 & X                        & 3                      \\ 
+\textbf{Machado et al.} \citep{machadoetal}      & \textit{Housing}                  & \textit{Multi-entity Bayesian Networks} \citep{mebn}                              &                      & X                         &                                 & /                                 & X                        & 2.5                    \\ 
+\textbf{Martín-Ruiz et al.} \citep{Martinruizetal}  & \textit{Health}                   & \textit{Rules manually created by experts}                           &                      & X                         &                                 & X                                 & X                        & 3                      \\ 
+\textbf{Olszewski and Turek} \citep{olszewskiturek} & \textit{Mobility}                 & \textit{CART Trees} \citep{carttrees}                                                   & /                    & X                         & X                               & X                                 & X                        & 4.5                    \\
+\textbf{Olszewski et al.} \citep{Olzewskietal}    & \textit{Government}               & \textit{Fuzzy logical rules} \citep{fuzzyenvironment}                                         &                      & X                         & /                               & X                                 & X                        & 3.5                    \\ 
+\textbf{Orlowski et al.} \citep{orlowskietal}     & \textit{Mobility}                 & \textit{Fuzzy logical rules}                                         &                      & X                         & /                               & X                                 & X                        & 3.5                    \\ 
+\textbf{Peral et al.} \citep{peraletal}        & \textit{Health}                   & \textit{C4.5 Tree} \citep{c45tree}                                                   &                      & X                         &                                 & X                                 & /                        & 2.5                    \\ 
+\textbf{Persaud et al.} \citep{persaudetal}      & \textit{Mobility}                 & \textit{Deep Neural Network}                                         & X                    &                           & X                               &                                   & /                        & 2.5                    \\ 
+\textbf{Riboni et al.} \citep{ribonietal}       & \textit{Health}                   & \textit{Random Forest} \citep{randomforest}                                               & X                    & /                         & X                               & /                                 & X                        & 4                      \\ 
+\textbf{Sii-Mobility} \citep{siimobility-parking,siimobility-consult,siimobility-journal}        & \textit{Mobility}                 & \textit{Bayesian Regression ANNs} \citep{brann1,brann2,brann3}                                     & X                    & /                         & X                               & /                                 & X                        & 4                      \\
+\textbf{Xu and Li} \citep{xuandli}           & \textit{Risk/Resource Management} & \textit{Fuzzy logical rules}                                         &                      & X                         & /                               & X                                 & X                        & 3.5                    \\ 
+\textbf{Zavala et al.} \citep{zavalaetal}       & \textit{Mobility}                 & \textit{RIPPER rules} \citep{ripper}                                                &                      & X                         &                                 & X                                 & X                        & 3                      \\ \bottomrule
+
+\end{tabular}
+%}
+
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% change everything back
+\newpage
+\restoregeometry
+\paperwidth=\pdfpageheight
+\paperheight=\pdfpagewidth
+\pdfpageheight=\paperheight
+\pdfpagewidth=\paperwidth
+\headwidth=\textwidth
+
+ 
+
+Following this trend, we find that there are several works where the selected methods present a high degree of interpretability, such as fuzzy rules \citep{fuzzyenvironment}, RIPPER rules \citep{ripper} or C4.5 trees \citep{c45tree}. Interpretability is particularly noticeable in those fields that require human interaction and decision, like \textit{health} and \textit{risk and resource management}, and less strongly in \textit{mobility}. However, the selected methods for these areas show a considerable trade-off between their degree of interpretability and their scalability and predictive power. Random forests \citep{randomforest} and CART trees \citep{carttrees} offer one of the best scalability, prediction power, and interpretability relation, making them useful and suitable techniques for the different application domains.  
+
+Under these interpretable predictions techniques, several methods out of the scope of machine learning appear in the relevant works. Experts usually develop these models ad hoc, not requiring a training phase. In this vein, Hao et al. \citep{haoetal} employ a heuristic based algorithm.  Duyen and Nhon \citep{duyenandnhon} utilize a set of if-then clauses which are generated based on the information existing in the KB. The rule sets developed by experts is the most common non-machine-learning method as shown in Table \ref{tab:reasoning}. As referred in Section \ref{sec:usage}, rule-based systems are particularly widespread in the health domain, where there exists a tradition of the use of human-developed expert systems as Mycin \citep{mycin}.
+
+% Rules are specially present in the health domain which is very expertise-oriented. 
+% Another desirable feature of all the aforementioned techniques is that they require a low amount of resources, either because they do not need any training or because do not require a high amount of computational resources to work.
+
+In contrast to the rule-oriented approaches, we observe that there are two main trends: models based on Bayesian networks, and models based on artificial neural networks, as well as existing combinations of these two learning paradigms, Bayesian Regression Artificial Neural Networks, or BRANN \citep{brann1,brann2,brann3}. This model, used in the Sii-Mobility project \citep{siimobility-parking}, is well suited for working with KBs and for the mobility domain. This is because the model has not only high predictive power but also mechanisms to explain its predictions although in a less intuitive manner than trees or rules. The main benefit of Bayesian networks is that they are capable of working with uncertainty, as they are based on probabilistic distributions. Moreover, expert knowledge about the conditional dependencies of the different variables can be easily integrated into these models. However, their performance and required resources are directly related to the characteristics of the input data. The higher the number of features to represent, the more the number of nodes the Bayesian network needs, making the computational power required and the complexity of the network increase proportionally. 
+
+Neural networks offer a mathematical model that computes the output by nonlinear transformations of the weighted inputs associated with each neuron. The main advantage of such models is their predictive power since they can solve much more complex problems than rule-based and statistical methods. These networks not only can generalize the training data but also predict unseen or infrequent inputs. The computational power required is directly proportional to their size, which, unlike Bayesian networks, is defined independently of the number of features, except in the input layer.  However, since more complex neural networks can solve more difficult problems, deep neural networks come into play with a large number of neurons in each layer (Persaud et al. \citep{persaudetal} and Chung et al. \citep{chungetal2018}).  Nonetheless, neural networks present the significant disadvantage of being ``black box’’ classifiers, since they cannot explain the predictions in terms of the input. As mentioned earlier in this section, interpretability is one of the most desirable characteristics of decision-making models for ambient intelligence, leading to restricted use of these approaches.
+%, making this paradigm unsuitable for most tasks.
+
+Fast et al. \citep{fastetal} combine neural networks with explainable techniques for task recognition in smart homes. This work presents a three-step procedure, where vectors for each activity and each object associated with every activity are generated using Word2Vec \citep{Mikolov:2013:DRW:2999792.2999959}. Then, the prediction is based on the similarity of the word vectors describing the captured image with the ones existing in the KB for that activity. However, the construction of this vector space is expensive in terms of resources, as about 1.8 billion words are used to train the model and an incremental approach is followed, where activity vectors and object vectors are constructed separately and then joined. The vector generating procedure is based on the frequency and the co-occurrence of words in a text corpus, similar to a bag of words approach. 
+
+Although this approach deals with the interpretability,  the generating procedure of the vectors does not ensure capturing fine-grained information such as co-dependencies existing between actions or objects. Another shortcoming of the approach is its poor scalability, requiring to retrain the whole model if new objects or new actions are presented. A potential solution for this problem is the use of knowledge graph embedding techniques (KGEs), which generate a vector for each entity and, depending on the approach, each relation, based on the information collected in a KG. An essential feature of KGEs is that it preserves the similarity between entities so that elements that are similar and related to the same entities are close in the generated vector space. %Is the bold necessary?
+
+
+%On the other hand,   two entities that are completely disjoint will be far apart.  
+% which could be any element, that captivates the information about to which other entities it is related and the way they relate
+% For the relations, embeddings are also generated, either in a matrix or vector form, encoding the characteristics of the relation.
+
+Current KGE models have been proven to be scalable, easy to train, and competitive in performance \citep{NickelMTG15, WangMWG17}. To train these models, a KB or KG is needed, that can be either an existing one, ad hoc for the system, or a combination of both. The use of an ontology over the triples can support tasks such as enhancing the KB with inferable information.  For example, considering the entity \textit{Barack Obama} as an instance of a class \textit{Person}, it follows that the entity has to have a gender, age or height, even when the KB may not include this information.
+
+%.  so it has the properties associated with this class, such as gender, age, etc. All this pieces of information composed by the entity, the property and the value of the property, are considered facts, as well as the relations existing between the current entity and the other existing entities.
+% To preserve the context of the entities and relations, and avoid ambiguity problems, the data is first contextualized by means of an ontology, and then converted into triples or facts, representing the smallest part of information possible.  
+
+This representation is suitable for several tasks such as question answering or recommendation systems, which Section \ref{sec:usage} presents as existing issues in ambient intelligence. The following section describes an approach based on KGE for solving different issues in the smart home domain.
+
+
+
+\section{Use Case: Knowledge Graph Embeddings for Smart Homes}
+ \label{casestudy} 
+A KG is a specific formalization of a KB where the objects or entities are represented as nodes in a graph, and the edges indicate existing relations between them. A KB codified in Resource Description Framework \citep{rdfstandard} (RDF) triples is essentially a KG where a \textit{fact} presents the existing relationship between two entities in the format $(subject, relation, object)$. KGs are suitable for representing information about a single domain or several of them. In some of the works reviewed in Section \ref{sec:usage}  \citep{qiuetal, schoonenbergandfarid}, KGs were used to cover a global domain. 
+
+KGs serve as the base for multiple applications, virtual assistants being one of the most popular ones. For example, Google Assistant, which is one of the most used assistants is built over the Google Knowledge Graph \citep{googlekg}. This KG aims to represent knowledge across a universal domain. On a much more reduced scale, we present an example of KG used in an intelligent environment, more precisely in smart homes. As mentioned in Section \ref{sec:reasoning}, there are domains where predictions have to be entirely understandable and supervised by humans, as in the case of health or mobility. However, this feature is not essential in the case of some smart homes' applications, such as the ones to provide comfort, where potential failures could represent a much lower risk than in other areas. 
+
+From a general point of view, KGE techniques present the following benefits:
+\begin{itemize}
+    \item Good trade-off between scalability and predictive capability.
+    \item Capacity for dealing with uncertainty and incompleteness while still obtaining accurate~predictions.
+    \item The generated embeddings can be used by sub-symbolic predictive models, such as neural networks, to perform supervised classification.
+    \item Easy use for high-level tasks as recommendation \citep{recommendationkge1,recommendationkge2} and question-answering \citep{questionanswering}. These two tasks are particularly relevant in the context of smart homes.
+
+\end{itemize}
+
+In this example, we focus on the application of KGE for the development of an eldercare-oriented smart home. These systems are very important for our society because the amount of older adults who live alone is increasing and these environments can monitor their activities while still providing help and comfort. Figure \ref{fig:example} presents an example of a simple knowledge graph in the smart home domain for eldercare. The presented use case remains purely theoretical, as there has not been a physical implementation nor testing. Therefore, its role is to illustrate the benefits and the versatility of the use of KGE in intelligent environments.
+\unskip
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{2_stateoftheart/figures/examplegraph.png}
+\caption{Example of Knowledge Graph for eldercare. The entities referring to humans are depicted in blue, to health in orange, and to housing in green.  \label{fig:example}}
+\end{figure}
+
+To illustrate some of the tasks that a KGE built over a KG can solve, we present the following scenario based on the idea presented by Fast et al. \citep{fastetal}:
+
+\textit{Consider a house, composed of four separate rooms, each one provided with cameras. When a person enters the room, the cameras capture the scene, which is subsequently processed by a computer vision system that detects the objects that are currently being used by the person. The output of the system is the list of objects being used. The house also has sensors that capture information such as temperature and humidity.}
+%%MDPI comment: is the italics necessary?
+
+Apart from these external systems, we consider embeddings generated for each of the entities presented on the graph from Figure \ref{fig:example} using TransE \citep{transe}. TransE is a knowledge graph embedding technique that, although having low complexity in terms of parameters, has reached state-of-the-art performance in several tasks such as link prediction \citep{kgeconv}. Due to its low complexity, it is easy to train and can scale up to very large KGs. Once the model has been trained, it obtains a set of entity embeddings $\mathcal{E}$ and a set of relation embeddings $\mathcal{R}$. Other alternatives include  RESCAL \citep{rescal} or the Neural Tensor Networks (NTN) \citep{ntn}. Some approaches enhance word vectors with Wikipedia information \citep{deMelo}, which can also be considered for the presented problem.
+
+
+\subsection{Task Recognition} 
+Task recognition is one of the main problems inside the smart home domain, as made evident by the works presented in Section \ref{sec:usage}. The action that is being conducted by the senior citizen could be predicted by using the previously calculated embeddings in combination with the output produced by the computer vision system. Since task recognition is very environment biased in some cases, we benefit from this fact to allocate specific actions under its corresponding rooms. For example, the action \textit{"shower''} always takes place in the bathroom, whereas the action \textit{"watch TV''} likely takes place in the living room. In this example, we present the predictive procedure for the action \textit{"cooking''}.
+
+Firstly, the computer vision system arranges a list of objects after processing an image captured by the kitchen camera. This list will contain objects such as \textit{"pot'', "pan''} or \textit{"knife''}. As we are trying to detect an action, we refer to the relation \textit{"uses instrument''}, since this is the one we employed to represent the objects that are used by a person during a certain action. The relation \textit{"needs instrument''} can also be considered. 
+
+Three elements compose a fact:  a subject, a relation, and an object. However, in this case, two out of the three elements are known, which leads to different half-constructed facts with the form \textit{?, uses instrument, [pot, knife, pan, ...])}. Thus, the goal is to predict the missing element of the fact, which is, in this example, the action. This problem is known as triple or link prediction, and KGEs are a natural representation to solve it \citep{WangMWG17}.
+%please confirm if it's correct.
+
+From the existing entity embeddings $\mathcal{E}$ and relation embeddings $\mathcal{R}$, we can predict, for each incomplete fact, which is the most suitable subject. For this purpose, the subject of an incomplete fact is substituted by every potential and feasible entity. Once the triple is constructed, the model provides a score that represents its feasibility. As we know that the action is developing in the kitchen, the potential subjects are bounded to the actions associated with this area. If no action bounded to this area is detected, actions existing in other areas will be evaluated. The model calculates the feasibility of a fact by measuring the distance between the combination of the embeddings of the entities and the embedding of the relation. Once every potential fact has been evaluated, the triple with the best score is considered as the most suitable. In this case, the commonly predicted subject for all the previously half-constructed facts is \textit{"cooking''}.
+
+
+\subsection{Symptom Detection} 
+Now, we focus on the information provided both by the computer vision systems and the sensors to detect anomalies in the behavior patterns that could be a symptom of a disease. As presented in the previous task, some actions are very room bounded, and the objects associated with each action are usually constant. In the previous section, the goal was to predict, given the objects, which action was taking place. This task raises the opposite problem: detecting whether or not the instruments used are appropriate for a known action.
+
+Figure \ref{fig:example} represents (orange nodes) that if a person suffers from migraine and insomnia, then he or she may have difficulty in concentrating and make errors performing minor tasks. Therefore, the proposed system can detect if these symptoms are potentially manifesting, and consequently notify his or her family or doctor. The procedure to measure the feasibility of each action-object pair remains the same as in the previous part: we evaluate each \textit{(action, [uses instrument/needs instrument], object)} fact and obtain a value that represents its feasibility. If the credibility of an existing action-object pair reaches critically low values on a repetitive basis, then there exists a potential issue, which is automatically notified to the corresponding carer.
+
+\subsection{Personal Assistance}
+One of the main usages of KGE is to serve as a base for virtual assistance technologies. This application is particularly crucial in eldercare, as cognitive and memorizing capabilities tend to decrease with age. These difficulties hinders these people from remembering essential events, such as taking medicines at a particular time. A KG could serve as a storing place for all these reminders, as well as any other relevant information.
+
+However, knowledge graphs can also be useful for guiding activities, as well as acting as recommendation systems. In the previous section, we exposed an approach to detect symptoms based on the disparity of an action-object pair. However, a disparity is not necessarily a symptom of a more worrisome issue. In some cases, the user just forgets which object to use in a precise moment, which can be avoided by assisting the person conducting the task. 
+
+For example, according to Figure \ref{fig:example}, the task \textit{"brush teeth''} is composed of two objects: \textit{"toothbrush''} and \textit{"toothpaste''}. This task links to the facts \textit{(brush teeth, needs instrument, toothbrush)} and \textit{(brush teeth, needs instrument, toothpaste)}. The relation \textit{needs instrument}, unlike \textit{uses instrument}, represents a bidirectional restriction between the action and the object, where the object is only associated with that task, and the task necessarily requires the object. 
+
+In this case, the action \textit{"brush teeth''} strictly specifies the need of a toothbrush and toothpaste. Therefore, if the system detects that the user is using only one of these objects, then it can infer which are the remaining ones by using the triple prediction approach presented in the previous section. Once the system identifies the missing elements, they are communicated to the person to help them following with the current task.
+
+This use case and the three issues considered in smart homes, and particularly eldercare, illustrates the possible use of KGEs in intelligent environments. The use of this technology, which supports scalable predictions with uncertain information \citep{WangMWG17}, is ignored in the specialized literature according to the systematic review presented here. 
+
+
+
+\section{Conclusions} \label{conclusion}
+We present in this work a review of the most relevant works regarding knowledge base (KB) use in intelligent environments, identifying two main possibilities: as an endpoint for queries or as a base for predictive models. Furthermore, we have studied each work in the context of the particular area they apply to, extracting relevant features for all the identified subdomains: health, mobility, education, government, housing, risk and resource management, and multidomain. 
+
+% After this systematic review, health is identified as the main domain where KBs are used, closely followed by mobility. General features on KB creation on the different domains are also presented.
+
+% Additionally, we conducted a more in depth study of the decision-making and predictive techniques employed, providing an overview of the most used methods and identifying their most relevant features. This revision showed that there is a tendency on the usage of rule-based models as they provide a high interpretability. This is particularly noticeable in works related to health, and risk and resource management. This is motivated by the necessity of supervising and understanding the predictions and decisions in these domains, where there is an important potential danger caused by an erroneous decision. In the housing domain, several different reasoning approaches were identified, ranging from heuristic search algorithms to Bayesian neural networks.
+
+The conducted review suggests that:
+\begin{itemize}
+    \item Most of the identified applications of KBs to intelligent environments are related to the health domain, closely followed by mobility.
+    \item The primary source of data for KB development for intelligent environments comes from sensors and citizens. In some fields, such as government or education, there is a tendency of reusability of existing KBs.
+    \item Rule-based approaches are the most proliferate decision-making models in ambient intelligence, particularly in works related to health and risk and resource management.
+    \item The majority of the presented models are characterized by high interpretability and low resource consumption, although they present some scalability limitations.
+\end{itemize}
+
+From the performed study, we conclude that the use of Knowledge Graph Embeddings (KGEs) is mostly overlooked in the specialized literature of Intelligent Environments. This technology is capable of giving scalable predictions with uncertain information while they leverage naturally the information embedded in a KB, which is the core of most works in Intelligent Environments. A use case is presented in this paper to illustrate the use of KGEs in a smart home scenario, supporting issues such as task recognition, symptom detection, and personal assistance. 
