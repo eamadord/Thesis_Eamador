@@ -18,6 +18,8 @@
 \usepackage[english]{babel}
 \usepackage{lipsum}  
 
+
+
 %: Macro file for Latex
 % Macros help you summarise frequently repeated Latex commands.
 % Here, they are placed in an external file /Latex/Macros/MacroFile1.tex
@@ -106,7 +108,7 @@
 \usepackage{tikz}
 %\usepackage{paralist} 
 \usepackage{import}
-
+\usepackage{colortbl}
 \usepackage{array}
 \usepackage{color}
 \usepackage{pgfplots}
@@ -140,6 +142,8 @@
 \usepackage{mathtools}
 \usepackage{algorithm}
 \usepackage{algorithmic}
+\usepackage{afterpage}
+\usepackage[table]{xcolor}
 
 \usepackage{ctable}
 
@@ -148,11 +152,25 @@
 \counterwithout{footnote}{chapter}
 
 
-%%<ALVARO>
+%%<ELVI>
+
+\definecolor{amethyst}{rgb}{0.6, 0.4, 0.8}
+\newcommand{\eamador}[1]{\stepcounter{todocounter}
+	{\color{amethyst} Elvi: \thetodocounter: #1}}
+
+\definecolor{teagreen}{rgb}{0.82, 0.94, 0.75}
+\definecolor{tearose}{rgb}{0.96, 0.76, 0.76}
 \newcommand{\elvitodo}[1]{\stepcounter{todocounter}
   {\color{amethyst} Elvi del futuro, gestióname esto: \thetodocounter: #1}}
 
+\usepackage{array}
+\newcommand{\PreserveBackslash}[1]{\let\temp=\\#1\let\\=\temp}
+\newcolumntype{C}[1]{>{\PreserveBackslash\centering}p{#1}}
+\newcolumntype{R}[1]{>{\PreserveBackslash\raggedleft}p{#1}}
+\newcolumntype{L}[1]{>{\PreserveBackslash\raggedright}p{#1}}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
 
+%%<ALVARO>
 \newcommand*\rot{\rotatebox{75}}
 \newcommand*\OK{\ding{51}}
 \newcommand{\argmax}[1]{\underset{#1}{\operatorname{arg}\,\operatorname{max}}\;}
@@ -204,9 +222,6 @@
 \usepackage{color}
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
 
-\definecolor{amethyst}{rgb}{0.6, 0.4, 0.8}
-\newcommand{\eamador}[1]{\stepcounter{todocounter}
-	{\color{amethyst} Elvi: \thetodocounter: #1}}
 \newcommand{\dfp}{dispel4py}
 
 %\lstset{
@@ -611,6 +626,7 @@ EL PRESIDENTE \hspace{30mm} VOCAL 1 \hspace{30mm} VOCAL 2
 %\bibliographystyle{Latex/Classes/PhDbiblio-case} % Title is link if provided
 \bibliographystyle{Latex/Classes/jmb}
 %\bibliographystyle{plainnat}
+
 %\renewcommand{\bibname}{Bibliography} % changes the header; default: Bibliography
 \bibliography{bibliography/bibliography} % adjust this to fit your BibTex file
 
