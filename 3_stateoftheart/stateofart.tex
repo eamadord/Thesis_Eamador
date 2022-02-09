@@ -128,7 +128,7 @@ To further explore the existence, limitations, and causes of the application of 
 
 In the studied resources, background knowledge was mostly extracted from three sources: data provided by users, previously existing KBs, and sensor data, being the latest the most prominent one. Regarding the role of the KB, it varies greatly across the different subdomains. In the health, mobility, risk and resource management and housing domains, the KB is built with the purpose of subsequently feeding a predictive model, doting it with background knowledge and enhancing its reasoning capabilities. This statement does not hold in the government and education domains, where the KB plays the primary role instead of serving as a secondary element.
 
-To study the different proposals in which the KB is integrated within the predictive models, the following metrics (which relate to the expected features of neurosymbolic systems) were evaluated: scalability, interpretability, generalization ability, resource consumption, and relevance of the knowledge base to the predicting process. Table \ref{tab:sensors_reasoning} summarizes the findings of this study. Despite the heterogeneity between proposals, it is worth noticing that the majority of the employed paradigms are symbolic (green highlighted rows), thus scoring high in interpretability (M2). In the work of \cite{olszewskiturek} a neural network is also evaluated on the task, outperforming other approaches. The authors, however, decide on a decision tree as their final model, stating that even when its performance was subpar with respect to the neural network, they preferred to employ a model that was interpretable. This decision is quite remarkable, as it clearly showcases one of the biggest breaches between symbolic and subsymbolic models: the lack of explainability. 
+The following metrics (which relate to the expected features of neurosymbolic systems) were evaluated to study the different proposals in which the KB is integrated within the predictive model: scalability, interpretability, generalization ability, resource consumption, and relevance of the knowledge base to the predicting process. Table \ref{tab:sensors_reasoning} summarizes the findings of this study. Despite the heterogeneity between proposals, it is worth noticing that the majority of the employed paradigms are symbolic (green highlighted rows), thus scoring high in interpretability (M2). In the work of \cite{olszewskiturek} a neural network is also evaluated on the task, outperforming other approaches. The authors, however, decide on a decision tree as their final model, stating that even when its performance was subpar with respect to the neural network, they preferred to employ a model that was interpretable. This decision is quite remarkable, as it clearly showcases one of the biggest breaches between symbolic and subsymbolic models: the lack of explainability. 
 
 Moreover, all proposals used the KB when building the predictive model, thus successfully integrating background knowledge. It is also worth noticing that, for subsymbolic approaches (red coloured rows), there exists a direct relation between scalability (M1) and generalization capability (M3), featuring simultaneously on several resources. This does not apply to purely symbolic models, where these features are ranked either as partial or null. 
 
@@ -157,7 +157,7 @@ This idea was further expanded by \cite{bader_dimensions_2005}, which introduced
     \item \textit{Hybridation}, where the symbolic and connectionist modules are interconnected. In this design, connectionist components serve as a supporting element to the main symbolic processor.
 \end{itemize}
 
-With the renewed interest in neurosymbolic computing in recent times, new proposals have emerged addressing the newly existing challenges in neurosymbolic computing. \cite{besold_neural-symbolic_2017} enunciated a set of principles for neurosymbolic integration. This work highlights one of the core elements of neurosymbolic models: the distinction between representation and reasoning. Typically, symbolic models play the representation role, while subsymbolic models are used for reasoning. Equal to \cite{bader_dimensions_2005}, \cite{besold_neural-symbolic_2017} envisions neurosymbolic integration like a cycle, comprising the following steps: i) translation of symbolic background knowledge to a subsymbolic representation, ii) training the subsymbolic model to extract general patterns about the data, iii) reason over new data using the subsymbolic model and iv) extract symbolic knowledge from the subsymbolic model. The final step not only provides explanation of the inference process, but facilitates transfer learning over the subsymbolic model. \elvitodo{A lo mejor se repiten demasaido los términos symbolic/subsymbolic, pero no sé cómo cambiarlo}
+With the renewed interest in neurosymbolic computing in recent times, new proposals have emerged addressing the newly existing challenges in neurosymbolic computing. \cite{besold_neural-symbolic_2017} enunciated a set of principles for neurosymbolic integration. This work highlights one of the core elements of neurosymbolic models: the distinction between representation and reasoning. Typically, symbolic models play the representation role, while subsymbolic models are used for reasoning. Equal to \cite{bader_dimensions_2005}, \cite{besold_neural-symbolic_2017} envisions neurosymbolic integration like a cycle, comprising the following steps: i) translation of symbolic background knowledge to a subsymbolic representation, ii) training the subsymbolic model to extract general patterns about the data, iii) reason over new data using the subsymbolic model and iv) extract symbolic knowledge from the subsymbolic model. The final step not only provides explanation of the inference process, but facilitates transfer learning over the subsymbolic model.
 
 \begin{figure}[h]
     \centering
@@ -173,14 +173,14 @@ In a recent work, \cite{garcez_neurosymbolic_2020} state that there always exist
 
 %Regarding representation, \cite{garcez_neural-symbolic_2019} distinguishes three main groups: rule-based, formula-based, and embedding-based. In rule-based representation, the goal is to tailor the design of the connectionist system to mimic the representation of a rule system. Formula-based representations focus on mapping logical formulas to connectionist models. Finally, embedding-based representation projects symbolic representations into a continuous vector space, such that they can serve as input for a connectionist model. 
 
-Some works focus on the visual representation of neurosymbolic systems via design patterns. \cite{harmelen_boxology_2019} introduces a boxology of design patterns for neurosymbolic systems. This work introduces a simple notation, composed by two types of representation techniques (data and symbolic) and two types of reasoning models (knowledge-reasoning and machine learning). This notation, while simple, is enough to represent any neurosymbolic system from a high-level perspective. \cite{van_bekkum_modular_2021} proposed an extension of this representation, providing a collection of compositional patterns with a higher specificity degree. This design methodology extends the two existing elements in the previous taxonomy with two additional types: processes and actors. In this design, 'processes' are used to describe operations that are performed outside the reasoning model, such as data transformation or instance generation. 'Actors' describe those autonomous elements that are external to the model but actively interact with the neurosymbolic system, such as humans, external apps, sensors, etc.
+Some works focus on the visual representation of neurosymbolic systems via design patterns. \cite{harmelen_boxology_2019} introduces a boxology of design patterns for neurosymbolic systems. This work introduces a simple notation, composed by two types of representation techniques (data and symbolic) and two types of reasoning models (knowledge-reasoning and machine learning). This notation, while simple, is enough to represent any neurosymbolic system from a high-level perspective. \cite{van_bekkum_modular_2021} proposed an extension of this representation, providing a collection of compositional patterns with a higher specificity degree. This design methodology extends the two existing elements in the previous taxonomy with two additional types: processes and actors. In this design, \textit{processes} are used to describe operations that are performed outside the reasoning model, such as data transformation or instance generation. \textit{Actors} describe those autonomous elements that are external to the model but actively interact with the neurosymbolic system, such as humans, external apps or sensors.
 
 %%Modelos hibridos, por que se reemplazan unos a otros, beneficios, aproximaciones, clasificaciones dentro de este marco. 
 
 \subsection{Categorization}
 The neurosymbolic classification framework proposed by \cite{medsker2020models} is one of the first efforts of categorizing neurosymbolic hybrid models under a unified framework. Five integration strategies are defined from a practical point of view based on the interaction degree, from fully independent to fully integrated: stand-alone, transformational, loose coupling, tight coupling, and fully integrated. This categorization does not model the input and output representations employed by each category, as well as the order in which the symbolic and connectionist modules are arranged.
 
-\begin{figure}
+\begin{figure}[t]
     \centering
     \includegraphics[width=\linewidth]{3_stateoftheart/figures/Hilario_categorization.eps}
     \caption{Synoptic view of neural, symbolic and neurosymbolic approaches. Extracted from \cite{hilario_overview_nodate}}
@@ -209,9 +209,34 @@ This conception of neurosymbolic integration enables a higher degree of flexibil
 %%Patrones de diseño con boxologia
 \section{Deep Learning and Knowledge-Based Systems Integration} \label{sec:dl_kb_intregration_rw}
 
-As discussed in the previous Section, several strategies can be followed regarding neurosymbolic system design. All these strategies, however, can be grouped in two main trends: integration and extraction. Integration approaches aim to combine symbolic and subsymbolic models under a unified framework to perform a certain task. \cite{van_bekkum_modular_2021} describes several compositional integrative patterns, covering an extended set of tasks. 
+As discussed in the previous Section, several strategies can be followed regarding neurosymbolic system design. All these strategies, however, can be grouped in two main trends: integration and extraction. Integration approaches aim to combine symbolic and subsymbolic models under a unified framework to perform a certain task. In \cite{van_bekkum_modular_2021} several compositional integrative patterns are described, covering an extended set of tasks. 
+\begin{figure}[t]
+  \centering
+  \begin{tabular}{@{}c@{}}
+    \includegraphics[width=.9\linewidth]{3_stateoftheart/figures/vanBekkum_LinkPrediction.eps} \\[\abovecaptionskip]
+    \small (a) Knowledge Graph Embedding 
+  \end{tabular}
 
-Link prediction \citep{nickel_review_ml_kg_2016,wang_kge_survey_2017} is one of the scenarios comprised in the collection. Knowledge Graphs (KGs) are composed by three elements: a set of entities $\mathcal{E}$, a set of relations $\mathcal{R}$, and the interactions between entities and relations, denoted as \textit{facts} or triples. Facts follow the fixed structure $(s,p,o)$, where $s$
+  \vspace{\floatsep}
+
+  \begin{tabular}{@{}c@{}}
+    \includegraphics[width=.9\linewidth]{3_stateoftheart/figures/vanBekkum_GNN.eps} \\[\abovecaptionskip]
+    \small (b) Graph Neural Network
+  \end{tabular}
+
+  \caption{Design pattern of two models for Knowledge Graph Completion according to \cite{van_bekkum_modular_2021}}\label{fig:van_bekkum_kgc}
+  
+  \extralabel{fig:van_bekkum_kgc_kge}{(a)}
+  \extralabel{fig:van_bekkum_kgc_gnn}{(b)}
+\end{figure}
+
+Knowledge Graph Completion (KGC) \citep{nickel_review_ml_kg_2016,wang_kge_survey_2017} is one of the scenarios comprised in the collection. Knowledge Graphs (KGs) are composed by three elements: a set of entities $\mathcal{E}$, a set of relations $\mathcal{R}$, and the interactions between entities and relations, denoted as \textit{facts} or triples. Facts follow the fixed structure $(s,p,o)$, where $s$ and $o$ are the \textit{subject} and \textit{object} entities respectively, and $p$ is the \textit{predicate} that connects them. KGC aims to mine new facts from the existing KG information. Two main subtasks can be identified within KGC: link prediction and triple classification. In triple classification, the goal is to determine whether a potential fact $(s',p',o')$ is feasible or not. In link prediction, given an incomplete fact $(?,p,o)$ or $(s,p,?)$, the goal is to find the remaining element that maximizes the feasibility of the fact. 
+
+\elvitodo{ARREGLAR REFERENCIAS}
+
+
+
+Figure \ref{fig:van_bekkum_kgc} depicts the design patterns (according to \cite{van_bekkum_modular_2021}) of the two main approaches for KGC. Figure \ref{fig:van_bekkum_kgc_kge} depicts the general pattern of a Knowledge Graph Embedding model for KGC. These neurosymbolic models follow a straightforward approach, where the symbolic input (KG) is converted into a tensor representation with a embedding operation. This subsymbolic representation can then be used to infer new facts, which can be then decoded back to a symbolic format. Graph Neural Networks (Figure \ref{fig:van_bekkum_kgc_gnn}) can also be used for this purpose. These models require the integration of background semantic knowledge to embed the input KG into a vectorial space. The resulting representations can then be used to train a neural network, which are then used to deduce new facts.
 
 
 % \section{Deep Learning Enhanced Knowledge-Based Systems}
