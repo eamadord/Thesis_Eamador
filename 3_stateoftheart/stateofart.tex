@@ -71,12 +71,11 @@ After combining the taxonomies presented in \cite{hopgood_2009_knowledge-based} 
 
 % \section{Design Methods for Hybrid Learning Systems}
 \section{Neurosymbolic Systems}
-While the taxonomies in Section \ref{sec:the_ai_spectrum} presented some differences amongst them, they all share a common ground: categorizing the 
-AI models into analogical and complimentary aggregations. \textit{Neurosymbolic} (or hybrid learning) AI describes a set of proposed methods designed to integrate analogous AI models, generating new approaches that combine the benefits of both models under a unified framework. As \cite{valiant_three_2003} claimed: \textit{"The aim is to identify a way of looking at and manipulating commonsense knowledge that is consistent with and can support what we consider to be the two most fundamental aspects of intelligent cognitive behaviour: the ability to learn from experience and the ability to reason from what has been learned"}. Several efforts have been conducted on this direction, proposing strategies, categorizations, and studying the limitations of this integration. 
+\textit{Neurosymbolic} (or hybrid learning) AI describes a set of proposed methods designed to integrate analogous AI models, generating new approaches that combine the benefits of both models under a unified framework. As \cite{valiant_three_2003} claimed: \textit{"The aim is to identify a way of looking at and manipulating commonsense knowledge that is consistent with and can support what we consider to be the two most fundamental aspects of intelligent cognitive behaviour: the ability to learn from experience and the ability to reason from what has been learned"}. Several efforts have been conducted on this direction, proposing strategies, categorizations, and studying the limitations of this integration. 
 
 \subsection{Motivation}
 %%Papers referentes a por qué, limitaciones, etc. Aquí va el paper de sensors
-\cite{mcgarry_hybrid_1999} theorized about the potential benefits of combining symbolic and subsymbolic systems, represented by rule-based systems and neural networks, respectively. According to \cite{mcgarry_hybrid_1999}: "\textit{The ability of neural networks to perform tasks that would otherwise prove difficult or intractable to symbolic computing systems is now recognized}". This statement clearly illustrates the core idea behind neurosymbolic systems: combining the benefits of symbolic and subsymbolic models such that the resulting hybrid system enables the solution of tasks that can not be solved by just one of the kinds. 
+\cite{mcgarry_hybrid_1999} theorized about the potential benefits of combining symbolic and subsymbolic systems, represented by rule-based systems and neural networks, respectively. According to \cite{mcgarry_hybrid_1999}: "\textit{The ability of neural networks to perform tasks that would otherwise prove difficult or intractable to symbolic computing systems is now recognized}". This statement illustrates the main claim behind neurosymbolic systems: combining the benefits of symbolic and subsymbolic models such that the resulting hybrid system enables the solution of tasks that can not be solved by just one of the kinds. 
 
 % This statement has been subsequently validated by various works throughout the years, such as \cite{mira_neurosymbolic_2004}, \cite{bader_dimensions_2005} or \cite{garcez_neural-symbolic_2019}.
 
@@ -124,15 +123,13 @@ The metrics reported in the table are: M1 (scalability), M2 (interpretability), 
 \end{tabular}
 }
 \end{table}
-To further explore the existence, limitations, and causes of the application of neurosymbolic models, a systematic review was conducted in the context of ambient intelligence. This work is extensively presented in \cite{amador_systematic_review_2019}, and it is part of the contributions of this thesis. The conducted review studies the interactions between knowledge bases and machine learning models, as well as their specific applications. Different application subdomains were identified to clearly identify the scope of application of each proposal. This finer-grained analysis enables a better comprehension of the reasons why a certain model is chosen for a certain task. The identified subdomains, following the categorization proposed by \cite{ahmedetal} are: health, housing, education, mobility, risk and resource management, government, and multidomain. Another main goal of this study is to assess whether and how background knowledge (in the form of a knowledge base) is integrated into different predictive and decision-making models.
+A systematic review was conducted in the context of ambient intelligence to further explore the existence, limitations, and causes of the application of neurosymbolic models. This work is extensively presented in \cite{amador_systematic_review_2019}, and it is part of the contributions of this thesis. The conducted review studies the interactions between knowledge bases (KBs) and machine learning models, as well as their specific applications. Different application subdomains were identified to clearly identify the scope of application of each proposal. This finer-grained analysis enables a better comprehension of the reasons why a certain model is chosen for a certain task. The identified subdomains, following the categorization proposed by \cite{ahmedetal} are: health, housing, education, mobility, risk and resource management, government, and multidomain. Another main goal of this study is to assess whether and how background knowledge (in the form of a knowledge base) is integrated into different predictive and decision-making models.
 
-In the studied resources, background knowledge was mostly extracted from three sources: data provided by users, previously existing KBs, and sensor data, being the latest the most prominent one. Regarding the role of the KB, it varies greatly across the different subdomains. In the health, mobility, risk and resource management and housing domains, the KB is built with the purpose of subsequently feeding a predictive model, doting it with background knowledge and enhancing its reasoning capabilities. This statement does not hold in the government and education domains, where the KB plays the primary role instead of serving as a secondary element.
+Background knowledge was mostly extracted from three sources: data provided by users, previously existing KBs, and sensor data, being the latest the most prominent one. Regarding the role of the KB, it varies greatly across the different subdomains. In the health, mobility, risk and resource management and housing domains, the KB is built with the purpose of subsequently feeding a predictive model, doting it with background knowledge and enhancing its reasoning capabilities. This statement does not hold in the government and education domains, where the KB plays the primary role instead of serving as a secondary element.
 
 The following metrics (which relate to the expected features of neurosymbolic systems) were evaluated to study the different proposals in which the KB is integrated within the predictive model: scalability, interpretability, generalization ability, resource consumption, and relevance of the knowledge base to the predicting process. Table \ref{tab:sensors_reasoning} summarizes the findings of this study. Despite the heterogeneity between proposals, it is worth noticing that the majority of the employed paradigms are symbolic (green highlighted rows), thus scoring high in interpretability (M2). In the work of \cite{olszewskiturek} a neural network is also evaluated on the task, outperforming other approaches. The authors, however, decide on a decision tree as their final model, stating that even when its performance was subpar with respect to the neural network, they preferred to employ a model that was interpretable. This decision is quite remarkable, as it clearly showcases one of the biggest breaches between symbolic and subsymbolic models: the lack of explainability. 
 
-Moreover, all proposals used the KB when building the predictive model, thus successfully integrating background knowledge. It is also worth noticing that, for subsymbolic approaches (red coloured rows), there exists a direct relation between scalability (M1) and generalization capability (M3), featuring simultaneously on several resources. This does not apply to purely symbolic models, where these features are ranked either as partial or null. 
-
-Therefore, this study served to further evidence the existing chasm between symbolic and subsymbolic approaches, evidencing the necessity of middle-ground solutions that combine the positive features of both types.
+All proposals used the KB when building the predictive model, thus successfully integrating background knowledge. It is also worth noticing that, for subsymbolic approaches (red coloured rows), there exists a direct relation between scalability (M1) and generalization capability (M3), featuring simultaneously on several resources. This does not apply to purely symbolic models, where these features are ranked either as partial or null. This study served to further evidence the existing chasm between symbolic and subsymbolic approaches, evidencing the necessity of middle-ground solutions that combine the positive features of both types.
 
 %Después de nuestra referencia, el resto
 
@@ -157,7 +154,7 @@ This idea was further expanded by \cite{bader_dimensions_2005}, which introduced
     \item \textit{Hybridation}, where the symbolic and connectionist modules are interconnected. In this design, connectionist components serve as a supporting element to the main symbolic processor.
 \end{itemize}
 
-With the renewed interest in neurosymbolic computing in recent times, new proposals have emerged addressing the newly existing challenges in neurosymbolic computing. \cite{besold_neural-symbolic_2017} enunciated a set of principles for neurosymbolic integration. This work highlights one of the core elements of neurosymbolic models: the distinction between representation and reasoning. Typically, symbolic models play the representation role, while subsymbolic models are used for reasoning. Equal to \cite{bader_dimensions_2005}, \cite{besold_neural-symbolic_2017} envisions neurosymbolic integration like a cycle, comprising the following steps: i) translation of symbolic background knowledge to a subsymbolic representation, ii) training the subsymbolic model to extract general patterns about the data, iii) reason over new data using the subsymbolic model and iv) extract symbolic knowledge from the subsymbolic model. The final step not only provides explanation of the inference process, but facilitates transfer learning over the subsymbolic model.
+With the renewed interest in neurosymbolic computing, new proposals have emerged addressing the newly existing challenges in neurosymbolic computing. \cite{besold_neural-symbolic_2017} enunciated a set of principles for neurosymbolic integration. This work highlights one of the core elements of neurosymbolic models: the distinction between representation and reasoning. Typically, symbolic models play the representation role, while subsymbolic models are used for reasoning. Equal to \cite{bader_dimensions_2005}, \cite{besold_neural-symbolic_2017} envisions neurosymbolic integration like a cycle, comprising the following steps: i) translation of symbolic background knowledge to a subsymbolic representation, ii) training the subsymbolic model to extract general patterns about the data, iii) reason over new data using the subsymbolic model and iv) extract symbolic knowledge from the subsymbolic model. The final step not only provides explanation of the inference process, but facilitates transfer learning over the subsymbolic model.
 
 \begin{figure}[h]
     \centering
@@ -166,9 +163,9 @@ With the renewed interest in neurosymbolic computing in recent times, new propos
     \label{fig:garcez_design}
 \end{figure}
 
-More recently, \cite{garcez_neural-symbolic_2019} proposed a methodology for neurosymbolic integration that focuses on four key features: representation, extraction, reasoning, and learning. Figure \ref{fig:garcez_design} depicts the different design dimensions per feature. This methodology is compatible with the cyclic neurosymbolic learning process depicted in \cite{bader_dimensions_2005} and \cite{besold_neural-symbolic_2017}, but addresses additional features that were not previously considered and that are key to define neurosymbolic models.
+\cite{garcez_neural-symbolic_2019} proposed a methodology for neurosymbolic integration that focuses on four key features: representation, extraction, reasoning, and learning. Figure \ref{fig:garcez_design} depicts the different design dimensions per feature. This methodology is compatible with the cyclic neurosymbolic learning process depicted in \cite{bader_dimensions_2005} and \cite{besold_neural-symbolic_2017}, but addresses additional features that were not previously considered and that are key to define neurosymbolic models.
 
-In a recent work, \cite{garcez_neurosymbolic_2020} state that there always exist at least two options for designing a neurosymbolic model. In the first option, symbolic representations are translated and fed into a connectionist system, using the connectionist system to perform reasoning. In the second option, both the symbolic and connectionist models interact to perform reasoning. \elvitodo{Ampliar(?)}
+\cite{garcez_neurosymbolic_2020} state that there always exist at least two options for designing a neurosymbolic model. In the first option, symbolic representations are translated and fed into a connectionist system, using the connectionist system to perform reasoning. In the second option, both the symbolic and connectionist models interact to perform reasoning. \elvitodo{Ampliar(?)}
 
 
 %Regarding representation, \cite{garcez_neural-symbolic_2019} distinguishes three main groups: rule-based, formula-based, and embedding-based. In rule-based representation, the goal is to tailor the design of the connectionist system to mimic the representation of a rule system. Formula-based representations focus on mapping logical formulas to connectionist models. Finally, embedding-based representation projects symbolic representations into a continuous vector space, such that they can serve as input for a connectionist model. 
@@ -210,39 +207,29 @@ This conception of neurosymbolic integration enables a higher degree of flexibil
 \section{Deep Learning and Knowledge-Based Systems Integration} \label{sec:dl_kb_intregration_rw}
 
 As discussed in the previous Section, several strategies can be followed regarding neurosymbolic system design. All these strategies, however, can be grouped in two main trends: integration and extraction. Integration approaches aim to combine symbolic and subsymbolic models under a unified framework to perform a certain task. In \cite{van_bekkum_modular_2021} several compositional integrative patterns are described, covering an extended set of tasks. 
-\begin{figure}[t]
-  \centering
-  \begin{tabular}{@{}c@{}}
-    \includegraphics[width=.9\linewidth]{3_stateoftheart/figures/vanBekkum_LinkPrediction.eps} \\[\abovecaptionskip]
-    \small (a) Knowledge Graph Embedding 
-  \end{tabular}
 
-  \vspace{\floatsep}
+Rules and deep learning models is one of the most recurrent combinations in neurosymbolic systems. \cite{hatzilygeroudis_integrated_2010} proposed the concept of the \textit{neurules}, a kind of integrated rules composed by several adaline units. \textit{Neurules} are also capable of successfully integrating external inputs and providing a better generalization. More recently, \cite{daniele_knowledge_2019} proposes Knowledge Enhanced Neural Networks, a neural architecture where prior knowledge is injected in the form of logical clauses. The introduction of rules in the network prevents it from learning contradictory patterns from the training data, making the final system robust to noisy data. This idea is further explored by \cite{roychowdhury_regularizing_2021}, where an architecture-agnostic method is proposed to integrate first-order logic clauses into deep learning models. The inclusion of first-order logic clauses successfully reduces the need of training data required, while simultaneously boosting the final performance of the system. \cite{kursuncu_knowledge_2020} studied a different path, proposing an architecture where knowledge graphs and expert knowledge are integrated within the learning process, alongside with external data. This integration not only enhances the results of the system, but also accelerates its convergence.
 
-  \begin{tabular}{@{}c@{}}
-    \includegraphics[width=.9\linewidth]{3_stateoftheart/figures/vanBekkum_GNN.eps} \\[\abovecaptionskip]
-    \small (b) Graph Neural Network
-  \end{tabular}
-
-  \caption{Design pattern of two models for Knowledge Graph Completion according to \cite{van_bekkum_modular_2021}}\label{fig:van_bekkum_kgc}
-  
-  \extralabel{fig:van_bekkum_kgc_kge}{(a)}
-  \extralabel{fig:van_bekkum_kgc_gnn}{(b)}
+\begin{figure}[t!]
+    \centering
+    \subfigure[Knowledge Graph Embedding \label{fig:van_bekkum_kgc_kge}]{\includegraphics[width=.9\columnwidth]{3_stateoftheart/figures/vanBekkum_LinkPrediction.eps}}
+    \subfigure[Graph Neural Network \label{fig:van_bekkum_kgc_gnn}]{\includegraphics[width=.9\columnwidth]{3_stateoftheart/figures/vanBekkum_GNN.eps}}
+    \caption{Design pattern of two models for Knowledge Graph Completion according to \cite{van_bekkum_modular_2021}}
+    \label{fig:van_bekkum_kgc}
 \end{figure}
 
 Knowledge Graph Completion (KGC) \citep{nickel_review_ml_kg_2016,wang_kge_survey_2017} is one of the scenarios comprised in the collection. Knowledge Graphs (KGs) are composed by three elements: a set of entities $\mathcal{E}$, a set of relations $\mathcal{R}$, and the interactions between entities and relations, denoted as \textit{facts} or triples. Facts follow the fixed structure $(s,p,o)$, where $s$ and $o$ are the \textit{subject} and \textit{object} entities respectively, and $p$ is the \textit{predicate} that connects them. KGC aims to mine new facts from the existing KG information. Two main subtasks can be identified within KGC: link prediction and triple classification. In triple classification, the goal is to determine whether a potential fact $(s',p',o')$ is feasible or not. In link prediction, given an incomplete fact $(?,p,o)$ or $(s,p,?)$, the goal is to find the remaining element that maximizes the feasibility of the fact. 
 
-\elvitodo{ARREGLAR REFERENCIAS}
+Figure \ref{fig:van_bekkum_kgc} depicts the design patterns (according to \cite{van_bekkum_modular_2021}) of the two main approaches for KGC. Figure \ref{fig:van_bekkum_kgc_kge} depicts the general pattern of a Knowledge Graph Embedding model for KGC. These neurosymbolic models follow a straightforward approach, where the symbolic input (KG) is converted into a tensor representation with an embedding operation. This subsymbolic representation can then be used to infer new facts, which can be then decoded back to a symbolic format. Graph Neural Networks (Figure \ref{fig:van_bekkum_kgc_gnn}) can also be used for this purpose. These models require the integration of background semantic knowledge to embed the input KG into a vectorial space. The resulting representations can then be used to train a neural network, which are then used to deduce new facts.
 
-
-
-Figure \ref{fig:van_bekkum_kgc} depicts the design patterns (according to \cite{van_bekkum_modular_2021}) of the two main approaches for KGC. Figure \ref{fig:van_bekkum_kgc_kge} depicts the general pattern of a Knowledge Graph Embedding model for KGC. These neurosymbolic models follow a straightforward approach, where the symbolic input (KG) is converted into a tensor representation with a embedding operation. This subsymbolic representation can then be used to infer new facts, which can be then decoded back to a symbolic format. Graph Neural Networks (Figure \ref{fig:van_bekkum_kgc_gnn}) can also be used for this purpose. These models require the integration of background semantic knowledge to embed the input KG into a vectorial space. The resulting representations can then be used to train a neural network, which are then used to deduce new facts.
+\cite{leake_bringing_2020} explored the integration of case-based reasoning methodology with deep learning techniques. Case-based reasoning is often perceived as an alternative to rule-based systems, the predominant symbolic paradigm of neurosymbolic systems. This integration is motivated by three key challenges existing in deep learning models: i) learning with fewer labeled samples, ii) learning to reason, and iii) learning to plan complex action sequences. These issues have been successfully addressed by case-based reasoning models, thus motivating the integration of both paradigms. Such is the case of the work by \cite{marie_segmentation_2019}, where a CBR model with a Convolutional Neural Network. This proposal presents CBR as a solution to quality data insufficiency, serving as a preprocessing and augmentation mechanism for the network. \cite{lamy_explainable_2019} study the possibility of exploiting CBR models' interpretability to explain the predictions of a deep neural network.
 
 
 % \section{Deep Learning Enhanced Knowledge-Based Systems}
 % %%Ejemplos de esto. Extraemos limitaciones y cositas y criterios.
 
-% \section{Knowledge Integration for Deep Learning Models} \label{sec:kb_dl_extraction_rw}
+%%\section{Knowledge Integration for Deep Learning Models} \label{sec:kb_dl_extraction_rw}
+
 % %%Same
 
 %%Extraido from neurosymbolic AI 3rd wave
@@ -250,6 +237,43 @@ Figure \ref{fig:van_bekkum_kgc} depicts the design patterns (according to \cite{
 
 \section{Knowledge Extraction from Deep Learning Models}
 % %%Same same
+Opposite to integration, extraction describes hybrid approaches where one of the models is used to mine specific knowledge from the other. This is well exemplified in ontology learning \citep{Bouraoui_Jameel_Schockaert_2017,wong_ontology_2012,asim_ontology_2018}. Figure \ref{fig:van_bekkum_onto_learning} depicts the general ontology learning process, where one model is trained to predict a set of relations from a text guided by an auxiliary statistical model. The set of mined relations serves as the input for a second model, which generates a taxonomy of from the input relations with the assistance of an external semantic model. 
 
-\section{Conclusions and Limitations of the State-of-the-Art}
-%Se consdera poco la integracion de subsimbolico a simbolico como razonamiento y no como modelo. Siempre suele ser entre reglas-redes de neuronas. No considera las limitaciones existentes que se tienen que cumplir para que la integración sea correcta
+\begin{figure}[t!]
+    \centering
+    \subfigure[Ontology Learning \label{fig:van_bekkum_onto_learning}]{\includegraphics[width=.9\columnwidth]{3_stateoftheart/figures/VanBekkum_OntologyLearning.eps}}
+    \subfigure[Instance-based Explaination \label{fig:van_bekkum_explain}]{\includegraphics[width=.9\columnwidth]{3_stateoftheart/figures/VanBekkum_Explainability.eps}}
+    \caption{Design pattern of two knowledge extraction models according to \cite{van_bekkum_modular_2021}}
+    \label{fig:van_bekkum_explain}
+\end{figure}
+
+Explainable Artificial Intelligence (XAI) is the main area of application of these approaches. As stated in \cite{angelov_explainable_2021}: \textit{"As Artificial Intelligence and Machine Learning (and, especially, Deep Learning) become more wide spread and intertwined with human-centric applications and algorithmic decisions become more consequential to individuals and society, attention has shifted back form accuracy to explainability"}. \cite{burkart_survey_2021} provides a set of reasons why AI models should be explainable, namely: \textit{trust, causality, transferability, informativeness, fair and ethical decision making, accountability, adjustment-making} and \textit{proxy functionality}. 
+While \textit{explainability} is the general term used to describe these approaches, a variety of different terms are employed in the literature. Amongst the existing terms, the following are the most prominent ones, each presenting a different nuance \citep{barredo_arrieta_explainable_2020,adadi_explainability_2018,gilpin_explainability_2018}:
+\begin{itemize}
+    \item \textit{Transparency} refers to the capacity of a model to be fully understandable by itself.
+    \item \textit{Interpretability} describes the capacity to provide an interpretation of the inference process that can be understandable by humans. 
+    \item \textit{Explainability} is associated with the idea of explainations serving as an interface between humans and the AI system, which must be accurate and comprehensible by humans \citep{guidotti_explainability_2018}.
+    \item \textit{Understandability} relates to the quality of a model to be understandable by humans by design, without the need of explaining its internal processes.
+    \item \textit{Comprehensibility} denotes the ability of a model to represent its learning process in a human-understandable manner.
+\end{itemize}
+
+More recently, \cite{phillips_explainability_2021} outlined the \textit{four principles of XAI}, defining the fundamental principles required by an AI system to be considered explainable:
+
+\begin{itemize}
+    \item \textit{Explaination:} The system must supply evidence or reasoning for each decision made by the system.
+    \item \textit{Meaningfulness:} Explanations provided by the system must be meaningful and understandable by its users.
+    \item \textit{Accuracy:} The explanation provided by the AI system must be an accurate reflection of the system's behaviour.
+    \item \textit{Knowledge Limits:} Cases where the system can not operate must be identified, as their explanations may be misleading of the behaviour of the system.
+    
+\end{itemize}
+
+%%Explainable AI
+Figure \ref{fig:van_bekkum_explain} gives an overview of a general explainability workflow. Two stages can be clearly differentiated in the process: training and deduction phase and explaining phase. The example showcased in Figure \ref{fig:van_bekkum_explain} describes an instance-based explaination model. LIME \cite{ribeiro_lime_2016} and Anchors \cite{Ribeiro_Singh_Guestrin_2018} are examples of such approaches, where the inference process of a single prediction made by a supervised classifier is explained by means of the predictions achieved by a sample of similar inputs. These approaches served as a cornerstone for newer, more robust and complex explainability frameworks, such as \cite{arya_one_2019}. 
+
+While most explainability approaches focus on explaining neural network predictions, this trend is further expanding to different areas, such as KGC. Bianchi et al. \citep{bianchi_kge_explainability_2020} provided an study about explainability in knowledge graph embedding models. In the context of knowledge graph embeddings, explainability encompasses any potential information that can accurately relate the prediction provided by the model with both the input data and the final embeddings. Considering this definition, DistMult \citep{distmult} was one of the first proposals that tackled explainability over KGE. In addition to the KGE model proposal, DistMult also provides a method for the generation of Horn clauses from the embeddings. According to the authors, extracting rules from the embeddings serves four purposes: i) deducing new facts, ii) optimizing data storage, iii) support complex reasoning and iv) provide an explanation for the inference process. Moreover, this work introduced a new perspective on rule mining from KGs: use the embeddings as the source instead of the KG. This approach not only solves one of the main problems of rule mining, which is the optimization of the search space, but also provides a novel, data-agnostic vision on the subject. 
+
+As pointed by Bianchi et al., explainability of knowledge graph embedding models remains a challenge. While the inference process of some specific models can be explained using rules, other approaches such as GNNExplainer \citep{ying_2019_gnnexplainer} and CRIAGE \citep{pezeshkpour_2019_investigating} base the explanation on the detection of the top influential elements on the prediction. 
+
+\section{Conclusions of the State-of-the-Art}
+This chapter first aims to summarize the AI spectrum. Due to the complexity of this task, there is not a unique taxonomy, but several categorizations that stem from different perspectives. One of the simplest categorizations divides the spectrum into two complimentary kinds: symbolic and subsymbolic. This division of the
+

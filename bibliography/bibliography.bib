@@ -13,6 +13,41 @@
     year = {2007}
 }
 
+@inproceedings{daniele_knowledge_2019,
+	address = {Cham},
+	series = {Lecture {Notes} in {Computer} {Science}},
+	title = {Knowledge {Enhanced} {Neural} {Networks}},
+	isbn = {978-3-030-29908-8},
+	doi = {10.1007/978-3-030-29908-8_43},
+	abstract = {We propose Knowledge Enhanced Neural Networks (KENN), an architecture for injecting prior knowledge, codified by a set of logical clauses, into a neural network.In KENN clauses are directly incorporated in the structure of the neural network as a new layer that includes a set of additional learnable parameters, called clause weights. As a consequence, KENN can learn the level of satisfiability to impose in the final classification. When training data contradicts a constraint, KENN learns to ignore it, making the system robust to the presence of wrong knowledge. Moreover, the method returns learned clause weights, which gives us informations about the influence of each constraint in the final predictions, increasing the interpretability of the model. We evaluated KENN on two standard datasets for multi-label classification, showing that the injection of clauses automatically extracted from the training data sensibly improves the performances. Furthermore, we apply KENN to solve the problem of finding relationship between detected objects in images by adopting manually curated clauses. The evaluation shows that KENN outperforms the state of the art methods on this task.},
+	language = {en},
+	booktitle = {{PRICAI} 2019: {Trends} in {Artificial} {Intelligence}},
+	publisher = {Springer International Publishing},
+	author = {Daniele, Alessandro and Serafini, Luciano},
+	editor = {Nayak, Abhaya C. and Sharma, Alok},
+	year = {2019},
+	keywords = {Fuzzy logic, Neural networks, Neural-symbolic integration, Visual Relationship Detection},
+	pages = {542--554},
+	file = {Springer Full Text PDF:/Users/eamador/Zotero/storage/KRNFFFFC/Daniele and Serafini - 2019 - Knowledge Enhanced Neural Networks.pdf:application/pdf},
+}
+
+@article{hatzilygeroudis_integrated_2010,
+	title = {Integrated {Rule}-{Based} {Learning} and {Inference}},
+	volume = {22},
+	issn = {1558-2191},
+	doi = {10.1109/TKDE.2010.79},
+	abstract = {Neurules are a kind of integrated rules integrating neurocomputing and production rules. Each neurule is represented as an adaline unit. Thus, the corresponding neurule base consists of a number of autonomous adaline units (neurules). In this paper, we present the construction process and the inference mechanism of neurules and explore their generalization capabilities. The construction process, which also implements corresponding learning algorithm, creates neurules from a given empirical data set. The inference mechanism of neurules is integrated in its nature; it combines neurocomputing with symbolic processes. It is also interactive, i.e., it interacts with the user asking him/her to provide values for some variables necessary to carry on inference. As shown via experiments, the neurules' integrated inference mechanism is more efficient than the inference mechanism used in connectionist expert systems. Furthermore, neurules generalize much better than their constituent neural component (adaline unit) and are comparable to the backpropagation neural net (BPNN).},
+	number = {11},
+	journal = {IEEE Transactions on Knowledge and Data Engineering},
+	author = {Hatzilygeroudis, Ioannis and Prentzas, Jim},
+	month = nov,
+	year = {2010},
+	note = {Conference Name: IEEE Transactions on Knowledge and Data Engineering},
+	keywords = {Artificial neural networks, Backpropagation, Hybrid intelligent systems, Inference algorithms, Inference mechanisms, integrated inference, Knowledge based systems, Multivalued logic, Neural networks, neurocomputing., Neurosymbolic integration, Problem-solving, Production, rule-based reasoning},
+	pages = {1549--1562},
+	file = {IEEE Xplore Abstract Record:/Users/eamador/Zotero/storage/EBJHMGK6/5467071.html:text/html},
+}
+
 
  
 @techreport{rdfstandard,
@@ -29,6 +64,26 @@
   type = {{W3C Recommendation}},
   URL = {http://www.w3.org/TR/1999/REC-rdf-syntax-19990222/},
   year = 1999
+}
+
+
+@article{roychowdhury_regularizing_2021,
+	title = {Regularizing deep networks with prior knowledge: {A} constraint-based approach},
+	volume = {222},
+	issn = {0950-7051},
+	shorttitle = {Regularizing deep networks with prior knowledge},
+	url = {https://www.sciencedirect.com/science/article/pii/S0950705121002525},
+	doi = {10.1016/j.knosys.2021.106989},
+	abstract = {Deep Learning architectures can develop feature representations and classification models in an integrated way during training. This joint learning process requires large networks with many parameters, and it is successful when a large amount of training data is available. Instead of making the learner develop its entire understanding of the world from scratch from the input examples, the injection of prior knowledge into the learner seems to be a principled way to reduce the amount of require training data, as the learner does not need to induce the rules from the data. This paper presents a general framework to integrate arbitrary prior knowledge into learning. The domain knowledge is provided as a collection of first-order logic (FOL) clauses, where each task to be learned corresponds to a predicate in the knowledge base. The logic statements are translated into a set of differentiable constraints, which can be integrated into the learning process to distill the knowledge into the network, or used during inference to enforce the consistency of the predictions with the prior knowledge. The experimental results have been carried out on multiple image datasets and show that the integration of the prior knowledge boosts the accuracy of several state-of-the-art deep architectures on image classification tasks.},
+	language = {en},
+	urldate = {2022-02-10},
+	journal = {Knowledge-Based Systems},
+	author = {Roychowdhury, Soumali and Diligenti, Michelangelo and Gori, Marco},
+	month = {jun},
+	year = {2021},
+	keywords = {Convolutional neural networks, Deep learning, First-order logic, Image classification, Learning from constraints, Neuro symbolic methods},
+	pages = {106989},
+	file = {Texto completo:/Users/eamador/Zotero/storage/AIL2WJ62/Roychowdhury et al. - 2021 - Regularizing deep networks with prior knowledge A.pdf:application/pdf;ScienceDirect Snapshot:/Users/eamador/Zotero/storage/BD9V7PNC/S0950705121002525.html:text/html},
 }
 
 
@@ -93,6 +148,20 @@ title = {OWL Web Ontology Language Reference}
  address = {Hingham, MA, USA},
 } 
 
+@article{kursuncu_knowledge_2020,
+	title = {Knowledge {Infused} {Learning} ({K}-{IL}): {Towards} {Deep} {Incorporation} of {Knowledge} in {Deep} {Learning}},
+	shorttitle = {Knowledge {Infused} {Learning} ({K}-{IL})},
+	url = {http://arxiv.org/abs/1912.00512},
+	abstract = {Learning the underlying patterns in data goes beyond instance-based generalization to external knowledge represented in structured graphs or networks. Deep learning that primarily constitutes neural computing stream in AI has shown significant advances in probabilistically learning latent patterns using a multi-layered network of computational nodes (i.e., neurons/hidden units). Structured knowledge that underlies symbolic computing approaches and often supports reasoning, has also seen significant growth in recent years, in the form of broad-based (e.g., DBPedia, Yago) and domain, industry or application specific knowledge graphs. A common substrate with careful integration of the two will raise opportunities to develop neuro-symbolic learning approaches for AI, where conceptual and probabilistic representations are combined. As the incorporation of external knowledge will aid in supervising the learning of features for the model, deep infusion of representational knowledge from knowledge graphs within hidden layers will further enhance the learning process. Although much work remains, we believe that knowledge graphs will play an increasing role in developing hybrid neuro-symbolic intelligent systems (bottom-up deep learning with top-down symbolic computing) as well as in building explainable AI systems for which knowledge graphs will provide scaffolding for punctuating neural computing. In this position paper, we describe our motivation for such a neuro-symbolic approach and framework that combines knowledge graph and neural networks.},
+	urldate = {2022-02-10},
+	journal = {arXiv:1912.00512 [cs]},
+	author = {Kursuncu, Ugur and Gaur, Manas and Sheth, Amit},
+	month = {feb},
+	year = {2020},
+	note = {arXiv: 1912.00512},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Computation and Language, Computer Science - Machine Learning},
+	file = {arXiv Fulltext PDF:/Users/eamador/Zotero/storage/XVQCKEPN/Kursuncu et al. - 2020 - Knowledge Infused Learning (K-IL) Towards Deep In.pdf:application/pdf;arXiv.org Snapshot:/Users/eamador/Zotero/storage/I8DYH4BX/1912.html:text/html},
+}
 
 
 @article{cyckb,
@@ -113,6 +182,24 @@ title = {OWL Web Ontology Language Reference}
  publisher = {ACM},
  address = {New York, NY, USA},
 } 
+
+@article{Ribeiro_Singh_Guestrin_2018, title={Anchors: High-Precision Model-Agnostic Explanations}, volume={32}, url={https://ojs.aaai.org/index.php/AAAI/article/view/11491}, abstractNote={ &lt;p&gt; We introduce a novel model-agnostic system that explains the behavior of complex models with high-precision rules called anchors, representing local, &quot;sufficient&quot; conditions for predictions. We propose an algorithm to efficiently compute these explanations for any black-box model with high-probability guarantees. We demonstrate the flexibility of anchors by explaining a myriad of different models for different domains and tasks. In a user study, we show that anchors enable users to predict how a model would behave on unseen instances with less effort and higher precision, as compared to existing linear explanations or no explanations. &lt;/p&gt; }, number={1}, journal={Proceedings of the AAAI Conference on Artificial Intelligence}, author={Ribeiro, Marco Tulio and Singh, Sameer and Guestrin, Carlos}, year={2018}, month={Apr.} }
+
+@article{ribeiro_lime_2016,
+  author    = {Marco T{\'{u}}lio Ribeiro and
+               Sameer Singh and
+               Carlos Guestrin},
+  title     = {"Why Should {I} Trust You?": Explaining the Predictions of Any Classifier},
+  journal   = {CoRR},
+  volume    = {abs/1602.04938},
+  year      = {2016},
+  url       = {http://arxiv.org/abs/1602.04938},
+  eprinttype = {arXiv},
+  eprint    = {1602.04938},
+  timestamp = {Mon, 13 Aug 2018 16:49:09 +0200},
+  biburl    = {https://dblp.org/rec/journals/corr/RibeiroSG16.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
 
 
 
@@ -3816,6 +3903,213 @@ keywords = "Knowledge representation, Multi-source, Textual information",
 	keywords = {Artificial intelligence},
 	file = {Russell et al. - 2010 - Artificial intelligence a modern approach.pdf:/Users/eamador/Zotero/storage/CE5CXFVX/Russell et al. - 2010 - Artificial intelligence a modern approach.pdf:application/pdf},
 }
+
+
+@article{futia_integration_2020,
+	title = {On the integration of knowledge graphs into deep learning models for a more comprehensible {AI}-{Three} challenges for future research},
+	volume = {11},
+	issn = {2078-2489},
+	doi = {10.3390/info11020122},
+	abstract = {Deep learning models contributed to reaching unprecedented results in prediction and classification tasks of Artificial Intelligence (AI) systems. However, alongside this notable progress, they do not provide human-understandable insights on how a specific result was achieved. In contexts where the impact of AI on human life is relevant (e.g., recruitment tools, medical diagnoses, etc.), explainability is not only a desirable property, but it is-or, in some cases, it will be soon-a legal requirement. Most of the available approaches to implement eXplainable Artificial Intelligence (XAI) focus on technical solutions usable only by experts able to manipulate the recursive mathematical functions in deep learning algorithms. A complementary approach is represented by symbolic AI, where symbols are elements of a lingua franca between humans and deep learning. In this context, Knowledge Graphs (KGs) and their underlying semantic technologies are the modern implementation of symbolic AI-while being less flexible and robust to noise compared to deep learning models, KGs are natively developed to be explainable. In this paper, we review the main XAI approaches existing in the literature, underlying their strengths and limitations, and we propose neural-symbolic integration as a cornerstone to design an AI which is closer to non-insiders comprehension. Within such a general direction, we identify three specific challenges for future research-knowledge matching, cross-disciplinary explanations and interactive explanations. © 2020 by the author.},
+	language = {English},
+	number = {2},
+	journal = {Information (Switzerland)},
+	author = {Futia, G. and Vetrò, A.},
+	year = {2020},
+	keywords = {Deep learning, Knowledge graphs, EXplainable artificial intelligence},
+	file = {Full Text:/home/eamador/Zotero/storage/UPFQUDMF/Futia and Vetrò - 2020 - On the integration of knowledge graphs into deep l.pdf:application/pdf;Snapshot:/home/eamador/Zotero/storage/KNY8TEYV/display.html:text/html},
+}
+
+
+
+
+@article{barredo_arrieta_explainable_2020,
+	title = {Explainable {Artificial} {Intelligence} ({XAI}): {Concepts}, taxonomies, opportunities and challenges toward responsible {AI}},
+	volume = {58},
+	issn = {1566-2535},
+	shorttitle = {Explainable {Artificial} {Intelligence} ({XAI})},
+	url = {https://www.sciencedirect.com/science/article/pii/S1566253519308103},
+	doi = {10.1016/j.inffus.2019.12.012},
+	abstract = {In the last few years, Artificial Intelligence (AI) has achieved a notable momentum that, if harnessed appropriately, may deliver the best of expectations over many application sectors across the field. For this to occur shortly in Machine Learning, the entire community stands in front of the barrier of explainability, an inherent problem of the latest techniques brought by sub-symbolism (e.g. ensembles or Deep Neural Networks) that were not present in the last hype of AI (namely, expert systems and rule based models). Paradigms underlying this problem fall within the so-called eXplainable AI (XAI) field, which is widely acknowledged as a crucial feature for the practical deployment of AI models. The overview presented in this article examines the existing literature and contributions already done in the field of XAI, including a prospect toward what is yet to be reached. For this purpose we summarize previous efforts made to define explainability in Machine Learning, establishing a novel definition of explainable Machine Learning that covers such prior conceptual propositions with a major focus on the audience for which the explainability is sought. Departing from this definition, we propose and discuss about a taxonomy of recent contributions related to the explainability of different Machine Learning models, including those aimed at explaining Deep Learning methods for which a second dedicated taxonomy is built and examined in detail. This critical literature analysis serves as the motivating background for a series of challenges faced by XAI, such as the interesting crossroads of data fusion and explainability. Our prospects lead toward the concept of Responsible Artificial Intelligence, namely, a methodology for the large-scale implementation of AI methods in real organizations with fairness, model explainability and accountability at its core. Our ultimate goal is to provide newcomers to the field of XAI with a thorough taxonomy that can serve as reference material in order to stimulate future research advances, but also to encourage experts and professionals from other disciplines to embrace the benefits of AI in their activity sectors, without any prior bias for its lack of interpretability.},
+	language = {en},
+	urldate = {2021-12-22},
+	journal = {Information Fusion},
+	author = {Barredo Arrieta, Alejandro and Díaz-Rodríguez, Natalia and Del Ser, Javier and Bennetot, Adrien and Tabik, Siham and Barbado, Alberto and Garcia, Salvador and Gil-Lopez, Sergio and Molina, Daniel and Benjamins, Richard and Chatila, Raja and Herrera, Francisco},
+	month = jun,
+	year = {2020},
+	keywords = {Explainable Artificial Intelligence, Accountability, Comprehensibility, Data Fusion, Deep Learning, Fairness, Interpretability, Machine Learning, Privacy, Responsible Artificial Intelligence, Transparency},
+	pages = {82--115},
+	file = {Accepted Version:/home/eamador/Zotero/storage/IIZ6QQ8Y/Barredo Arrieta et al. - 2020 - Explainable Artificial Intelligence (XAI) Concept.pdf:application/pdf},
+}
+
+@article{Bouraoui_Jameel_Schockaert_2017, title={Inductive Reasoning about Ontologies Using Conceptual Spaces}, volume={31}, url={https://ojs.aaai.org/index.php/AAAI/article/view/11162}, abstractNote={ &lt;p&gt; Structured knowledge about concepts plays an increasingly important role in areas such as information retrieval. The available ontologies and knowledge graphs that encode such conceptual knowledge, however, are inevitably incomplete. This observation has led to a number of methods that aim to automatically complete existing knowledge bases. Unfortunately, most existing approaches rely on black box models, e.g. formulated as global optimization problems, which makes it difficult to support the underlying reasoning process with intuitive explanations. In this paper, we propose a new method for knowledge base completion, which uses interpretable conceptual space representations and an explicit model for inductive inference that is closer to human forms of commonsense reasoning. Moreover, by separating the task of representation learning from inductive reasoning, our method is easier to apply in a wider variety of contexts. Finally, unlike optimization based approaches, our method can naturally be applied in settings where various logical constraints between the extensions of concepts need to be taken into account. &lt;/p&gt; }, number={1}, journal={Proceedings of the AAAI Conference on Artificial Intelligence}, author={Bouraoui, Zied and Jameel, Shoaib and Schockaert, Steven}, year={2017}, month={Feb.} }
+
+@article{bianchi_kge_explainability_2020,
+  author    = {Federico Bianchi and
+               Gaetano Rossiello and
+               Luca Costabello and
+               Matteo Palmonari and
+               Pasquale Minervini},
+  title     = {Knowledge Graph Embeddings and Explainable {AI}},
+  journal   = {CoRR},
+  volume    = {abs/2004.14843},
+  year      = {2020},
+  url       = {https://arxiv.org/abs/2004.14843},
+  archivePrefix = {arXiv},
+  eprint    = {2004.14843},
+  timestamp = {Sun, 03 May 2020 17:39:04 +0200},
+  biburl    = {https://dblp.org/rec/journals/corr/abs-2004-14843.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@misc{ying_2019_gnnexplainer,
+      title={GNNExplainer: Generating Explanations for Graph Neural Networks}, 
+      author={Rex Ying and Dylan Bourgeois and Jiaxuan You and Marinka Zitnik and Jure Leskovec},
+      year={2019},
+      eprint={1903.03894},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG}
+}
+
+@misc{pezeshkpour_2019_investigating,
+      title={Investigating Robustness and Interpretability of Link Prediction via Adversarial Modifications}, 
+      author={Pouya Pezeshkpour and Yifan Tian and Sameer Singh},
+      year={2019},
+      eprint={1905.00563},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG}
+}
+
+@article{arya_one_2019,
+	title = {One {Explanation} {Does} {Not} {Fit} {All}: {A} {Toolkit} and {Taxonomy} of {AI} {Explainability} {Techniques}},
+	shorttitle = {One {Explanation} {Does} {Not} {Fit} {All}},
+	url = {http://arxiv.org/abs/1909.03012},
+	abstract = {As artificial intelligence and machine learning algorithms make further inroads into society, calls are increasing from multiple stakeholders for these algorithms to explain their outputs. At the same time, these stakeholders, whether they be affected citizens, government regulators, domain experts, or system developers, present different requirements for explanations. Toward addressing these needs, we introduce AI Explainability 3601, an open-source software toolkit featuring eight diverse and state-of-the-art explainability methods and two evaluation metrics. Equally important, we provide a taxonomy to help entities requiring explanations to navigate the space of explanation methods, not only those in the toolkit but also in the broader literature on explainability. For data scientists and other users of the toolkit, we have implemented an extensible software architecture that organizes methods according to their place in the AI modeling pipeline. We also discuss enhancements to bring research innovations closer to consumers of explanations, ranging from simplified, more accessible versions of algorithms, to tutorials and an interactive web demo to introduce AI explainability to different audiences and application domains. Together, our toolkit and taxonomy can help identify gaps where more explainability methods are needed and provide a platform to incorporate them as they are developed.},
+	language = {en},
+	urldate = {2021-12-22},
+	journal = {arXiv:1909.03012 [cs, stat]},
+	author = {Arya, Vijay and Bellamy, Rachel K. E. and Chen, Pin-Yu and Dhurandhar, Amit and Hind, Michael and Hoffman, Samuel C. and Houde, Stephanie and Liao, Q. Vera and Luss, Ronny and Mojsilović, Aleksandra and Mourad, Sami and Pedemonte, Pablo and Raghavendra, Ramya and Richards, John and Sattigeri, Prasanna and Shanmugam, Karthikeyan and Singh, Moninder and Varshney, Kush R. and Wei, Dennis and Zhang, Yunfeng},
+	month = sep,
+	year = {2019},
+	note = {arXiv: 1909.03012},
+	keywords = {Computer Science - Artificial Intelligence, Statistics - Machine Learning, Computer Science - Computer Vision and Pattern Recognition, Computer Science - Human-Computer Interaction},
+	file = {Arya et al. - 2019 - One Explanation Does Not Fit All A Toolkit and Ta.pdf:/home/eamador/Zotero/storage/5KVMCAW3/Arya et al. - 2019 - One Explanation Does Not Fit All A Toolkit and Ta.pdf:application/pdf},
+}
+
+
+@article{gilpin_explainability_2018,
+  author    = {Leilani H. Gilpin and
+               David Bau and
+               Ben Z. Yuan and
+               Ayesha Bajwa and
+               Michael A. Specter and
+               Lalana Kagal},
+  title     = {Explaining Explanations: An Approach to Evaluating Interpretability
+               of Machine Learning},
+  journal   = {CoRR},
+  volume    = {abs/1806.00069},
+  year      = {2018},
+  url       = {http://arxiv.org/abs/1806.00069},
+  eprinttype = {arXiv},
+  eprint    = {1806.00069},
+  timestamp = {Wed, 15 Sep 2021 11:19:43 +0200},
+  biburl    = {https://dblp.org/rec/journals/corr/abs-1806-00069.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@ARTICLE{adadi_explainability_2018,  author={Adadi, Amina and Berrada, Mohammed},  journal={IEEE Access},   title={Peeking Inside the Black-Box: A Survey on Explainable Artificial Intelligence (XAI)},   year={2018},  volume={6},  number={},  pages={52138-52160},  doi={10.1109/ACCESS.2018.2870052}}
+
+@misc{phillips_explainability_2021,
+  author = {P. Phillips and Carina Hahn and Peter Fontana and Amy Yates and Kristen Greene and David Broniatowski and Mark Przybocki},
+  title = {Four Principles of Explainable Artificial Intelligence},
+  year = {2021},
+  month = {2021-09-29 04:09:00},
+  publisher = {NIST Interagency/Internal Report (NISTIR), National Institute of Standards and Technology, Gaithersburg, MD},
+  url = {https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=933399},
+  doi = {https://doi.org/10.6028/NIST.IR.8312},
+  language = {en},
+}
+
+
+@article{guidotti_explainability_2018,
+author = {Guidotti, Riccardo and Monreale, Anna and Ruggieri, Salvatore and Turini, Franco and Giannotti, Fosca and Pedreschi, Dino},
+title = {A Survey of Methods for Explaining Black Box Models},
+year = {2018},
+issue_date = {September 2019},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {51},
+number = {5},
+issn = {0360-0300},
+url = {https://doi.org/10.1145/3236009},
+doi = {10.1145/3236009},
+abstract = {In recent years, many accurate decision support systems have been constructed as black boxes, that is as systems that hide their internal logic to the user. This lack of explanation constitutes both a practical and an ethical issue. The literature reports many approaches aimed at overcoming this crucial weakness, sometimes at the cost of sacrificing accuracy for interpretability. The applications in which black box decision systems can be used are various, and each approach is typically developed to provide a solution for a specific problem and, as a consequence, it explicitly or implicitly delineates its own definition of interpretability and explanation. The aim of this article is to provide a classification of the main problems addressed in the literature with respect to the notion of explanation and the type of black box system. Given a problem definition, a black box type, and a desired explanation, this survey should help the researcher to find the proposals more useful for his own work. The proposed classification of approaches to open black box models should also be useful for putting the many research open questions in perspective.},
+journal = {ACM Comput. Surv.},
+month = {aug},
+articleno = {93},
+numpages = {42},
+keywords = {transparent models, Open the black box, interpretability, explanations}
+}
+
+@article{burkart_survey_2021,
+	title = {A {Survey} on the {Explainability} of {Supervised} {Machine} {Learning}},
+	volume = {70},
+	copyright = {Copyright (c)},
+	issn = {1076-9757},
+	url = {https://www.jair.org/index.php/jair/article/view/12228},
+	doi = {10.1613/jair.1.12228},
+	language = {en},
+	urldate = {2021-01-25},
+	journal = {Journal of Artificial Intelligence Research},
+	author = {Burkart, Nadia and Huber, Marco F.},
+	month = jan,
+	year = {2021},
+	keywords = {neural networks, knowledge discovery, machine learning, rule learning},
+	pages = {245--317},
+	file = {Snapshot:/home/eamador/Zotero/storage/KGJPDB63/12228.html:text/html;Full Text PDF:/home/eamador/Zotero/storage/93U635NX/Burkart y Huber - 2021 - A Survey on the Explainability of Supervised Machi.pdf:application/pdf},
+}
+
+
+@article{asim_ontology_2018,
+    author = {Asim, Muhammad Nabeel and Wasim, Muhammad and Khan, Muhammad Usman Ghani and Mahmood, Waqar and Abbasi, Hafiza Mahnoor},
+    title = "{A survey of ontology learning techniques and applications}",
+    journal = {Database},
+    volume = {2018},
+    year = {2018},
+    month = {10},
+    abstract = "{Ontologies have gained a lot of popularity and recognition in the semantic web because of their extensive use in Internet-based applications. Ontologies are often considered a fine source of semantics and interoperability in all artificially smart systems. Exponential increase in unstructured data on the web has made automated acquisition of ontology from unstructured text a most prominent research area. Several methodologies exploiting numerous techniques of various fields (machine learning, text mining, knowledge representation and reasoning, information retrieval and natural language processing) are being proposed to bring some level of automation in the process of ontology acquisition from unstructured text. This paper describes the process of ontology learning and further classification of ontology learning techniques into three classes (linguistics, statistical and logical) and discusses many algorithms under each category. This paper also explores ontology evaluation techniques by highlighting their pros and cons. Moreover, it describes the scope and use of ontology learning in several industries. Finally, the paper discusses challenges of ontology learning along with their corresponding future directions.}",
+    issn = {1758-0463},
+    doi = {10.1093/database/bay101},
+    url = {https://doi.org/10.1093/database/bay101},
+    note = {bay101},
+    eprint = {https://academic.oup.com/database/article-pdf/doi/10.1093/database/bay101/27329264/bay101.pdf},
+}
+
+
+
+
+
+@article{wong_ontology_2012,
+author = {Wong, Wilson and Liu, Wei and Bennamoun, Mohammed},
+title = {Ontology Learning from Text: A Look Back and into the Future},
+year = {2012},
+issue_date = {August 2012},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {44},
+number = {4},
+issn = {0360-0300},
+url = {https://doi.org/10.1145/2333112.2333115},
+doi = {10.1145/2333112.2333115},
+abstract = {Ontologies are often viewed as the answer to the need for interoperable semantics in modern information systems. The explosion of textual information on the Read/Write Web coupled with the increasing demand for ontologies to power the Semantic Web have made (semi-)automatic ontology learning from text a very promising research area. This together with the advanced state in related areas, such as natural language processing, have fueled research into ontology learning over the past decade. This survey looks at how far we have come since the turn of the millennium and discusses the remaining challenges that will define the research directions in this area in the near future.},
+journal = {ACM Comput. Surv.},
+month = {sep},
+articleno = {20},
+numpages = {36},
+keywords = {concept discovery, term recognition, Ontology learning, application of ontologies, semantic relation acquisition}
+}
+
+
 
 @article{calegari_integration_2020,
 	title = {On the integration of symbolic and sub-symbolic techniques for {XAI}: {A} survey},
