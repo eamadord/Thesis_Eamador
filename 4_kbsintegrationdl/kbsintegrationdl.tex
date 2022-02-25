@@ -5,19 +5,68 @@
 \elvitodo{Aquí pos la motivación un poco, limitaciones concretas de esto y por qué}
 %Motivaciones de esto: Incrementar capacidad de generalización, reducir número de recursos, aumento de la interpretabilidad del modelo. Restricciones de esto: 
 
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\linewidth]{4_kbsintegrationdl/figures/overview_kbs_dl_intro.eps}
+    \caption{Overview on the Introduction of Knowledge-Based Systems into Deep Learning}
+    \label{fig:overview_kbs_dl_intro}
+\end{figure}
+
 %%%LA MOVIDA DE LA SENSIA EN ESTA VERTIENTE CONCRETA
-\section{Existing Limitations of Deep Learning Models} \label{subsec:limitations_dl}
+\section{Knowledge-Based System Introduction in Deep Learning Models} \label{subsec:methods_dl}
+In this scenario, the DL model plays the primary role, while the KBS plays the secondary role. Figure \ref{fig:overview_kbs_dl_intro} outlines the specific methodological parameters for this integration, which are defined as follows.
+\elvitodo{AMPLIAR}
+
+\subsection{Limitations}
+\begin{enumerate} [start=1,label={\bfseries L\arabic*.}]
+    \item \label{kbsintrodl_L_data_hungry} \textbf{Data hungry.} This is one of the most concerning issues regarding DL. While DL models are capable of achieving an abstraction and generalization capacity that can not be modelled by their symbolic counterpart, their final performance is highly linked to both the quality and the quantity of the data. Large, balanced and representative training sets are required for the DL model to learn valid reasoning patterns about the data. This limitation implies that the final performance of the model is directly bounded to its training data, thus not being a trusty indicator on the aptness of the model. 
+    
+    \item \label{kbsintrodl_L_brittleness} \textbf{Brittleness.} DL models infer abstract reasoning patterns from input training data. These patterns, however, may not be robust enough to correctly deal with noisy input data. Adversarial attacks can cause DL models to fail. Therefore, even if a given DL produces an output $Y$ for a given input $X$, it can not be ensured that for a slightly corrupted version of the input $X'$ will lead to the same outcome.
+    
+    \item \label{kbsintrodl_L_cost} \textbf{Cost.} Training a DL model requires an elevated computational cost. While GPUs have greatly alleviated this issue, the disparity on the availability of computational resources is a significant drawback of DL models. Not only the training time varies greatly across different infrastructures for the same implementation, but a given DL model may be incapable of training or executing if the available resources are insufficient. Maintaining computational cost at reasonable limits should therefore be prioritized.  
+    
+    \item \label{kbsintrodl_L_transfer} \textbf{Limited transferability.} Reusability is one of the most prominent features of DL models. Transfer learning reduces the need to retrain a given architecture from scratch to fit a new dataset or solve a new task. However, a model $M$ may achieve a remarkable performance on a given task $t$, but this performance may not  hold for a different task $t'$, even if they are fairly similar. Additionally, if a model $M'$ is trained using $M$ as a base, it can not be ascertain whether the performance of the newly trained model will be as good as the baseline one.
+    
+    \item \label{kbsintrodl_L_opacity} \textbf{Opacity.} As outlined in Section \ref{sec:sota_knowledge_extraction_dl}, one of the main concerns regarding DL models is their limited explainability. DL models are often provide better results than KBS on multiple tasks, but their usage is often hindered due to the impossibility to provide human-understandable insights on why a certain output is obtained.
+    
+    \item \label{kbsintrodl_L_constraint} \textbf{No constraint enforcement.} DL models infer patterns from a set of input samples. However, these patterns may not truthfully represent the data, as noisy or unbalanced data may negatively impact the learning process. The patterns learned by a DL model can then be inconsistent, and may not be able to properly generalize for unseen inputs.
+    \end{enumerate}
+\subsection{Considerations}
+\begin{enumerate} [start=1,label={\bfseries C\arabic*.}]
+    \item \label{kbsintrodl_C_domain} \textbf{Application domain.} The conducted systematic review \citep{amador_systematic_review_2019} showcased an existing bias in the employed reasoning models per application domain. Complex and opaque approaches were selected in domains where their worst-case scenario impact was low (i.e. housing), while fully expressive and interpretable models were considerably favoured in human-dominated areas (i.e, healthcare). Therefore, in this scenario where the DL model is the primary, it must be studied whether the application domain strictly requires from human understandability. Even though the introduction of KBS into DL models may reduce its opacity, it may not be sufficient to fully comprehend the inference process of the model. 
+    
+    \item  \label{kbsintrodl_C_data} \textbf{Data availability.} As stated in \ref{kbsintrodl_L_data_hungry}, data availability is one of the main bottlenecks of DL models. This issue may be alleviated by the introduction of a KBS model. In those scenarios where the KBS model is already trained, data availability may not be an issue. However, if the KBS model needs to be trained before being integrated within the DL model, there must exists valid data to build the KBS model. Data availability for KBS model training must then be ensured beforehand.
+    
+    \item  \label{kbsintrodl_C_resource} \textbf{Resource availability.} This consideration is directly related to \ref{kbsintrodl_L_cost}. KBS models have a much reduced computational cost in comparison to DL models. However, even if small, they still carry a computational cost that is added to the baseline cost of the DL model which should be noted. The cost of introducing the KBS model should never exceed the cost of the primary DL model.
+    
+\end{enumerate}
+\subsection{Restrictions}
+\begin{enumerate} [start=1,label={\bfseries R\arabic*.}]
+    \item \textbf{Performance must not decrease.} One of the fundamental strengths of DL models is that they provide remarkable performances on a wide variety of tasks. The introduction of a KBS model must never negatively impact the performance of the model, as this is a pivotal element and should therefore be preserved. While there may not be a remarkable improvement in the final metrics (i.e., a set of rules to correctly predict outliers, which may represent a very small fraction of the data), the performance should, at least, remain stable.
+    
+    \item \textbf{Stable resource consumption.} The introduction of an additional model subsequently carries an additional cost. As noted in \ref{kbsintrodl_C_resource}, this increment must be taken into consideration. The overall resource consumption of the model must remain within reasonable bounds (\ref{kbsintrodl_L_cost}). 
+    
+    \item \textbf{Stable model complexity.} 
+\end{enumerate}
+\subsection{Benefits}
+\begin{enumerate} [start=1,label={\bfseries B\arabic*.}]
+    \item \textbf{Accelerate convergence}
+    \item \textbf{Explicit data restrictions.}
+    \item \textbf{Reduce required data.}
+    \item \textbf{Improved interpretability.}
+\end{enumerate}
 %Limitaciones y las restricciones estudiadas
 %Limitaciones: necesidad de reentrenamiento para incluir un único elemento, data hungry, tendencia a la personalizacion, necesidad de grandes recursos computacionales + los que se identifiquen en bibliografía
 \elvitodo{Aquí hay mucha magra en el paper de Frank y las referencias de ese paper}
 
-\section{Ontology Introduction for Knowledge Graph Completion} \label{subsec:ontointro_kgc}
+\section{Ontology Introduction on Knowledge Graph Embedding Models for Knowledge Graph Completion} \label{subsec:ontointro_kgc}
 
-This Section provides a case scenario for the introduction of symbolic representations under a deep learning framework, as presented in \cite{amadoretalontodl}. This case scenario focuses on the Knowledge Graph Completion (KGC) task, specifically on its resolution via Knowledge Graph Embedding (KGE) models. As stated in Section ?, KGE models generate vector representations for KGs, subsequently enabling statistical reasoning over the KG. Figure \ref{fig:box_krintodl_base} depicts the baseline design of any KGE model according to the design patterns in \cite{boxologyfrank}. In this scenario, a KG (structured, symbolic) serves as input. As described in Section ?, a KG is represented as a set of facts of the format \textit{(s,p,o)}, where $s,o \in \mathcal{E}$ and $r \in \mathcal{R}$. Following the standard model generation procedure, the input is divided into three separate subsets of facts: training, validation and test, each containing a different set of facts from the KG. The training set is then fed into a KGE model, which generates a subsymbolic representation for each element of the input. These vector representations can then be used to infer new potential elements of the KG. 
+This Section provides a case scenario of an introductory integration of symbolic knowledge under a deep learning framework, as presented in \cite{amadoretalontodl}. This case scenario focuses on the Knowledge Graph Completion (KGC) task, specifically on its resolution via Knowledge Graph Embedding (KGE) models. As stated in Section \ref{sec:the_ai_spectrum}, KGE models generate vector representations for KGs, subsequently enabling statistical reasoning over the KG. Figure \ref{fig:box_krintodl_base} depicts the baseline design of any KGE model according to the design patterns in \cite{boxologyfrank}. In this scenario, a KG (structured, symbolic) serves as input. As previously described, a KG is represented as a set of facts of the format \textit{(s,p,o)}, where $s,o \in \mathcal{E}$ and $r \in \mathcal{R}$. Following the standard model generation procedure, the input is divided into three separate subsets of facts: training, validation and test, each containing a different set of facts from the KG. The training set is then fed into a KGE model, which generates a subsymbolic representation for each element of the input. These vector representations can then be used to infer new potential elements of the KG. 
 
 \begin{figure*}
     \centering
-    \includegraphics[width=\linewidth]{5_kbsintegrationdl/figures/boxology_krintodl_base.png}
+    \includegraphics[width=\linewidth]{4_kbsintegrationdl/figures/boxology_krintodl_base.png}
     \caption{Boxology representation of the baseline KGE model}
     \label{fig:box_krintodl_base}
 \end{figure*}
@@ -31,7 +80,7 @@ KGE models assign a singular representation for each entity and relation which e
 
 \begin{figure}
     \centering
-    \includegraphics[width=.8\linewidth]{5_kbsintegrationdl/figures/KGCexample.eps}
+    \includegraphics[width=.8\linewidth]{4_kbsintegrationdl/figures/KGCexample.eps}
     \caption{An example of KGC combining entity information and hierarchical information. Boxes limited by dashed lines represent the ontological information of the entity. Dotted lines are used to represent unknown information.}
     \label{fig:kgc_onto_example}
 \end{figure}
@@ -44,7 +93,7 @@ Figure \ref{fig:kgc_onto_example} outlines the general idea of the proposal. Eve
 \section{Semantic-Based Initialization for Out-Of-Knowledge-Base Entity Reasoning}
 \begin{figure*}
     \centering
-    \includegraphics[width=\linewidth]{5_kbsintegrationdl/figures/boxology_krintodl.png}
+    \includegraphics[width=\linewidth]{4_kbsintegrationdl/figures/boxology_krintodl.png}
     \caption{Boxology representation of the proposed hybrid KGE model. Dotted lines depict added elements. A red square outlines the initialization.}
     \label{fig:box_krintodl}
 \end{figure*} 
@@ -56,7 +105,7 @@ Even though the introduction of ontological information solves the issue of OOKB
 
 \begin{figure}
     \centering
-    \includegraphics[width=\linewidth]{5_kbsintegrationdl/figures/Initialization_phases.eps}
+    \includegraphics[width=\linewidth]{4_kbsintegrationdl/figures/Initialization_phases.eps}
     \caption{Overview of the three initialization phases}
     \label{fig:overview}
 \end{figure}
