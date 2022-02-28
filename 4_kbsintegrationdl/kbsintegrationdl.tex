@@ -14,9 +14,8 @@
 \end{figure}
 
 %%%LA MOVIDA DE LA SENSIA EN ESTA VERTIENTE CONCRETA
-\section{Knowledge-Based System Introduction in Deep Learning Models} \label{subsec:methods_dl}
+\section{Knowledge-Based System Introduction in Deep Learning Models} \label{subsec:methodology_kbs_intro_dl}
 In this scenario, the DL model plays the primary role, while the KBS plays the secondary role. Figure \ref{fig:overview_kbs_dl_intro} outlines the specific methodological parameters for this integration, which are defined as follows.
-\elvitodo{AMPLIAR}
 
 \subsection{Limitations}
 \begin{enumerate} [start=1,label={\bfseries L\arabic*.}]
@@ -43,40 +42,36 @@ In this scenario, the DL model plays the primary role, while the KBS plays the s
 \end{enumerate}
 \subsection{Restrictions}
 \begin{enumerate} [start=1,label={\bfseries R\arabic*.}]
-    \item \textbf{Performance must not decrease.} One of the fundamental strengths of DL models is that they provide remarkable performances on a wide variety of tasks. The introduction of a KBS model must never negatively impact the performance of the model, as this is a pivotal element and should therefore be preserved. While there may not be a remarkable improvement in the final metrics (i.e., a set of rules to correctly predict outliers, which may represent a very small fraction of the data), the performance should, at least, remain stable.
+    \item \label{kbsintrodl_R_performance} \textbf{Performance must not decrease.} One of the fundamental strengths of DL models is that they provide remarkable performances on a wide variety of tasks. The introduction of a KBS model must never negatively impact the performance of the model, as this is a pivotal element and should therefore be preserved. While there may not be a remarkable improvement in the final metrics (i.e., a set of rules to correctly predict outliers, which may represent a very small fraction of the data), the performance should, at least, remain stable.
     
-    \item \textbf{Stable resource consumption.} The introduction of an additional model subsequently carries an additional cost. As noted in \ref{kbsintrodl_C_resource}, this increment must be taken into consideration. The overall resource consumption of the model must remain within reasonable bounds (\ref{kbsintrodl_L_cost}). 
+    \item \label{kbsintrodl_R_resource} \textbf{Stable resource consumption.} The introduction of an additional model subsequently carries an additional cost. As noted in \ref{kbsintrodl_C_resource}, this increment must be taken into consideration. The overall resource consumption of the model must remain within reasonable bounds (\ref{kbsintrodl_L_cost}), and the final model should be able to train and function with the previously existing resources.
     
-    \item \textbf{Stable model complexity.} 
+    \item \label{kbsintrodl_R_complexity} \textbf{Stable model complexity.} DL models are generally complex and suffer from elevated training times. Therefore, the KBS model should not add an additional complexity to the model. For this purpose, whenever possible, the KBS model must not be fully coupled with the DL model. Instead, it may be devised as an individual component that is actively involved in the training process of the DL model, but does not add any additional complexity to the model itself. 
+    
 \end{enumerate}
 \subsection{Benefits}
 \begin{enumerate} [start=1,label={\bfseries B\arabic*.}]
-    \item \textbf{Accelerate convergence}
-    \item \textbf{Explicit data restrictions.}
-    \item \textbf{Reduce required data.}
-    \item \textbf{Improved interpretability.}
+    \item \label{kbsintrodl_B_convergence} \textbf{Accelerate convergence.} As noted in \ref{kbsintrodl_R_complexity}, DL models may suffer from elevated training times. This issue may be eased with the inclusion of a KBS, which already models knowledge about the data that the DL model may not even be capable of inferring otherwise. The introduction of this additional knowledge can not only lead to better performances, but reduce the training time as the model may converge faster to its optimal solution, reducing its computational cost (\ref{kbsintrodl_L_cost}).
+    
+    \item \label{kbsintrodl_B_restrictions} \textbf{Explicit data restrictions.} During training DL models internally learn restrictions and constraints about the data. As stated in \ref{kbsintrodl_L_constraint}, the implicit constraints about the data may be inconsistent, leading to errors. KBS extract explicit constraints and patterns from the data, which are then use to perform reasoning (i.e. rule-based systems, decision trees), that may not be inferred using a DL model. These restrictions can correct the behaviour of the DL model for those input that can otherwise be subject to errors based on the internally learned patterns (\ref{kbsintrodl_L_brittleness}). 
+    
+    \item \label{kbsintrodl_B_reduce} \textbf{Reduce required data.} One of the main limitations of DL models (\ref{kbsintrodl_L_data_hungry}) is their high data availability requirement. On the contrary, KBS are capable to learn feasible inference patterns from reduced amounts of data. Subsequently, introducing a KBS in a DL model may reduce the input data required while still achieving accurate results. Moreover, it can improve the transferability of the final model (\ref{kbsintrodl_L_transfer}), as the DL model may remain fairly static while the KBS model is retrained for a new task. 
+    
+    \item \label{kbsintrodl_B_interpretability} \textbf{Improved interpretability.} The lack of explainability of DL models (\ref{kbsintrodl_L_opacity}) represents one of its main drawbacks. KBS, however, are generally fully explainable, interpretable and easily comprehensible by humans. Even when the inference process of the DL model may still be opaque, the introduction of a KBS may enable a certain degree of interpretability. Model outputs may not be fully explained, but some insights on the inference process based on the KBS information may be extracted.
+    
 \end{enumerate}
-%Limitaciones y las restricciones estudiadas
-%Limitaciones: necesidad de reentrenamiento para incluir un único elemento, data hungry, tendencia a la personalizacion, necesidad de grandes recursos computacionales + los que se identifiquen en bibliografía
-\elvitodo{Aquí hay mucha magra en el paper de Frank y las referencias de ese paper}
 
-\section{Ontology Introduction on Knowledge Graph Embedding Models for Knowledge Graph Completion} \label{subsec:ontointro_kgc}
+\section{Ontology Introduction to Knowledge Graph Embedding Models for Knowledge Graph Completion} \label{subsec:ontointro_kgc}
 
-This Section provides a case scenario of an introductory integration of symbolic knowledge under a deep learning framework, as presented in \cite{amadoretalontodl}. This case scenario focuses on the Knowledge Graph Completion (KGC) task, specifically on its resolution via Knowledge Graph Embedding (KGE) models. As stated in Section \ref{sec:the_ai_spectrum}, KGE models generate vector representations for KGs, subsequently enabling statistical reasoning over the KG. Figure \ref{fig:box_krintodl_base} depicts the baseline design of any KGE model according to the design patterns in \cite{boxologyfrank}. In this scenario, a KG (structured, symbolic) serves as input. As previously described, a KG is represented as a set of facts of the format \textit{(s,p,o)}, where $s,o \in \mathcal{E}$ and $r \in \mathcal{R}$. Following the standard model generation procedure, the input is divided into three separate subsets of facts: training, validation and test, each containing a different set of facts from the KG. The training set is then fed into a KGE model, which generates a subsymbolic representation for each element of the input. These vector representations can then be used to infer new potential elements of the KG. 
+As outlined in Section \ref{sec:sota_dl_kb_intregration}, Knowledge Graph Completion (KGC) is one of the main application scenarios of neurosymbolic integration. This Section presents a use case of an introductory integration of a KBS under a DL framework, as presented in \cite{amadoretalontodl}. This use case focuses on KGC, specifically on its resolution via Knowledge Graph Embedding (KGE) models. As stated in Section \ref{sec:the_ai_spectrum}, KGE models generate vector representations for KGs, subsequently enabling statistical reasoning over the KG. In this scenario, a KG (structured, symbolic) serves as input. As previously described, a KG is represented as a set of facts of the format \textit{(s,p,o)}, where $s,o \in \mathcal{E}$ and $r \in \mathcal{R}$, being $\mathcal{E}$ and $\mathcal{R}$ the entity and relation sets, respectively. The embeddings learned by the KGE model can then be used to infer new potential elements of the KG. 
+%Following the standard model generation procedure, the input is divided into three separate subsets of facts: training, validation, and test, each containing a different set of facts from the KG. The training set is then fed into a KGE model, which generates a subsymbolic representation for each element of the input. 
 
-\begin{figure*}
-    \centering
-    \includegraphics[width=\linewidth]{4_kbsintegrationdl/figures/boxology_krintodl_base.png}
-    \caption{Boxology representation of the baseline KGE model}
-    \label{fig:box_krintodl_base}
-\end{figure*}
+While KGE models provide an efficient solution for KGC, two main shortcomings can be identified: i) they only rely on the information explicitly declared in the input data, thus not considering background, general information that can lead to the inference of general restrictions about the output, and ii) they cannot reason over inputs that were not seen by the model during training time. One of the main reasons behind these flaws is the training strategy employed by KGE models, as they rely on a local search strategy instead of a explorative one. Therefore, scalable and explorative approaches are needed to reason over the so-called \textit{out-of-knowledge-based} (OOKB) entities. This term is employed to refer to entities that were not featured in the training set and, therefore, have no learnt representation. 
+
+A feasible solution to this issue lies in the inclusion of explicit ontological information, as explored in \cite{Patrick}. As ontologies are a core element of the KG, serving as a scaffold for its generation as well as providing explicit restrictions about entities and relations. However, their use scope is limited exclusively to the generation and introduction of new elements of the KG \citep{paulheim2017knowledge}. Existing proposals regarding OOKB entity introduction include works such as \textit{puTransE} by \cite{putranse}, \textit{DKGE} by \cite{dkge}, \cite{hamaguchi_etal} and \cite{shah_open-world_2019}. These proposals, however, rely on deep learning models, thus suffering from the previously outlined limitations. This Chapter presents a simpler, hybrid alternative to the aforementioned works, which eliminates the detected limitations while being easily integrated with any existing KGE model.
 
 
-While this method provides an efficient solution to the KGC task, two main shortcomings can be identified: (1) they only rely on the information explicitly declared in the input data, thus not considering background, general information that can lead to the inference of general restrictions about the output and (2) they cannot reason over inputs that were not seen by the model during training time.\elvitodo{RELACIONAR ESTO CON LAS LIMITACIONES GENERALES QUE TENEMOS QUE DECLARAR}. One of the main reasons behind these flaws is the training strategy employed by KGE models, as they rely on a local search strategy instead of a explorative one. Therefore, scalable and explorative approaches are needed to reason over the so-called \textit{out-of-knowledge-based} (OOKB) entities. This term is employed to refer to entities that were not featured in the training set and, therefore, have no learnt representation. 
-
-A feasible solution to this issue lies in the inclusion of explicit ontological information, as explored in \cite{Patrick}. As ontologies are a core element of the KG, serving as a scaffold for its generation as well as providing explicit restrictions about entities and relations. However, their use scope is limited exclusively to the generation and introduction of new elements of the KG \citep{paulheim2017knowledge}. Existing proposals regarding OOKB entity introduction include works such as \textit{puTransE} by \cite{putranse}, \textit{DKGE} by \cite{dkge}, \cite{hamaguchi_etal} and \cite{shah_open-world_2019}. These proposals, however, rely on deep learning models, thus suffering from some of the limitations outlined in Section \ref{subsec:limitations_dl}, namely \elvitodo{REFERENCIAR LIMITACIONES EXACTAS DE LA LISTA ANTERIOR}. This chapter presents a simpler, hybrid alternative to the aforementioned works, which eliminates the detected limitations while being easily integrated with any existing KGE model.
-
-KGE models assign a singular representation for each entity and relation which encode all the knowledge about the input derived from the training facts. While every entity is unique and this must be reflected into its representation, certain generalizations about them can be stated from the existing facts. Ontologies encode these generalizations and restrictions, and its inclusion alongside KGE models can enable the extraction of general patterns about the facts while still maintaining the specificity of the entities and relations. Additionally, ontologies play a key role on entity introduction, thus making this information about new entities easily available.
+KGE models assign a singular representation for each entity and relation which encode the knowledge about the input derived from the training facts. While every entity is unique and this must be reflected in its representation, certain generalizations about them can be stated from the existing facts. Ontologies encode these generalizations and restrictions, and its inclusion alongside KGE models can enable the extraction of general patterns about facts while still maintaining the specificity of the entities and relations. Additionally, ontologies play a key role in entity introduction, thus making this information about unseen entities easily available.
 
 \begin{figure}
     \centering
@@ -85,66 +80,367 @@ KGE models assign a singular representation for each entity and relation which e
     \label{fig:kgc_onto_example}
 \end{figure}
 
-Figure \ref{fig:kgc_onto_example} outlines the general idea of the proposal. Every entity contains its own ontological information. In this example, the class hierarchy of each entity is used as ontological information. While facts about a given entity $e$ are volatile and subject to change, its class hierarchy remains fairly static throughout time. Moreover, class hierarchies are similar or even equal in those entities representing closely related concepts. In the depicted entities "Barack Obama" ($e_1$) and "Donald Trump" ($e_2$), their class hierarchies are equal, implying that they represent the same type of concept. For the entity "Michelle Obama", its class hierarchy is a subset of the class hierarchy of the aforementioned entities. Therefore, even though this entity does not represent a "President", it still holds a high resemblance with both $e_1$ and $e_2$. Considering the equality of the class hierarchies of entities $e_1$ and $e_2$, even though $e_2$ was not featured in the training set, analogical inference can be performed. The combination of the ontological background of the entity with its specific information makes it possible to leverage information about similar entities, leading the model to infer non-explicit restrictions capable of enable reasoning over OOKB entities. In the example depicted in Figure \ref{fig:kgc_onto_example}, even though the only known information about the entity "Donald Trump" is its class hierarchy, it can be assessed whether the potential fact \textit{(DonaldTrump, nationality, UnitedStates)} holds based on its resemblance with the known fact \textit{(BarackObama, nationality, UnitedStates)}. 
-
-
+Figure \ref{fig:kgc_onto_example} outlines the general idea of the proposal. Every entity contains its own ontological information. In this example, the class hierarchy of each entity is used as ontological information. While facts about a given entity $e$ are volatile and subject to change, its class hierarchy remains fairly static throughout time. Moreover, class hierarchies are similar or even equal in those entities representing closely related concepts. In the depicted entities "Barack Obama" ($e_1$) and "Donald Trump" ($e_2$), their class hierarchies are equal, implying that they represent the same type of concept. For the entity "Michelle Obama", its class hierarchy is a subset of the class hierarchy of the aforementioned entities. Therefore, even though this entity does not represent a "President", it still holds a high resemblance with both $e_1$ and $e_2$. Considering the equality of the class hierarchies of entities $e_1$ and $e_2$, even though $e_2$ was not featured in the training set, analogical inference can be performed. The combination of the ontological background of the entity with its specific information makes it possible to leverage information about similar entities, leading the model to infer restrictions capable of enabling reasoning over OOKB entities. In the example depicted in Figure \ref{fig:kgc_onto_example}, even though the only known information about the entity "Donald Trump" is its class hierarchy, it can be assessed whether the potential fact \textit{(DonaldTrump, nationality, UnitedStates)} holds based on its resemblance with the known fact \textit{(BarackObama, nationality, UnitedStates)}. 
 
 
 \section{Semantic-Based Initialization for Out-Of-Knowledge-Base Entity Reasoning}
 \begin{figure*}
     \centering
-    \includegraphics[width=\linewidth]{4_kbsintegrationdl/figures/boxology_krintodl.png}
-    \caption{Boxology representation of the proposed hybrid KGE model. Dotted lines depict added elements. A red square outlines the initialization.}
+    \includegraphics[width=\linewidth]{4_kbsintegrationdl/figures/VanBekkum_KGEOnto.eps}
+    \caption{Boxology representation of the proposed hybrid KGE model. Dashed lines are used to highlight the added elements with respect to the baseline (Figure \ref{fig:van_bekkum_kgc_kge})}
     \label{fig:box_krintodl}
 \end{figure*} 
 
-Even though the introduction of ontological information solves the issue of OOKB entity reasoning, specific information about the unseen entities is also required to properly typify them. Moreover, unseen entities need to be represented in the same format as known entities in order to be processed by the KGE model. Figure \ref{fig:box_krintodl} shows the boxology representation of the proposed approach. Instead of directly feeding a set of facts in relational format to the KGE model like in the baseline model, an additional transformation layer is added to perform initialization (depicted as a red box). The proposed initialization method encodes not only ontological information, but semantic, specific knowledge about each of the entities. From a formal representation standpoint, the proposed hybrid model may be perceived as more complex due to its increased number of boxes. However, it is worth noticing that the initialization is performed offline, thus not adding any complexity to the KGE model itself \elvitodo{Referenciar con las assumptions que tenemos al respecto?}. Figure \ref{fig:overview} depicts the three phases of the initialization: \textbf{ontology retrieval}, \textbf{background knowledge encoding} and \textbf{embedding composition}.
+Even though the introduction of ontological information solves the issue of OOKB entity reasoning, specific information about the unseen entities is also required to properly typify them. Moreover, unseen entities need to be represented in the same format as known entities to be processed by the KGE model. Figure \ref{fig:box_krintodl} shows the boxology representation of the proposed approach. Instead of directly feeding a set of facts in relational format to the KGE model like in the baseline model, an additional transformation layer is added to perform initialization (depicted as a red box). The proposed initialization method encodes not only ontological information, but semantic specific knowledge about each of the entities. From a formal representation standpoint, the proposed hybrid model may be perceived as more complex due to its increased number of boxes. However, it is worth noticing that the initialization is performed offline, thus not adding any complexity to the KGE model itself. Figure \ref{fig:overview} depicts the three phases of the initialization: \textbf{ontology retrieval}, \textbf{entity knowledge encoding} and \textbf{embedding composition}.
 
- 
+\subsection{Theoretical Background} \label{subsec:s4_theoretical_back}
+As previously described, the purpose of KGE models is to subsymbollically represent the knowledge encoded in the KG, associating each entity and relation with a unique representation. One of the key features of the generated embeddings is that elements representing similar concepts must lead to similar encodings. From a technical standpoint, this constraint implies that if a pair of elements are conceptually similar, their corresponding embeddings should be close in the embedding distance. KGE models use specific scoring functions to ensure this restriction is met. While scoring functions vary amongst KGE models, two main categories can be defined: translational and bilinear. 
+
+\begin{figure}[t!]
+    \centering
+    \subfigure[Translational model \label{fig:translational}]{\includegraphics[height=1.5in]{4_kbsintegrationdl/figures/translational.eps}}
+    \qquad
+    \subfigure[Bilinear model \label{fig:bilinear}]{\includegraphics[height=1.5in]{4_kbsintegrationdl/figures/bilinear.eps}}
+    \caption{Overview of the two main types of KGE models}
+    \label{fig:kge_overview}
+\end{figure}
+
+Translational models employ distance-based scoring functions. Figure \ref{fig:translational} depicts the core idea of translational models, where the relation between the subject and object entities is perceived as a translation operation. Entities and relations are modeled as vectors in ${\mathbb{R}}^{k}$, where k is the dimension of the embeddings. As relation vectors $r$ are perceived as translation operations, a given fact $(s,r,o)$ holds when the distance between the embeddings $s+r$ and $o$ is minimal.The scoring function in Equation \ref{eq:trans_score} is formulated under the aforementioned constraint, which ensures that higher scores are assigned to lower distances:
+\begin{equation}\label{eq:trans_score}
+    f_r(s,o)=\|s + r - o\|_n
+    \quad
+    ( n \in \{1,2\})\,.
+\end{equation} 
+
+Bilinear models compute the plausibility of a given fact from the latent semantics and correlations existing between entities and relations. Figure \ref{fig:bilinear} showcases the foundation of bilinear models, where the KG is depicted as a tensor of dimensions $N_{entities} \times N_{entities} \times N_{relations}$. Each slice of the tensor models the pairwise interaction between the existing entities for a given relation $r$. Opposite to translational models, relations are depicted as matrices in $\mathbb{R}^{k_x k}$, where $k$ is the dimension of the embeddings. Entities follow the same representation criteria as translational models. Equation \ref{eq:bilinear_score} defines the scoring function employed by these models, where $M_r$ is the relation matrix , and $s$ and $o$ are the subject and object vector embeddings, respectively.
+
+\begin{equation}\label{eq:bilinear_score}
+    f_r(s,o)=s^T M_r o \,.
+\end{equation}
+
+
+%%%LOS RELATED WORKSSS
 % The incremental six-step initialization procedure is depicted in Figure \ref{fig:overview}. These steps can be grouped into three different phases: \textbf{entity information retrieval, embedding generation} and \textbf{performance evaluation}
 
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{4_kbsintegrationdl/figures/Initialization_phases.eps}
-    \caption{Overview of the three initialization phases}
-    \label{fig:overview}
+    \caption{Overview of the three entity initialization phases}
+    \label{fig:overview_initialization}
 \end{figure}
 
 % Figure \ref{fig:overview} showcases the proposed incremental six-step procedure conducted to initialize and reason over OOKB entities. 
 % \elvitodo{A lo mejor esa figura se podría modernizar, que está fea} These steps can be categorized into three phases: entity information retrieval, embedding generation and performance evaluation.
 
-\subsection{Ontology Retrieval}
-Opposite to the volatility of KGs, ontologies provide stable, general information. Their role in the generation of KGs is crucial but their application scope is usually limited to the introduction and creation of new elements of the graph. The information encoded in ontologies can be particularly beneficial cor KGC, as they provide explicit restrictions about the type of entities featured on each relation, as well as additional information that can enhance the inference process of the models.
+\subsection{Ontology Retrieval} \label{subsec:s4_onto_retrieval}
+Opposite to the volatility of KGs, ontologies provide stable, general information. Their role in the generation of KGs is crucial, but their application scope is usually limited to the introduction and creation of new elements of the graph. The information encoded in ontologies can be particularly beneficial for KGC, as they provide explicit restrictions about the type of entities featured in each relation, as well as additional information that can boost the inference process.
 
-Ontologies comprise the following parts: individuals, classes, properties, relations, function terms, restrictions, rules, axioms and events. Only individuals (or entities in the context of KGs), relations and properties are considered by KGE models on the generation of representations. Therefore, a substantial amount of components that could greatly enhanced the final quality of the embeddings is dismissed.
+Ontologies comprise the following parts: individuals, classes, properties, relations, function terms, restrictions, rules, axioms, and events. Only individuals (or entities in the context of KGs), relations, and properties are considered by KGE models for the generation of representations. Therefore, a substantial number of components that could improve the final quality of the embeddings are dismissed.
 
-Class hierarchies are at the core of both ontologies and KGs. During the introduction, entities are grouped into the class that better represents them conceptually. These classes are not atomic, but form a tree-like hierarchical structure, ranging from the most specific (or \textit{leaf}) classes to the \textit{root} class, which is shared by all entities in the graph. This taxonomical structure enables fine-grained distinctions between conceptually similar classes, as in Figure \ref{fig:kgc_onto_example}, where the entities "Barack Obama" and "Michelle Obama" are both \textit{Politicials}, but the first one is also a \textit{President}. Therefore, it provides a trade-off between the generality of the tree-like structure with the specificity of the different subclasses. 
+Class hierarchies are at the core of both ontologies and KGs. During the introduction, entities are grouped into the class that better represents them conceptually. Classes are not atomic, but form a tree-like hierarchical structure, ranging from the most specific (or \textit{leaf}) classes to the \textit{root} class, which is shared by all entities in the graph. This taxonomical structure enables fine-grained distinctions between conceptually similar classes, as in Figure \ref{fig:kgc_onto_example}, where the entities "Barack Obama" and "Michelle Obama" are both \textit{Politicials}, but the first one is also a \textit{President}. Therefore, it provides a trade-off between the generality of the tree-like structure with the specificity of the different subclasses. 
 
 While classes provide a general and unified framework, properties provide distinct, unique information about entities. KG facts are usually extracted from the interaction between two individuals by means of a property. Properties that relate an individual with a non-individual (i.e: a numerical value, a description, etc.) are usually discarded, even though this information could further enrich the final embeddings. Rules and axioms can also be encoded within the KGE model. In this case, axioms can be used to guide the training of the KGE model, ensuring that the predictions made from the model are consistent. Additionally, rules can also be used for training data augmentation, as new facts may be inferred from the existing KG. The newly inferred facts can then also be included as part of the training set.
 
-Restrictions are also closely related with KGE, as relation representations encode implicit constraints about the expected types of head and tail entities. However, the restrictions inferred by KGE models have a local scope, as they are based only on the facts contained in the training set. Therefore, these constraints may not be applicable to every fact that features the relation. Explicit restrictions about the relations can also be encoded jointly with their representations to deal with this shortcoming, improving the performance of the model on KGC.
+Restrictions are also closely related with KGEs, as relation representations encode implicit constraints about the expected types of head and tail entities. However, the restrictions inferred by KGE models have a local scope, as they are based only on the facts contained in the training set. Therefore, these constraints may not be applicable to every fact that features the relation. Explicit restrictions about the relations can also be encoded jointly with their representations to deal with this shortcoming, improving the performance of the model on KGC.
 
-Phase 1 of Figure \ref{fig:overview} showcases the two different available paths for ontology retrieval: KG dumps or SPARQL queries. Currently, most of the publicly available KGs provide their data dumps, which includes not only the KG facts, but its ontology file as well as extra documentation. Furthermore, every entity and relation encoded in the KG is explicitly related to its corresponding ontological information, reducing the retrieval time. However, data dumps usually come compressed in a single file that can scale up to several terabytes, which can be undesirable in terms of computational resources. KGs usually provide a SPARQL endpoint, which enables information retrieval via queries. This approach is more efficient, as fewer resources are required and the target information can be retrieved directly with a single query. Nonetheless, using SPARQL queries may be discouraged in cases where the KG has a large size or if the number of SPARQL queries is elevated. 
+Phase 1 of Figure \ref{fig:overview_initialization} showcases the two different available paths for ontology retrieval: KG dumps or SPARQL queries. Currently, most of the publicly available KGs provide their data dumps, which includes not only the KG facts, but its ontology file along with extra documentation. Every entity and relation encoded in the KG is explicitly related to its corresponding ontological information, which reduces the retrieval time. Data dumps usually come compressed in a single file that can scale up to several terabytes, which can be undesirable in terms of computational resources. KGs usually provide a SPARQL endpoint, which enables information retrieval via queries. This approach is more efficient, as fewer resources are required and the target information can be retrieved directly with a single query. Nonetheless, using SPARQL queries may be discouraged in cases where the KG has a large size or if the number of SPARQL queries is elevated. 
 
-\subsection{Background Knowledge Encoding}
-The first phase of the proposed initialization focuses on obtaining all the background knowledge (both ontological and specific) required to fully typify an entity. While the existing OOKB entity reasoning approaches presented in Section \ref{subsec:ontointro_kgc} are capable of generating highly representative embeddings, these representations lack any semantic information about the entity itself. Semantic information is highly relevant in this context, as it enriches the entity embeddings with an additional level of knowledge that can not be inferred otherwise from the input. Despite this fact, most KGE models still rely on random initialization. 
+\subsection{Entity Knowledge Encoding}\label{subsec:s4_entity_encode}
+The first phase of the proposed initialization focuses on obtaining the ontological information required to categorize each entity. While the existing OOKB entity reasoning approaches presented in Section \ref{subsec:ontointro_kgc} are capable of generating highly representative embeddings, these representations lack any semantic information about the entity itself. Semantic information is highly relevant in this context, as it enriches the entity embeddings with an additional level of knowledge that can not be inferred otherwise. Despite this fact, most KGE models still rely on random initialization. 
 
-One-hot vectors are an easy and straightforward replacement to random initialization. In this encoding, each entity is embedded as a vector of dimension $N$, where $N$ is the total number of entities. For every entity, a single vector can be created composed entirely of zeros expect for a single one value in a given position, which is unique to each entity. While this encoding may be suitable for small KGs, it cannot be applied to large inputs, as the simension of the embedding grows linearly with the size of the KG. Moreover, zero-valued initializations can hinder the convergence of the model to its optimal solution, and they do not encode semantic information about the entity.
+One-hot vectors are an easy and straightforward replacement for random initialization. In this encoding, each entity is embedded as a vector of dimension $N$, where $N$ is the total number of entities. For every entity, a single vector can be created composed entirely of zeros except for a single one value in a given position, which is unique to each entity. While this encoding may be suitable for small KGs, it cannot be applied to large inputs, as the dimension of the embedding grows linearly with the size of the KG. Moreover, zero-valued initializations can hinder the convergence of the model to its optimal solution, and they do not encode semantic information about the entity.
 
-Word embeddings provide a preferable initialization alternative. These methods are capable of generating expressive, unique representations for the words in a vocabulary. Different paradigms can be identified amongst word embedding models for the representation of words. Word2Vec \citep{word2vec} generates a single representation per token in the vocabulary, which hinders the representation of unseen words. FastText \citep{fasttext1,fasttext2} considers each word as a set of subparts called n-grams, assigning a representation for each of them. The final representation of a word is composed by the average of this n-grams. While FastText is capable of representing words that were not in the training corpus and still enable analogical reasoning, it still lacks the capability of correctly model polysemy. Language models, such as ElmO \citep{elmo} or BERT \citep{bert} solve all of the aforementioned issues, but the dimension of the resulting embeddings increases noticeably. Word2Vec embeddings tend to have a length of about 300, which scales up to 2048 on BERT. This dimension conflicts the regular dimension of KGE vectors, which rarely exceed 200. Dimensionality reduction based on \textit{principal component analysis} \citep{dim_reduction} is a potential solution to the mismatch between the dimensions of KGE and word embedding outputs. However, it is noticeable that reducing the dimension of word embedding directly affects its final expressivity. 
+Word embeddings are a potential initialization alternative. These methods are capable of generating expressive, unique representations for words. Different paradigms can be identified amongst word embedding models for the representation of words. Word2Vec \citep{word2vec} generates a single representation per token in the vocabulary, which hinders the representation of unseen words. FastText \citep{fasttext1,fasttext2} considers each word as a set of subparts called n-grams, assigning a representation for each of them. The final representation of a word is composed by the average of this n-grams. While FastText is capable of representing words that were not in the training corpus and still enable analogical reasoning, it still lacks the capability of correctly model polysemy. Language models, such as ElmO \citep{elmo} or BERT \citep{bert} solve all of the aforementioned issues, but the dimension of the resulting embeddings increases noticeably. Word2Vec embeddings tend to have a length of about 300, which scales up to 2048 on BERT. This dimension conflicts with the regular dimension of KGE vectors, which rarely exceed 200. Dimensionality reduction based on principal component analysis is a potential solution to the mismatch between the dimensions of KGE and word embedding outputs. However, it is noticeable that reducing the dimension of word embedding directly can affect its final expressivity. 
 
-Another importan dissimilarity between word and KG embeddings is that whereas word embeddings follow a token-based approach, KGE models are oblivious to the number of tokens that name an entity. Therefore, a composition method is needed that guarantees that all the tokens that compose an entity are represented on its initial embedding. Following the same criteria employed in FastText to compose the final representation of a word, averaging the single representations of each token 
+Another important dissimilarity between word and KG embeddings is that whereas word embeddings follow a token-based approach, KGE models are oblivious to the number of tokens that name an entity. Therefore, a composition method is needed that guarantees that all tokens that compose an entity are represented on its initial embedding. A potential solution for this issue would be to concatenate single representations of each entity token to generate the initial entity embedding. However, this solution is not feasible in the context of KGEs, as all entity embeddings must be equally dimensional. Averaging token representations to generate the initial entity embeddings provides a more fitting solution to this case.
+
+The encoding process of this phase is outlined in Figure \ref{fig:overview_initialization}. Alongside the initial entity embedding, feasible encodings for the ontology are also generated in this phase. The encoding of the ontological information depends on two factors: i) the type of ontological information selected, and ii) the targeted component of the KG (entity or relation). 
+
+Class hierarchies only encompass entities, which are modelled as vectors by most KGE models. Therefore, a vector encoding must be also employed to represent class hierarchies. The simplest feasible solution uses one-hot vectors of dimension $O$, where $O$ is the number of classes that comprises the ontology. While simple, this representation is suitable for representing the class hierarchy of each entity, as it ensures the maintenance of the similarity between the embeddings of the classes of similar entities. Although valid, this codification presents two main shortcomings: i) it lacks semantic information about the concept represented by the class, and ii) its dimension grows linearly with the number of classes in the ontology. Word embeddings can also be used for class hierarchy embedding. In this scenario, each ontology class is encoded using its corresponding word embedding.
+
+In the case of relations, matrices can be used for restriction encoding. Each relation can be codified as a matrix of dimensions $C \times C$, where $C$ is the total of leaf classes and restrictions that can be encoded using binary vectors. If the head class $i$ is restricted to the tail class $j$ through a relation, the cell $(i,j)$ should have a positive value denoting this restriction, and zero otherwise.
+
+\subsection{Embedding Composition} \label{subsec:s4_embedding_compo}
+In this stage, semantic information and ontological information are combined to generate the initial value of the entity, as shown in Figure \ref{fig:overview_initialization}. First, the embeddings of the ontological information about the entity are flattened into a single representation. In the context of class hierarchies, an entity can belong to several different classes, each with a unique representation. Hence, the embeddings of the entity classes must be combined into a single embedding. Different vector composition techniques can be used for this task. Averaging all class embeddings is one potential solution, although this approach does not encode the hierarchical information of the ontology classes. Weighted average can be used instead, potentially introducing the hierarchical properties of the ontology in the final representation.
+
+As stated in the previous phase, the encoding method must be aligned with the target component of the KG. If the ontological information is embedded alongside the KGE, then the encoding method must be compliant with the dimension restrictions of the model. While in this initialization the focus is on entity embeddings, the same restriction applies for relations. Three composition procedures can be employed to combine the ontological information alongside the embeddings of the KGE model:
+\begin{itemize}
+    \item \textit{Concatenation:} The simplest approach is to append the representations of each class to generate a high-dimensional embedding. This procedure ensures that a section of the embedding remains static throughout the training, and that its equal across entities that share ontological information. This ensures a similarity on the final representations of similar entities. Therefore, if the dimension specified by the KGE model for the embeddings is $d_T$, the following constraint must be met:
+    \begin{equation}
+        d_O+d_M=d_T\,,
+    \end{equation}
+    where $d_M$ is the dimension of the entity embeddings and $d_O$ is the dimension of the ontological information embedding. In this scenario, $d_O$ and $d_M$ are not required to have the same dimension. While this approach is suitable for the problem, the training time of the model increases due to the growth in the embedding size. Additionally, the optimal dimensions for the ontological and entity representations must be determined beforehand to ensure a fair tradeoff between general and specific knowledge.
+    
+    \item \textit{Average:} In this approach, both representations are averaged into a single embedding. Therefore, both entity and ontological representations must have the same dimension, following the constraint:
+    \begin{equation}
+        d_T = d_O = d_M.
+    \end{equation}
+    The simplest way to ensure this condition is met is to use the same embedding model for both entity and ontology embeddings. Otherwise, either reduction or zero-padding may be necessary to ensure that both representations have the same dimension before averaging them. This approach assigns equal importance to general and specific information. As all embedding dimensions are equal in this scenario, performing dimension reduction is less penalizing than in the previous case.
+    
+    \item \textit{Weighted Average:} While averaging solves the dimensionality problem existing in the concatenation option, this technique is still oblivious to the balance between general and specific information. Weighted average solves this issue, enabling the possibility of assigning different relevance values to specific and ontological information. While averaging and assigning the same weight to both representations may be perceived as the fairest approach, it may not be optimal for the performance of the KGE model. As in the previous case, both entity and ontological information embeddings must have the same dimension. In addition, the following composition constraint must be met:
+    \begin{equation}
+        T = \frac{\lambda \times O + (1 - \lambda) \times M}{2}\,,
+    \end{equation}
+    where $T$ is the final representation, $\lambda$ is the assigned weight, and $O$ and $M$ are the ontological information and entity embeddings, respectively. This method maintains the balancing benefits of concatenation while maintaining a stable dimension for the embeddings. Nonetheless, it rises a new challenge: computing the optimal value of $\lambda$. This value can be manually defined or treated as an additional training parameter to optimize.
+\end{itemize}
+
+The proposed initialization approach is model-agnostic, and can subsequently be encoded alongside any KGE model. However, from a conceptual standpoint, it may not be suitable for any proposal. In translational models, optimization is performed by reducing the distance between the result of a translation operation and a target value, following an entirely arithmetic approach. As neither latent semantics nor correlations are considered, the introduction of ontological information may be detrimental for the performance of the model.
+
+Bilinear models base their predictions on the exploitation of latent semantics and implicit correlations between elements. Enriching the semantic information available to the model during training time can potentially be translated into an improvement on its performance. Moreover, the inclusion of ontological information can add an exploratory layer to KGE models in addition to their exploitative behaviour.
+
+\section{Experimental Results}
+%%AQUI EXPLICAMOS YA LOS MODELOS EXACTOS SOBRE LOS QUE SE EVALUA Y LOS DATASETES
+\begin{table}[h]
+\resizebox{\linewidth}{!}{
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\textbf{Model name} & \textbf{Model type}        & \begin{tabular}[c]{@{}c@{}}\textbf{Embedding} \\ \textbf{Dimensions}\end{tabular} & \begin{tabular}[c]{@{}c@{}}\textbf{Scoring} \\ \textbf{Function}\end{tabular} & \begin{tabular}[c]{@{}c@{}}\textbf{Complexity} \\ \textbf{Order}\end{tabular}\\ \hline
+TransE \citep{transe}    & Translational &\begin{tabular}[c]{@{}c@{}}$h,t \in \R ^d$ \\ $r \in \R ^d$\end{tabular}  &$- {\lVert h + r - t \rVert}_{\frac{1}{2}} $&$\mathcal{O}(d)$\\ \hline
+DistMult \citep{distmult}   & Bilinear & \begin{tabular}[c]{@{}c@{}}$h,t \in \R ^d$ \\ $r \in \R ^d$\end{tabular}  & $h^Tdiag(r)t$&$\mathcal{O}(d)$\\ \hline
+ComplEx \citep{complex}    & Bilinear &\begin{tabular}[c]{@{}c@{}}$h,t \in \C^d$ \\ $r \in \C^d$\end{tabular} & $Re(h^T diag(r) \compconj{t})$ &$\mathcal{O}(d)$\\ \hline
+ANALOGY \citep{analogy}    & Bilinear &\begin{tabular}[c]{@{}c@{}}$h,t \in \R ^d$ \\ $r \in \R ^d$\end{tabular} &$h^T M_r t$&$\mathcal{O}(d)$\\\hline
+SimplE \citep{simple}    & Bilinear & \begin{tabular}[c]{@{}c@{}}$h,t \in \R^d$ \\ $r,r^{-1} \in \R^d$\end{tabular}& $\frac{1}{2}[(h r t^T) + (h r^{-1} t)] $&$\mathcal{O}(d)$\\ \hline
+\end{tabular}
+
+\caption{Summary of the models considered for evaluation. Head and tail entity embeddings are shown as \textit{h} and \textit{t}, respectively. Relations whose embedding is vectorial are represented by an \textit{r}, while relation matrices are defined as $M_r$. The embedding dimension is denoted by \textit{d}. \label{tab:kge_experiment_model_summary}} 
+}
+\end{table}
+
+The proposed initialization model is evaluated on five different KGE models. Considering the semantic nature of the proposed method, the experimentation primarily focuses on bilinear models. Table \ref{tab:kge_experiment_model_summary} summarizes the properties of each model. Section \ref{subsec:ontointro_kgc} provided some references of approaches capable of performing OOKB entity reasoning. However, these approaches are not directly comparable with the method proposed due to a fundamental conceptualization difference. The proposals presented in Section \ref{subsec:ontointro_kgc} are KGE models themselves, specifically designed for OOKB entity reasoning. On the contrary, the proposed initialization method is not a KGE model by itself and can be implemented across a wide variety of KGE models. In the proposed initialization, OOKB entity reasoning is an induced benefit, but the final goal is to encode explicit background knowledge to overcome the existing limitations within KGE models.
+
+Semantic-based initialization is evaluated on two triple classification datasets: FB13 \citep{neuraltensornetwork,Bollacker:2008:FCC:1376616.1376746} and WN11 \citep{Miller95wordnet:a}. These datasets contain facts from 13 and 11 relations extracted from Freebase and WordNet KGs, respectively. For each model reported in Table \ref{tab:kge_experiment_model_summary}, the optimal parameters reported by their authors are used. Similarly, the optimization algorithms recommended by the original authors are used: Adam \cite{adam} for FB13, and ADAGRAD \cite{adagrad} for WN11.
+
+Triple classification is used to evaluate  the semantic-based initialization. Three different metrics are reported to assess the performance of the different KGE models in combination with the proposed initialization:
+
+\begin{itemize}
+    \item \textit{Recall} determines the proportion of true facts that are actually evaluated as true by the KGE model. Being \textit{TP} and \textit{FN} the number of true facts correctly and incorrectly classified respectively, recall can be computed as:
+    \begin{equation}
+        Recall = \frac{TP}{TP+FN}
+    \end{equation}
+    
+    \item \textit{Average Precision (AP)} weights precision and recall increment of the model across different threshold values $t$. It provides an overall measurement of the model's classification while penalizing biased predictions. It is calculated as follows:
+    \begin{equation}
+        AP = \sum_{t} (R_t - R_{t-1}) \times P_t \,,
+    \end{equation}
+    where $R$ denotes the recall value, and $P$ represents the precision, computed as:
+    \begin{equation}
+        Precision = \frac{TP}{TP+FP} \,,
+    \end{equation}
+    \textit{FP} depicts the number of unfeasible facts predicted as true by the KGE model.
+    
+    \item \textit{F1 Score} is the harmonic mean between precision and recall, and serves as an indicator of the model's accuracy. It can be computed as:
+    \begin{equation}
+        F1\_Score = \frac{2 (P \times R)}{(P + R)}
+    \end{equation}
+\end{itemize}
+
+The proposed initialization is evaluated following an incremental approach. First, simple entity initialization is performed, replacing random initialization with word embedding based initialization. This base initialization is then extended to include ontological information, which is embedded alongside the entities. Finally, semantic-based initialization is evaluated for OOKB entity reasoning.
+
+\subsection{Simple Entity Initialization}
+
+\begin{table} 
+\centering
+\resizebox{.8\linewidth}{!}{
+\begin{tabular}{l|c|c|c|c|c|c|}
+\cline{2-7}
+                                                                & \multicolumn{3}{c|}{FB13} & \multicolumn{3}{c|}{WN11} \\ \cline{2-7} 
+                                                                & TCAP  & Recall & F1 Score & TCAP  & Recall & F1 Score \\ \hline
+\multicolumn{1}{|l|}{\textit{ComplEx}}                          & 0,78  & 0,65   & 0,68     & 0,71  & 0,58   & 0,62     \\
+\multicolumn{1}{|l|}{\textit{CompEx + SEI}}   & 0,76  & 0,64   & 0,67     & 0,76  & 0,6    & 0,64     \\ \hline
+\multicolumn{1}{|l|}{\textit{DistMult}}                         & 0,71  & 0,61   & 0,64     & 0,68  & 0,58   & 0,61     \\
+\multicolumn{1}{|l|}{\textit{DistMult + SEI}} & 0,71  & 0,61   & 0,64     & 0,68  & 0,58   & 0,61     \\ \hline
+\multicolumn{1}{|l|}{\textit{TransE}}                           & 0,72  & 0,58   & 0,62     & 0,82  & 0,65   & 0,69     \\
+\multicolumn{1}{|l|}{\textit{TransE + SEI}}   & 0,72  & 0,58   & 0,62     & 0,83  & 0,65   & 0,69     \\ \hline
+\multicolumn{1}{|l|}{\textit{ANALOGY}}                          & 0,65  & 0,52   & 0,58     & 0,67  & 0,58   & 0,59     \\
+\multicolumn{1}{|l|}{\textit{ANALOGY + SEI}}  & 0,68  & 0,58   & 0,61     & 0,68  & 0,56   & 0,6      \\ \hline
+\multicolumn{1}{|l|}{\textit{SimplE}}                           & 0,77  & 0,65   & 0,67     & 0,48  & 0,49   & 0,49     \\
+\multicolumn{1}{|l|}{\textit{SimplE + SEI}}   & 0,74  & 0,64   & 0,67     & 0,6   & 0,53   & 0,55     \\ \hline
+\end{tabular}}
+\caption{Triple classification average precision, recall, and F1 score with and without entity initialization}
+\label{tab:exp_entity_init}
+\end{table}
+
+A pretrained Word2Vec model \citep{GoogleNewsMethod} is used to obtain the initial embeddings for the entity set $\mathcal{E}$. By using a pretrained model, the computational cost of the proposal remains low. As stated in Section \ref{subsec:s4_entity_encode}, entities can be compound, while the selected Word2Vec model is tokenized. Therefore, given an entity $e \in \mathcal{E}$, its initial embedding is obtained by averaging all the tokens contained in $e$. First, the entity vocabulary $V$ is created, containing all unique entity tokens. For each token $t \in V$, its representation is extracted from the pretrained Word2Vec model, and stored in a dictionary of tuples of the form $(token, embedding)$.
+
+The selected Word2Vec model provides 300-dimension representations. The KGE models selected for evaluation use embedding dimensions that range from 100 to 200. Dimension reduction based on principal component analysis is performed to fit the dimension of the token embeddings to 200. Then, for each entity $e \in \mathcal{E}$, its tokens $t \in e$ are extracted from the previously constructed dictionary and averaged afterwards to generate a single representation. Those entities where none of its tokens is contained in the Word2Vec model's vocabulary are initialized using a randomized normal distribution.
+
+Table \ref{tab:exp_entity_init} reports the TCAP, F1 score and recall for each model with and without simple entity initialization (marked as + SEI)
+
+\subsection{Semantic-Based Initialization}
+The class hierarchy of entities is selected as ontological information in the second experimentation stage, as it can be easily integrated within the previously initialized entity embeddings. SPARQL endpoints are used to retrieve the class hierarchy of each entity. For the entities in WN11, its homonym ontology is applied, which splits the entities into four classes according to their word type: nouns, adjectives, verbs and adverbs. For FB13, two different ontologies are considered. Freebase is currently integrated within the Google Knowledge Graph \citep{GKG_ont}, thus inheriting its ontology. The GKG API was employed to retrieve the classes of each FB13 entity, identifying a total of 64 classes. The root class ``Thing'' is assigned to those entities where no leaf classes are specified.
+
+An additional ontology is considered for FB13 to study the existing dependency between the complexity of the class hierarchy and the results achieved by the KGE model. DBpedia ontology \citep{DB_ont} is selected, having a total number of 685 different classes. The DBpedia SPARQL endpoint is used to retrieve the class hierarchy of each entity. As this ontology is external to FB13, each entity's class hierarchy cannot be directly obtained. The SPARQL query in Listing \ref{lst:sparql} is executed for each entity, exchanging the label value according to each entity $e \in \mathcal{E}$. The class hierarchy of each entity is saved in a dictionary of tuples of the form $(entity, [classes])$. From the total 685 classes of the DBpedia ontology, only 197 are featured in the class hierarchies of the entities in FB13. As in the previous case, the root class ``Thing'' is assigned to those entities where no class information is available.
+
+\begin{lstlisting}[captionpos=b, float=tp,floatplacement=tbp, caption=Example of a SPARQL query used to retrieve the class hierarchy of the entity ``Albert Einstein''., label=lst:sparql,basicstyle=\ttfamily,frame=single]
+PREFIX dbr: <http://dbpedia.org/resource/>
+SELECT DISTINCT ?class
+WHERE {
+ ?item rdfs:label "Albert Einstein"@en .
+ ?item rdf:type ?class.
+ ?class a owl:Class.
+}
+\end{lstlisting}
+
+After retrieving the class hierarchy of the entities, the same pretrained Word2Vec model employed for simple entity initialization is used for encoding the ontology classes. Similarly to the previous case, for those classes composed by more than one word, average composition is applied to generate a single representation per class. The embeddings of each class are stored in a dictionary of tuples of the form $(class, embedding)$. Dimension reduction is also performed on the class embeddings to ensure equality between the dimensions of the entity and ontological embeddings.
+
+For each $e \in \mathcal{E}$, its list of classes $C$ is obtained. Then, for each $c \in C$, its corresponding embedding is retrieved is embedding from the corresponding dictionary, then averaged to produce a single representation. A matrix of dimensions $N_e \times d_T$ is obtained as a result, being $N_e$ the number of entities and $d_T$ the dimension of the KGE model embeddings. Each entity embedding is then averaged with its corresponding ontology embedding on each training iteration, generating a single representation per entity during training time. Whereas the entity embeddings are model parameters and are subsequently updated during training, ontology embeddings remain static. This constraint ensures that the ontological information of the entities remains constant and that the equality between the class hierarchies of similar entities is always met.
+
+\begin{table} 
+\centering
+\resizebox{.85\linewidth}{!}{
+\begin{tabular}{l|c|c|c|c|c|c|}
+\cline{2-7}
+\textit{}                                                                & \multicolumn{3}{c|}{FB13} & \multicolumn{3}{c|}{WN11} \\ \cline{2-7} 
+\textit{}                                                                & TCAP  & Recall & F1 Score & TCAP  & Recall & F1 Score \\ \hline
+\multicolumn{1}{|l|}{\textit{ComplEx + DBOnt}}                           & 0,65  & 0,6    & 0,62     & -     & -      & -        \\
+\multicolumn{1}{|l|}{\textit{ComplEx + GKGOnt}}                          & 0,74  & 0,62   & 0,65     & -     & -      & -        \\
+\multicolumn{1}{|l|}{\textit{ComplEx + WNOnt}}                           & -     & -      & -        & 0,75  & 0,58   & 0,64     \\
+\multicolumn{1}{|l|}{\textit{CompEx + DBOnt + SEI}}    & 0,73  & 0,62   & 0,65     & -     & -      & -        \\
+\multicolumn{1}{|l|}{\textit{ComplEx + GKGOnt + SEI}}  & 0,73  & 0,61   & 0,63     & -     & -      & -        \\
+\multicolumn{1}{|l|}{\textit{ComplEx + WNOnt + SEI}}   & -     & -      & -        & 0,76  & 0,6    & 0,65     \\ \hline
+\multicolumn{1}{|l|}{\textit{DistMult + DBOnt}}                          & 0,71  & 0,62   & 0,64     & -     & -      & -        \\
+\multicolumn{1}{|l|}{\textit{DistMult + GKGOnt}}                         & 0,74  & 0,62   & 0,65     & -     & -      & -        \\
+\multicolumn{1}{|l|}{\textit{DistMult + WNOnt}}                          & -     & -      & -        & 0,65  & 0,57   & 0,6      \\
+\multicolumn{1}{|l|}{\textit{DistMult + DBOnt + SEI}}  & 0,71  & 0,62   & 0,64     & -     & -      & -        \\
+\multicolumn{1}{|l|}{\textit{DistMult + GKGOnt + SEI}} & 0,75  & 0,61   & 0,62     & -     & -      & -        \\
+\multicolumn{1}{|l|}{\textit{DistMult + WNOnt + SEI}}  & -     & -      & -        & 0,75  & 0,6    & 0,64     \\ \hline
+\multicolumn{1}{|l|}{\textit{ANALOGY + DBOnt}}                           & 0,67  & 0,6    & 0,62     & -     & -      & -        \\
+\multicolumn{1}{|l|}{\textit{ANALOGY + GKGOnt}}                          & 0,68  & 0,6    & 0,63     & -     & -      & -        \\
+\multicolumn{1}{|l|}{\textit{ANALOGY + WNOnt}}                           & -     & -      & -        & 0,7   & 0,58   & 0,6      \\
+\multicolumn{1}{|l|}{\textit{ANALOGY + DBOnt + SEI}}   & 0,67  & 0,6    & 0,62     & -     & -      & -        \\
+\multicolumn{1}{|l|}{\textit{ANALOGY + GKGOnt + SEI}}  & 0,68  & 0,6    & 0,62     & -     & -      & -        \\
+\multicolumn{1}{|l|}{\textit{ANALOGY + WNOnt + SEI}}   & -     & -      & -        & 0,64  & 0,55   & 0,59     \\ \hline
+\multicolumn{1}{|l|}{\textit{SimplE + DBOnt}}                            & 0,63  & 0,6    & 0,61     & -     & -      & -        \\
+\multicolumn{1}{|l|}{\textit{SimplE + GKGOnt}}                           & 0,76  & 0,63   & 0,66     & -     & -      & -        \\
+\multicolumn{1}{|l|}{\textit{SimplE + WNOnt}}                            & -     & -      & -        & 0,6   & 0,55   & 0,57     \\
+\multicolumn{1}{|l|}{\textit{SimplE + DBOnt + SEI}}    & 0,66  & 0,6    & 0,62     & -     & -      & -        \\
+\multicolumn{1}{|l|}{\textit{SimplE + GKGOnt + SEI}}   & 0,74  & 0,61   & 0,65     & -     & -      & -        \\
+\multicolumn{1}{|l|}{\textit{SimplE + WNOnt + SEI}}    & -     & -      & -        & 0,62  & 0,54   & 0,58     \\ \hline
+\end{tabular}
+}
+\caption{Triple classification average precision per instance model with and without entity initialization and ontology introduction. For Freebase, two different ontologies are used: DBOnt refers to the DBpedia Ontology, and GKGOnt to the Google Knowledge Graph Ontology.}
+\label{tab:exp_ont_intro}
+\end{table}
+
+This second experimentation stage is evaluated only on the bilinear models. Table \ref{tab:exp_ont_intro} reports the metrics achieved by each model on each ontology.
+
+\subsection{OOKB Entity Reasoning}
+The third and final experimentation stage evaluates the capacity of the proposed semantic-based initialization to reason over facts containing OOKB entities. 1500 entities are randomly sampled from the total entity set $\mathcal{E}$ of both FB13 and WN11 to generate the OOKB entity set. All facts containing exactly one OOKB are withdrawn from the training, validation, and test sets, generating a new set of facts composed by one known and one OOKB entity. This ensures that OOKB entities remain entirely anonymous to the model. Facts containing two OOKB entities are not considered.
+
+\begin{table} 
+\centering
+\begin{tabular}{l|c|c|}
+\cline{2-3}
+\textit{}                                       & FB13    & WN11    \\ \hline
+\multicolumn{1}{|l|}{\textit{training facts}}   & 300.134 & 103.789 \\ \hline
+\multicolumn{1}{|l|}{\textit{validation facts}} & 11.366  & 4.803   \\ \hline
+\multicolumn{1}{|l|}{\textit{test facts}}       & 45.793  & 19.364  \\ \hline
+\multicolumn{1}{|l|}{\textit{OOKB facts}}      & 34.319  & 19.722  \\ \hline
+\end{tabular}
+\caption{Number of examples per set and dataset. All training facts are positive, whereas validation, test, and OOKB facts contain an equal proportion of positive and negative examples.}
+\label{tab:OOKB_proportions}
+\end{table}
+
+As the training set contains only true facts, the resulting OOKB test set is severely imbalance, with the number of positive examples outnumbering the negative ones. Therefore, to maintain the proportion of the fully known test set, which has the same number of positive and negative examples, a corrupted sample is generated from each fact retrieved from the training set. The known entity of each fact is randomly swapped with another entity from the known set to create negative (or unfeasabile) facts, following the local closed-world assumption \cite{Reiter1978}. Table \ref{tab:OOKB_proportions} summarizes the number of examples of each set on the two datasets.
+
+In this evaluation, random initialization is not considered, as the introduction of facts containing OOKB entities requires entity initialization to exploit the semantics contained in word embeddings to extend this knowledge to unseen entities. Ontological information is also required, as the generalization capacity of the KGE model is directly linked to its introduction. Each model is evaluated over the fully known and the OOKB test set. Table \ref{tab:OOKB_exp} summarizes the results of the third experimentation stage.
+
+\begin{table}[htp]
+
+\centering
+\resizebox{.8\linewidth}{!}{
+ \begin{tabular}{l|c|c|c|c|c|c|}
+\cline{2-7}
+                                                 & \multicolumn{6}{c|}{FB13}                                      \\ \cline{2-7} 
+                                                 & \multicolumn{3}{c|}{Known set} & \multicolumn{3}{c|}{OOKB set} \\ \cline{2-7} 
+\textit{}                                        & TCAP   & Recall   & F1 Score   & TCAP   & Recall   & F1 Score  \\ \hline
+\multicolumn{1}{|l|}{\textit{ComplEx + DBOnt}}   & 0,75   & 0,63     & 0,66       & 0,63   & 0,5      & 0,55      \\
+\multicolumn{1}{|l|}{\textit{ComplEx + GKGOnt}}  & 0,72   & 0,61     & 0,65       & 0,75   & 0,58     & 0,65      \\ \hline
+\multicolumn{1}{|l|}{\textit{DistMult + DBOnt}}  & 0,76   & 0,62     & 0,65       & 0,6    & 0,6      & 0,59      \\
+\multicolumn{1}{|l|}{\textit{DistMult + GKGOnt}} & 0,62   & 0,6      & 0,6        & 0,71   & 0,5      & 0,53      \\ \hline
+\multicolumn{1}{|l|}{\textit{ANALOGY  + DBOnt}}  & 0,74   & 0,63     & 0,65       & 0,6    & 0,48     & 0,62      \\
+\multicolumn{1}{|l|}{\textit{ANALOGY + GKGOnt}}  & 0,73   & 0,62     & 0,66       & 0,74   & 0,55     & 0,53      \\ \hline
+\multicolumn{1}{|l|}{\textit{SimplE + DBOnt}}    & 0,69   & 0,6      & 0,63       & 0,61   & 0,47     & 0,53      \\
+\multicolumn{1}{|l|}{\textit{SimplE + GKGOnt}}   & 0,77   & 0,63     & 0,67       & 0,71   & 0,54     & 0,6   \\
+\hline
+\end{tabular}}
+
+\caption{TCAP, Recall, and F1 Score for the Freebase dataset.} \label{tab:ookb_fb}
+
+\bigskip
+
+\resizebox{.8\linewidth}{!}{
+\begin{tabular}{l|c|c|c|c|c|c|}
+\cline{2-7}
+                                                                        & \multicolumn{6}{c|}{WN11}                                      \\ \cline{2-7} 
+                                                                        & \multicolumn{3}{c|}{Known set} & \multicolumn{3}{c|}{OOKB set} \\ \cline{2-7} 
+\textit{}                                                               & TCAP   & Recall   & F1 Score   & TCAP   & Recall   & F1 Score  \\ \hline
+\multicolumn{1}{|l|}{\textit{ComplEx + WNOnt}}  & 0,75   & 0,61     & 0,64       & 0,51   & 0,5      & 0,64      \\ \hline
+\multicolumn{1}{|l|}{\textit{DistMult + WNOnt}} & 0,72   & 0,59     & 0,63       & 0,54   & 0,5      & 0,65      \\ \hline
+\multicolumn{1}{|l|}{\textit{ANALOGY + WNOnt}}  & 0,65   & 0,58     & 0,59       & 0,52   & 0,51     & 0,51      \\ \hline
+\multicolumn{1}{|l|}{\textit{SimplE + WNOnt}}   & 0,62   & 0,55     & 0,57       & 0,52   & 0,51     & 0,52      \\ \hline
+\end{tabular}
+}
+\caption{TCAP, Recall, and F1 Score for the WordNet dataset.} \label{tab:ookb_wn}
+
+\caption{Top: (a) metrics obtained for the Freebase dataset. DBOnt refers to the DBpedia ontology, and GKGOnt to the Google Knowledge Graph Ontology. Bottom: (b) metrics obtained for the WordNet dataset. Entity initialization is used in all instances}
+\label{tab:OOKB_exp}
+\end{table}
+
+\section{Result Analysis}
+%%AÑADIR PERFORMANCE ASSESSMENT AQUI
+\subsection{Simple Entity Initialization}
+As reported in Table \ref{tab:exp_entity_init}, simple entity initialization induces a slight improvement in most of the studied models. Initialization using semantically enriched representations, alongside with the information provided by the training facts, leads to more expressive representations. This improvement on the final expressivity of the embeddings is reflected in the results, as evidenced by the TCAP increment in ComplEx and SimplE in WN11. In the case of SimplE, the improvement is particularly remarkable, as TCAP increases from 48\% up to 62\%. In ComplEx, the improvement is close to 4.5\%, which is less noticeable but still significant. In FB13, the results remain fairly similar with and without initialization across the reported metrics.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=.8\linewidth]{4_kbsintegrationdl/figures/ConvergenceDetail.eps}
+    \caption{Loss convergence per iteration for each studied model according to the employed initialization. Dashed lines relate to entity initialization, whereas solid lines represent random initialization.}
+    \label{fig:convergence}
+\end{figure}
 
 
-% \elvitodo{Empezar a hablar de inicializacion de Word Embeddings}
+In TransE, no improvement is observed in neither of the studied datasets. This is directly related to the model's conception, as embeddings are generated following a geometrical approach, not considering latent semantics. Therefore, the additional semantic background provided by the initialization is not exploited by the model and is treated equally as randomly valued initialization.
 
-\subsection{Embedding Composition}
+Besides the improvement in terms of metrics, simple entity initialization has a direct benefit in the training of the KGE models, easing their convergence and reducing the number of iterations. Figure \ref{fig:convergence} evidences that simple entity initialization makes KGE models converge to a stable solution faster than those using random initialization. This statement does not hold in the case of TransE, since the convergence rate of both initialization options remains almost identical.
+
+\subsection{Semantic-Based Initialization}
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=.9\linewidth]{4_kbsintegrationdl/figures/WN_Comparison.eps}
+    \caption{WN11 triple classification average precision (in percentage) per model and experimentation stage. }
+    \label{fig:wn_stage_comparison}
+\end{figure}
+
+According to the results reported in Table \ref{tab:exp_ont_intro}, the application of the complete semantic-based initialization induces an additional improvement over the results achieved with simple entity initialization. In WN11, the results of ComplEx, DistMult and SimplE employing semantic-based initialization noticeably outperform their corresponding baseline models. Figure \ref{fig:wn_stage_comparison} depicts the gradual improvement of each KGE model on WN11. In DistMult, the increment is particularly remarkable, where the baseline model reached a 68\% TCAP, but the introduction of ontological information alongside entity increases this value up to 75\%. The improvement in the case of SimplE is even more noticeable, where the baseline model achieved an accuracy of under 50\%. Semantic-based initialization increases the baseline value in aboyt a 15\%, leading to a total of 62\%. This increment, although less pronounced, is also reflected in ComplEx results. Furthermore, the introduction of ontological information, even with random entity initialization, remarkably improves the baseline models' performance. The simplicity of the employed ontology, comprised of only four disjoint classes, plays a crucial role in this improvement. 
+
+In FB13, although less noticeable, there is still an improvement in several of the reported KGE models. In this scenario, entity initialization does not further enhance the results introduced by adding ontological information to the random initialization. This may be related to the nature of each dataset, as WN11 models semantic relations between words, and can therefore benefit from the inclusion of explicit semantic information. Regarding the ontology choice, it can not be ascertained whether the complexity of the ontology directly impacts the results, as both ontologies produce similar results. Nonetheless, the complexity of the ontology could play a key role in the link prediction task, as it would significantly reduce the dimension of the candidate pool in tasks such as subject or object prediction.
 
 
-\section{Experimentation}
-\section{Discussion}
+\subsection{OOKB Entity Reasoning}
+Once proven that semantic-based initialization enhances the performance of KGE models, the extent of this proposal is evaluated over facts including OOKB entities. As evidenced by the results reported in Table \ref{tab:exp_entity_init}, initializing entities with word embeddings increases the specific knowledge about the entities, providing information that may not be inferred otherwise. On the other hand, the inclusion of ontological information improves the generalization aspect of the model, enabling the inference of general restrictions about the relations, which directly translates into an accuracy improvement. Considering these two aspects, the fitness of semantic-based initialization for OOKB entity reasoning is evaluated (Table \ref{tab:OOKB_exp})
 
+\begin{figure}[t!]
+    \centering
+    \subfigure[FB13 TCAP per relation \label{fig:fb13_tcap}]{\includegraphics[width=.9\columnwidth]{4_kbsintegrationdl/figures/FB_relation_tcap.eps}}
+    \subfigure[WN11 TCAP per relation \label{fig:wn11_tcap}]{\includegraphics[width=.9\columnwidth]{4_kbsintegrationdl/figures/WN_relation_tcap.eps}}
+    \caption{Triple classification average precision (TCAP) in percentage per relation on the OOKB datasets. Figure \ref{fig:fb13_tcap} provides the results on FB13, while Figure \ref{fig:wn11_tcap} illustrates the results obtained in WN11.}
+    \label{fig:tcap_OOKB}
+\end{figure}
 
+In WN11, while semantic-based initialization considerably enhances the models' performance, no strict class restrictions can be inferred due to the simplicity of the ontology. Therefore, even though the models achieve a high precision over the fully-known test set, this attainment is not extended to the OOKB test set, where the TCAP barely exceeds 50\%. Figure \ref{fig:wn11_tcap} provides an insight on the results obtained by each model on the OOKB test set on each relation. As showcased in the Figure, although the TCAP value ranges between 50\% and 60\% in most relations, it rises to around 70\% in relations such as \textit{domain region} and \textit{domain_topic}.
+
+Table \ref{tab:ookb_fb} shows that the results achieved in FB13 for the OOKB test set are similar to those obtained for the fully-known test set, except for DistMult. This phenomenon is related to the type of information modelled in FB13, as the restrictions associated with the relations are closely related to the classes of entities. This statement is further validated by the results in Figure \ref{fig:fb13_tcap}, where the average precision in half of the studied relations reaches more than 70\%. These results show a direct correlation between the homogeneity of the subject and object classes of the relation and the TCAP obtained. Therefore, in relations such as \textit{children}, \textit{parents} or \textit{spouse} that always relate two entities of type \textit{Person}, the precision is always close to 60\% as restrictions are easily inferred. Similarly, the relations \textit{location} and \textit{nationality} also achieve a remarkable performance in terms of precision, even though the results fluctuate across the different models. In both relations, the models employing the GKG ontology achieve better results than those using the DBpedia ontology. This is a direct consequence of the fine-graining level provided by the DBpedia ontology for the general class \textit{Place}, where more than 170 subclasses are identified.
+
+\subsection{Performance Analysis}
+%%AQUI VA LO DEL PERFORMANCE ANALYSIS COMO SU NOMBRE INDICA
+
+\section{Method Assessment}
+\elvitodo{FIGURA CON EL RESUMEN DEL METODO}
+%%Decir que se realiza offline asi que no afecta a la complejidad del modelo. OBTENIDOOOO
+
+% PROBLEMA MODELOS EXISTENTES: (i) they cannot be applied to any KG embedding model, (ii) they rely on complex representations, such as graph neural networks, and (iii) they require, at least partially, a retraining of the model to introduce new entities. 
 
 
 
