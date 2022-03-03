@@ -173,6 +173,13 @@
 
 \newcommand\extralabel[2]{{\edef\@currentlabel{\@currentlabel#2}\label{#1}}}
 
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
 %%<ALVARO>
 \newcommand*\rot{\rotatebox{75}}
 \newcommand*\OK{\ding{51}}
