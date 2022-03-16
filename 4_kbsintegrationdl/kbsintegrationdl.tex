@@ -16,7 +16,7 @@ This chapter focuses the first of the integrations contemplated in this thesis: 
 \elvitodo{REFERENCIAR AL RESPECTO DEL CAPITULO 3}
 In this scenario, the DL model plays the primary role, while the KBS plays the secondary role. Figure \ref{fig:overview_kbs_dl_intro} outlines the specific methodological parameters for this integration, which are defined as follows.
 
-\subsection{Limitations}
+\paragraph{Limitations}
 \begin{enumerate} [start=1,label={\bfseries L\arabic*.}]
     \item \label{kbsintrodl_L_data_hungry} \textbf{Data hungry.} This is one of the most concerning issues regarding DL. While DL is capable of achieving a better abstraction and generalization capacity than its symbolic counterpart, the final performance is highly linked to both the quality and the quantity of the data. Large, balanced, and representative training sets are required for the DL model to learn accurate patterns about the data. This limitation implies that the final performance of the model is directly bounded to its training data, thus not being a trusty indicator on the aptness of the model. 
     
@@ -30,7 +30,7 @@ In this scenario, the DL model plays the primary role, while the KBS plays the s
     
     \item \label{kbsintrodl_L_constraint} \textbf{No constraint enforcement.} DL models infer patterns from a set of training samples. However, these patterns may not truthfully represent the data, as noisy or unbalanced data may negatively impact the learning process. The patterns learned by a DL model can then be inconsistent, and may not be able to properly generalize from unseen data.
     \end{enumerate}
-\subsection{Considerations}
+\paragraph{Considerations}
 \begin{enumerate} [start=1,label={\bfseries C\arabic*.}]
     \item \label{kbsintrodl_C_domain} \textbf{Application domain.} The conducted systematic review on neurosymbolic models in the ambient intelligence domain \citep{amador_systematic_review_2019}  showcased an existing bias in the employed reasoning models according to their application. Complex and opaque approaches were selected in domains where their worst-case scenario impact was low (i.e. housing), while fully expressive and interpretable models were considerably favoured in human-dominated areas (i.e, healthcare). Therefore, in this scenario where the DL model is the primary, it must be studied whether the application domain strictly requires from human understandability. Even though the introduction of KBS into DL models may reduce its opacity, it may not be sufficient to fully comprehend the inference process of the model. 
     
@@ -39,7 +39,7 @@ In this scenario, the DL model plays the primary role, while the KBS plays the s
     \item  \label{kbsintrodl_C_resource} \textbf{Resource availability.} This consideration is directly related to \ref{kbsintrodl_L_cost} (cost). KBS models have a much reduced computational cost in comparison to DL models. However, even if small, they still carry a computational cost that is added to the baseline cost of the DL model which should be noted. The cost of introducing the KBS model should never exceed the cost of the primary DL model.
     
 \end{enumerate}
-\subsection{Restrictions}
+\paragraph{Restrictions}
 \begin{enumerate} [start=1,label={\bfseries R\arabic*.}]
     \item \label{kbsintrodl_R_performance} \textbf{Performance must not decrease.} One of the fundamental strengths of DL models is that they provide remarkable performances on a wide variety of tasks. The introduction of a KBS model must never negatively impact the model performance, as this is a pivotal element that should therefore be preserved. While there may not be a remarkable improvement in the final metrics, for example, the correct prediction of outliers, which may represent a very small fraction of the data, the performance should, at least, remain stable.
     
@@ -48,7 +48,7 @@ In this scenario, the DL model plays the primary role, while the KBS plays the s
     \item \label{kbsintrodl_R_complexity} \textbf{Stable model complexity.} DL models are generally complex and suffer from elevated training times. Therefore, the KBS model should not add an additional complexity to the DL model. For this purpose, whenever possible, the KBS model must not be fully coupled with the DL model. Instead, it may be devised as an individual component that is actively involved in the training process of the DL model, but does not add any additional complexity to the model itself. 
     
 \end{enumerate}
-\subsection{Benefits}
+\paragraph{Benefits}
 \begin{enumerate} [start=1,label={\bfseries B\arabic*.}]
     \item \label{kbsintrodl_B_convergence} \textbf{Accelerate convergence.} As noted in \ref{kbsintrodl_R_complexity}, DL models may suffer from elevated training times. This issue may be eased with the inclusion of a KBS, which already models knowledge about the data that the DL model may not even be capable of inferring otherwise. The introduction of this additional knowledge can not only lead to better performances, but reduce the training time as the model may converge faster to its optimal solution, reducing its computational cost (\ref{kbsintrodl_L_cost}).
     
@@ -83,7 +83,7 @@ Figure \ref{fig:kgc_onto_example} outlines the general idea of the proposal. Eve
 
 %%%INICIO BLOQUE PAPER
 
-\section{Semantic-Based Initialization for Out-Of-Knowledge-Base Entity Reasoning}
+\subsection{Semantic-Based Initialization for Out-Of-Knowledge-Base Entity Reasoning}
 
 \label{4_sec:semantic_initialization}
 \begin{figure}
@@ -93,7 +93,7 @@ Figure \ref{fig:kgc_onto_example} outlines the general idea of the proposal. Eve
     \label{fig:box_krintodl}
 \end{figure} 
 
-Even though the introduction of ontological information solves the issue of OOKB entity reasoning, specific information about the unseen entities is also required to properly typify them. Moreover, unseen entities need to be represented in the same format as known entities to be processed by the KGE model. Figure \ref{fig:box_krintodl} shows the boxology representation of the proposed approach. Instead of directly feeding a set of facts in relational format to the KGE model like in the baseline model, an additional transformation layer is added to perform initialization (depicted as a red box). The proposed initialization method encodes not only ontological information, but specific semantic knowledge about each of the entities. From a formal representation standpoint, the proposed hybrid model may be perceived as more complex due to its increased number of boxes. However, it is worth noticing that the initialization is performed offline, thus not adding any complexity to the KGE model itself. Figure \ref{fig:semantic_based_initialization} depicts the three phases of the initialization: \textbf{ontology retrieval}, \textbf{entity knowledge encoding} and \textbf{embedding composition}.
+Even though the introduction of ontological information solves the issue of OOKB entity reasoning, specific information about the unseen entities is also required to properly typify them. Moreover, unseen entities need to be represented in the same format as known entities to be processed by the KGE model. Figure \ref{fig:box_krintodl} shows the boxology representation of the proposed approach. Instead of directly feeding a set of facts in relational format to the KGE model like in the baseline model, an additional transformation layer is added to perform initialization (depicted as a red box). The proposed initialization method encodes not only ontological information, but specific semantic knowledge about each of the entities. From a formal representation standpoint, the proposed hybrid model may be perceived as more complex due to its increased number of boxes. However, it is worth noticing that the initialization is performed offline, thus not adding any complexity to the KGE model itself. Figure \ref{fig:semantic_based_initialization} depicts the three phases of the initialization: \textit{ontology retrieval}, \textit{entity knowledge encoding} and \textit{embedding composition}.
 
 \begin{figure}
     \centering
@@ -102,7 +102,7 @@ Even though the introduction of ontological information solves the issue of OOKB
     \label{fig:semantic_based_initialization}
 \end{figure}
 
-\subsection{Theoretical Background} \label{subsec:s4_theoretical_back}
+\paragraph{Theoretical Background.} \label{subsec:s4_theoretical_back}
 As previously described, the purpose of KGE models is to subsymbollically represent the knowledge encoded in the KG, associating each entity and relation with a unique representation. One of the key features of the generated embeddings is that elements representing similar concepts must lead to similar encodings. From a technical standpoint, this constraint implies that if a pair of elements are conceptually similar, their corresponding embeddings should be close in the embedding distance. KGE models use specific scoring functions to ensure this restriction is met. While scoring functions vary amongst KGE models, two main categories can be defined: translational and bilinear. 
 
 \begin{figure}[t!]
@@ -135,7 +135,7 @@ Bilinear models compute the plausibility of a given fact from the latent semanti
 % Figure \ref{fig:overview} showcases the proposed incremental six-step procedure conducted to initialize and reason over OOKB entities. 
 % \elvitodo{A lo mejor esa figura se podría modernizar, que está fea} These steps can be categorized into three phases: entity information retrieval, embedding generation and performance evaluation.
 
-\subsection{Ontology Retrieval} \label{subsec:s4_onto_retrieval}
+\paragraph{Ontology Retrieval.} \label{subsec:s4_onto_retrieval}
 Opposite to the volatility of KGs, ontologies provide stable, general information. Their role in the generation of KGs is crucial, but their application scope is usually limited to the introduction and creation of new elements of the graph. The information encoded in ontologies can be particularly beneficial for KGC, as they provide explicit restrictions about the type of entities featured in each relation, as well as additional information that can boost the inference process.
 
 Ontologies comprise the following parts: individuals, classes, properties, relations, function terms, restrictions, rules, axioms, and events. Only individuals (or entities in the context of KGs), relations, and properties are considered by KGE models for the generation of representations. Therefore, a substantial number of components that could improve the final quality of the embeddings is dismissed.
@@ -148,7 +148,7 @@ Restrictions are also closely related with KGEs, as relation representations enc
 
 Phase 1 of Figure \ref{fig:semantic_based_initialization} illustrates two different available paths for ontology retrieval: KG dumps or SPARQL queries. Currently, most of the publicly available KGs provide their data dumps, which includes not only the KG facts, but its ontology file along with extra documentation. Every entity and relation encoded in the KG is explicitly related to its corresponding ontological information, which reduces the retrieval time. Data dumps usually come compressed in a single file that can scale up to several terabytes, which can be undesirable in terms of computational resources. KGs usually provide a SPARQL endpoint, which enables information retrieval via queries. This approach is more efficient, as fewer resources are required and the target information can be retrieved directly with a single query. Nonetheless, using SPARQL queries may be discouraged in cases where the KG has a large size or if the number of SPARQL queries is elevated. 
 
-\subsection{Entity Knowledge Encoding}\label{subsec:s4_entity_encode}
+\paragraph{Entity Knowledge Encoding.}\label{subsec:s4_entity_encode}
 The first phase of the proposed initialization focuses on obtaining the ontological information required to categorize each entity. While the existing OOKB entity reasoning approaches presented in Section \ref{4_sec:ontointro_kgc} are capable of generating highly representative embeddings, these representations lack any semantic information about the entity itself. Semantic information is highly relevant in this context, as it enriches the entity embeddings with an additional level of knowledge that can not be inferred otherwise. Despite this fact, most KGE models still rely on random initialization. 
 
 One-hot vectors are an easy and straightforward replacement for random initialization. In this encoding, each entity is embedded as a vector of dimension $N$, where $N$ is the total number of entities. For every entity, a single vector can be created composed entirely of zeros except for a single one value in a given position, which is unique to each entity. While this encoding may be suitable for small KGs, it cannot be applied to large inputs, as the dimension of the embedding grows linearly with the size of the KG. Moreover, zero-valued initializations can hinder the convergence of the model to its optimal solution, and they do not encode semantic information about the entity.
@@ -165,7 +165,7 @@ In the case of relations, matrices can be used for restriction encoding. Each re
 
 
 
-\subsection{Embedding Composition} \label{subsec:s4_embedding_compo}
+\paragraph{Embedding Composition.} \label{subsec:s4_embedding_compo}
 In this stage, semantic and ontological information are combined to generate the initial value of the entity, as shown in Figure \ref{fig:semantic_based_initialization}. First, the embeddings of the ontological information about the entity are flattened into a single representation. In the context of class hierarchies, an entity can belong to several different classes, each with a unique representation. Hence, the embeddings of the entity classes must be combined into a single embedding. Different vector composition techniques can be used for this task. Averaging all class embeddings is one potential solution, although this approach does not encode the hierarchical information of the ontology classes. Weighted average can be used instead, potentially introducing the hierarchical properties of the ontology in the final representation.
 
 As stated in the previous phase, the encoding method must be aligned with the target component of the KG. If the ontological information is embedded alongside the KGE, then the encoding method must be compliant with the dimension restrictions of the model. While in this initialization the focus is on entity embeddings, the same restriction applies for relations. Three composition procedures can be employed to combine the ontological information alongside the embeddings of the KGE model:
@@ -193,7 +193,7 @@ The proposed initialization approach is model-agnostic, and can subsequently be 
 
 Bilinear models base their predictions on the exploitation of latent semantics and implicit correlations between elements. Enriching the semantic information available to the model during training time can potentially be translated into an improvement on its performance. Moreover, the inclusion of ontological information can add an exploratory layer to KGE models in addition to their exploitative behavior.
 
-\section{Semantic-Based Initialization Evaluation}\label{4_sec:experiments}
+\subsection{Semantic-Based Initialization Evaluation}\label{4_sec:experiments}
 %%AQUI EXPLICAMOS YA LOS MODELOS EXACTOS SOBRE LOS QUE SE EVALUA Y LOS DATASETES
 \begin{table}[h]
 \resizebox{\linewidth}{!}{
@@ -235,13 +235,13 @@ Triple classification is used to evaluate  the semantic-based initialization. Th
     
     \item \textit{F1 Score} is the harmonic mean between precision and recall, and serves as an indicator of the model's accuracy. It can be computed as:
     \begin{equation}
-        F1 Score = \frac{2 (P \times R)}{(P + R)}
+        F1 \; Score = \frac{2 (P \times R)}{(P + R)}
     \end{equation}
 \end{itemize}
 
 Semantic-based initialization is evaluated following an incremental approach. First, simple entity initialization is performed, replacing random initialization with word embedding based initialization. Simple entity initialization is then extended to include ontological information, which is embedded alongside the entities. Finally, semantic-based initialization is evaluated for OOKB entity reasoning.
 
-\subsection{Simple Entity Initialization}
+\paragraph{Simple Entity Initialization.}
 
 \begin{table} 
 \centering
@@ -265,13 +265,13 @@ Semantic-based initialization is evaluated following an incremental approach. Fi
 \label{tab:exp_entity_init}
 \end{table}
 
-A pretrained Word2Vec model is used to obtain the initial embeddings for the entity set $\mathcal{E}$.By using a pretrained model, the computational cost of the proposal remains low. As stated in Section \ref{subsec:s4_entity_encode}, entities can be compound, while the selected Word2Vec model is tokenized. Therefore, given an entity $e \in \mathcal{E}$, its initial embedding is obtained by averaging all the tokens contained in $e$. First, the entity vocabulary $V$ is created, containing all unique entity tokens. For each token $t \in V$, its representation is extracted from the pretrained Word2Vec model, and stored in a dictionary of tuples of the form $(token, embedding)$.
+A pretrained Word2Vec model is used to obtain the initial embeddings for the entity set $\mathcal{E}$. By using a pretrained model, the computational cost of the proposal remains low. As stated in Section \ref{subsec:s4_entity_encode}, entities can be compound, while the selected Word2Vec model is tokenized. Therefore, given an entity $e \in \mathcal{E}$, its initial embedding is obtained by averaging all the tokens contained in $e$. First, the entity vocabulary $V$ is created, containing all unique entity tokens. For each token $t \in V$, its representation is extracted from the pretrained Word2Vec model, and stored in a dictionary of tuples of the form $(token, embedding)$.
 
 The selected Word2Vec model provides 300-dimension representations. The KGE models selected for evaluation use embedding dimensions that range from 100 to 200. Dimension reduction based on principal component analysis is performed to fit the dimension of the token embeddings to 200. Then, for each entity $e \in \mathcal{E}$, its tokens $t \in e$ are extracted from the previously constructed dictionary and averaged afterwards to generate a single representation. Those entities where none of its tokens is contained in the Word2Vec model's vocabulary are initialized using a randomized normal distribution.
 
 Table \ref{tab:exp_entity_init} reports the TCAP, F1 score and recall for each model with and without simple entity initialization (marked as + SEI).
 
-\subsection{Semantic-Based Initialization}
+\paragraph{Semantic-Based Initialization.}
 The class hierarchy of entities is selected as ontological information in the second experimentation stage, as it can be easily integrated within the previously initialized entity embeddings. SPARQL endpoints are used to retrieve the class hierarchy of each entity. For the entities in WN11, its homonym ontology is applied, which splits the entities into four classes according to their word type: nouns, adjectives, verbs and adverbs. For FB13, two different ontologies are considered. Freebase is currently integrated within the Google Knowledge Graph, thus inheriting its ontology. The GKG API was employed to retrieve the classes of each FB13 entity, identifying a total of 64 classes. The root class \textit{Thing} is assigned to those entities where no leaf classes are specified.
 
 An additional ontology is considered for FB13 to study the existing dependency between the complexity of the class hierarchy and the results achieved by the KGE model. DBpedia ontology is selected, having a total number of 685 different classes. The DBpedia SPARQL endpoint is used to retrieve the class hierarchy of each entity. As this ontology is external to FB13, each entity's class hierarchy cannot be directly obtained. The SPARQL query in Listing \ref{lst:sparql} is executed for each entity, exchanging the label value according to each entity $e \in \mathcal{E}$. The class hierarchy of each entity is saved in a dictionary of tuples of the form $(entity, [classes])$. From the total 685 classes of the DBpedia ontology, only 197 are featured in the class hierarchies of the entities in FB13. As in the previous case, the root class \textit{Thing} is assigned to those entities where no class information is available.
@@ -329,7 +329,7 @@ For each $e \in \mathcal{E}$, its list of classes $C$ is obtained. Then, for eac
 
 This second experimentation stage is evaluated only on the bilinear models. Table \ref{tab:exp_ont_intro} reports the metrics achieved by each model on each ontology.
 
-\subsection{OOKB Entity Reasoning}
+\paragraph{OOKB Entity Reasoning.}
 The third and final experimentation stage evaluates the capacity of the proposed semantic-based initialization to reason over facts containing OOKB entities. 1500 entities are randomly sampled from the total entity set $\mathcal{E}$ of both FB13 and WN11 to generate the OOKB entity set. All facts containing exactly one OOKB are withdrawn from the training, validation, and test sets, generating a new set of facts composed by one known and one OOKB entity. This ensures that OOKB entities remain entirely anonymous to the model. Facts containing two OOKB entities are not considered.
 
 \begin{table} 
@@ -392,9 +392,9 @@ In this evaluation, random initialization is not considered, as the introduction
 \label{tab:OOKB_exp}
 \end{table}
 
-\section{Result Analysis}\label{4_sec:results}
+\subsection{Result Analysis}\label{4_sec:results}
 %%AÑADIR PERFORMANCE ASSESSMENT AQUI
-\subsection{Simple Entity Initialization}
+\paragraph{Simple Entity Initialization.}
 As reported in Table \ref{tab:exp_entity_init}, simple entity initialization induces a slight improvement in most of the studied models. Initialization using semantically enriched representations, alongside with the information provided by the training facts, leads to more expressive representations. This improvement on the final expressivity of the embeddings is reflected in the results, as evidenced by the TCAP increment in ComplEx and SimplE in WN11. In the case of SimplE, the improvement is particularly remarkable, as TCAP increases from 48\% up to 62\%. In ComplEx, the improvement is close to 4.5\%, which is less noticeable but still significant. In FB13, the results remain fairly similar with and without initialization across the reported metrics.
 
 \begin{figure}[t]
@@ -409,7 +409,7 @@ In TransE, no improvement is observed in neither of the studied datasets. This i
 
 Besides the improvement in terms of metrics, simple entity initialization has a direct benefit in the training of the KGE models, easing their convergence and reducing the number of iterations. Figure \ref{fig:convergence} evidences that simple entity initialization makes KGE models converge to a stable solution faster than those using random initialization. This statement does not hold in the case of TransE, since the convergence rate of both initialization options remains almost identical.
 
-\subsection{Semantic-Based Initialization}
+\paragraph{Semantic-Based Initialization.}
 
 \begin{figure}[t]
     \centering
@@ -423,7 +423,7 @@ According to the results reported in Table \ref{tab:exp_ont_intro}, the applicat
 In FB13, although less noticeable, there is still an improvement in several of the reported KGE models. In this scenario, entity initialization does not further enhance the results introduced by adding ontological information to the random initialization. This may be related to the nature of each dataset, as WN11 models semantic relations between words, and can therefore benefit from the inclusion of explicit semantic information. Regarding the ontology choice, it can not be ascertained whether the complexity of the ontology directly impacts the results, as both ontologies produce similar results. Nonetheless, the complexity of the ontology could play a key role in the link prediction task, as it would significantly reduce the dimension of the candidate pool in tasks such as subject or object prediction.
 
 
-\subsection{OOKB Entity Reasoning}
+\paragraph{OOKB Entity Reasoning.}
 Once proven that semantic-based initialization enhances the performance of KGE models, the extent of this proposal is evaluated over facts including OOKB entities. As evidenced by the results reported in Table \ref{tab:exp_entity_init}, initializing entities with word embeddings increases the specific knowledge about the entities, providing information that may not be inferred otherwise. Additionally, the inclusion of ontological information improves the generalization aspect of the model, enabling the inference of general restrictions about the relations, which directly translates into an accuracy improvement. Considering these two aspects, the fitness of semantic-based initialization for OOKB entity reasoning is evaluated (Table \ref{tab:OOKB_exp})
 
 \begin{figure}[t!]
@@ -438,7 +438,7 @@ In WN11, while semantic-based initialization considerably enhances the models' p
 
 Table \ref{tab:ookb_fb} shows that the results achieved in FB13 for the OOKB test set are similar to those obtained for the fully-known test set, except for DistMult. This phenomenon is related to the type of information modelled in FB13, as the restrictions associated with the relations are closely related to the classes of entities. This statement is further validated by the results in Figure \ref{fig:fb13_tcap}, where the average precision in half of the studied relations reaches more than 70\%. These results show a direct correlation between the homogeneity of the subject and object classes of the relation and the TCAP obtained. Therefore, in relations such as \textit{children}, \textit{parents} or \textit{spouse} that always relate two entities of type \textit{Person}, the precision is always close to 60\% as restrictions are easily inferred. Similarly, the relations \textit{location} and \textit{nationality} also achieve a remarkable performance in terms of precision, even though the results fluctuate across the different models. In both relations, the models employing the GKG ontology achieve better results than those using the DBpedia ontology. This is a direct consequence of the fine-graining level provided by the DBpedia ontology for the general class \textit{Place}, where more than 170 subclasses are identified.
 
-\subsection{Performance Analysis}
+\paragraph{Performance Analysis.}
 %%AQUI VA LO DEL PERFORMANCE ANALYSIS COMO SU NOMBRE INDICA
 In addition to improving the transferability, OOKB reasoning via semantic-based initialization can be used to assess the robustness of the KGE model. After evaluating the semantically initialized model on both the fully-known and the OOKB test set, their metrics can be compared. Being $TCAP_{FK}$ and $TCAP_{OOKB}$ the TCAP values of the fully-known and OOKB test sets, respectively, three scenarios can be identified:
 \begin{itemize}
@@ -449,7 +449,7 @@ In addition to improving the transferability, OOKB reasoning via semantic-based 
     \item \textit{$TCAP_{FK} \ll TCAP_{OOKB}$:} A non-optimal parameter selection can result in an imbalance in favour of the OOKB set. Insufficient learning of specific entity knowledge can result in this result mismatch, indicating that the model has not converged to its optimal solution, but diverged.
 \end{itemize}
 
-\section{Design Compliance}\label{4_sec:method_assessment}
+\subsection{Design Compliance}\label{4_sec:method_assessment}
 \begin{figure}[ht]
     \centering
     \includegraphics[width=\linewidth]{4_kbsintegrationdl/figures/Instance_KB_into_DL.eps}
@@ -459,7 +459,7 @@ In addition to improving the transferability, OOKB reasoning via semantic-based 
 
 Semantic-based initialization instantiates the introductory integration method proposed in Section \ref{4_sec:methodology_kbs_intro_dl}. Figure \ref{fig:instance_method_kbs_into_dl} depicts the specific integration parameters of the presented case:
 
-\subsection{Limitations}
+\paragraph{Limitations}
 \begin{itemize}
     \item \textbf{No reasoning over unseen inputs.} One of the main challenges regarding KGE models is the codification of unseen elements. KGE models generate representations for the elements existing in a KG during the training time. After training, the representations of each entity and relations are stored in a keyed structure. Hence, if the model is queried for the representation of an unseen element, no representation can be returned as it has no key assigned. Retraining the model from scratch is then needed to generate a feasible representation for unseen elements, limiting its transferability (\ref{kbsintrodl_L_transfer}). While the approaches presented in Section \ref{4_sec:ontointro_kgc} potentially solve this issue, they still require at least a partial retraining. Therefore, the benefit of generating a representation for a single element is severely imbalanced with respect to its computational cost (\ref{kbsintrodl_L_cost}). 
     
@@ -467,7 +467,7 @@ Semantic-based initialization instantiates the introductory integration method p
     
     \item \textbf{Only training data information is considered.} While there are approaches that extend KGE models with external information, baseline KGE models only consider training data for embedding generation. Using training data as the only source bounds the embeddings to the quality and quantity of the data (\ref{kbsintrodl_L_data_hungry}). Including external data sources could ease the reliance of the model on the training data, as well as potentially enabling the inference of better internal patterns (\ref{kbsintrodl_L_constraint}). 
 \end{itemize}
-\subsection{Considerations}
+\paragraph{Considerations}
 \begin{itemize}
     \item \textbf{Ontological information available.} Ontologies play a fundational role in the generation of KGs, serving as a scaffold for the introduction of new elements. Even though the KG and the ontology are closely related, they may not be always disclosed together. Therefore, while the KG may be publicly available, its ontological information may remain unveiled (\ref{kbsintrodl_C_data}) or may only be accessible via queries.
     
@@ -477,13 +477,13 @@ Semantic-based initialization instantiates the introductory integration method p
     
     \item \textbf{Number of SPARQL queries.} In those cases where the ontology files are not available, a SPARQL endpoint may be used to retrieve the required information. For each targeted element in the graph (entities or relations), a SPARQL query may be set to retrieve the specific ontological information. Subsequently, the number of queries grows linearly with the size of the KG. While SPARQL queries have execution times of fractions of a second, if the number of queries to execute is elevated, it can translate into high execution times. Additional, as SPARQL queries are performed online, they are subjected to latency and network failures (\ref{kbsintrodl_C_resource}). 
 \end{itemize}
-\subsection{Restrictions}
+\paragraph{Restrictions}
 \begin{itemize}
     \item \textbf{KGE model performance must not decrease.} One of the general restrictions of the proposed method, \ref{kbsintrodl_R_performance} states that to perform KBS introduction, it must be ensured that the performance of the primary DL model will not decrease. This restriction is satisfied in the proposed use case, as none of the studied KGE models experience a decrement on its performance metrics. 
     
     \item \textbf{KGE model complexity does not increase.} The KGE models studied in this use case all have a complexity order of $\mathcal{O}(d)$, where $d$ is the dimension of the embeddings. However, this is  not the case for every KGE model. In Graph Neural Networks, their complexity order is not related to the dimension of the embedding, but to the number of entities and relations in the graph, which can lead to considerably more complex models. Semantic-based initialization is performed offline, thus ensuring that the complexity of the model remains unchanged (\ref{kbsintrodl_R_complexity}). Moreover, as it is performed independently from the KGE model, it does not increase the required training resources (\ref{kbsintrodl_R_resource}).
 \end{itemize}
-\subsection{Benefits}
+\paragraph{Benefits}
 \begin{itemize}
     \item \textbf{Accelerating KGE model convergence.} Figure \ref{fig:convergence} depicts the learning curves of the considered KGE models with and without semantic-based initialization. Even though each pair of models (initialized and non-initialized) are trained for the number of epochs, the difference in their convergence rate is visibly noticeable. Non-initialized models present dramatic changes in the shape of their learning curves, reaching their final inflection point considerably later than their initialized counterparts. The presented use case therefore showcases the fulfilment of benefit \ref{kbsintrodl_B_convergence}.
     
