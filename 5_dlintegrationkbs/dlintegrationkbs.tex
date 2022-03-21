@@ -12,7 +12,7 @@ This chapter \blfootnote{Amador-Domínguez, E., Serrano, E., Manrique, D., & Baj
     \label{fig:overview_dl_kbs_intro}
 \end{figure}
 In the second integration approach, the KBS is the primary model, while DL serves as a supporting element. Figure \ref{fig:overview_dl_kbs_intro} outlines the design parameters for the introduction of DL into KBS.
-\paragraph{Limitations}
+\subsection*{Limitations}
 \begin{enumerate} [start=1,label={\bfseries L\arabic*.}]
     \item \textbf{Reliance on human interaction.} \label{dl_intro_kbs_L_human} While some KBS behave autonomously, the majority of them have expert knowledge as their cornerstone.  Expert knowledge can not be automatically elicited, as it comes directly from human users. Moreover, the implication of human users within the KBS may not be only limited to their deployment, but can also be required for validation, extension, and maintenance. 
     \item \textbf{Brittleness.}\label{dl_into_kbs_L_brittle} In DL models, brittleness was a result of the nonexistence of restrictions. In the case of KBS, prediction instability is induced by the use of discrete formalization. These hardcoded generalizations about data hinder the capture of exceptions, making the system volatile to the presence of noise and data changes.  
@@ -20,7 +20,7 @@ In the second integration approach, the KBS is the primary model, while DL serve
     \item \textbf{Low scalability.}\label{dl_into_kbs_L_scalability} KBS, specially rule-based models, grow proportionally to the size of the KB. Additionally, generating knowledge bases for KBS is an expensive and tedious process. There are approaches to automatically extract KBs from unstructured data, but they still require expert supervision to ensure the correctness of the mined information. Subsequently, the scalability of KBS is remarkably limited.  
 \end{enumerate}
 
-\paragraph{Considerations}
+\subsection*{Considerations}
 \begin{enumerate} [start=1,label={\bfseries C\arabic*.}]
     \item \textbf{Expert-Knowledge availability}\label{dlintrokbs_C_expert} As outlined in \ref{dl_intro_kbs_L_human}, most KBS rely on expert knowledge for its construction and maintenance. Regardless of whether DL is integrated within the KBS, expert knowledge must be guaranteed before developing the KBS. Moreover, its availability should be extended to the maintenance stage to ensure that the system behaves correctly.
     
@@ -28,7 +28,7 @@ In the second integration approach, the KBS is the primary model, while DL serve
     
     \item \textbf{Resource availability}\label{dlintrokbs_C_resource} Opposite to DL models, KBS do not require powerful computational resources to run. Instead, KBS models need to store the KBs and, in some approaches, the reasoning representations. The integration of KBS and DL in this context poses two challenges, as both storage and computational resources need to be assured for both elements to function.
 \end{enumerate}
-\paragraph{Restrictions}
+\subsection*{Restrictions}
 \begin{enumerate} [start=1,label={\bfseries R\arabic*.}]
     \item \textbf{Performance must increase.} \label{dlinstrokbs_R_performance} The inclusion of DL in a KBS carries an computational cost. Therefore, the resulting hybrid approach is expected to show a performance improvement with respect to the baseline KBS for the integration to be cost-effective. 
     
@@ -37,7 +37,7 @@ In the second integration approach, the KBS is the primary model, while DL serve
     \item \textbf{Interpretability does not decrease.}\label{dlintrokbs_LR_interpretability} One of the main assets of KBS is their high interpretability. KBS are designed to both integrate external input and produce outputs whose inference process can be understood by humans. DL models, on the contrary, behave as black-boxes. Therefore, their integration should be performed in a way that does not obscure the inference process, so that it can still be understandable.
     
 \end{enumerate}
-\paragraph{Benefits}
+\subsection*{Benefits}
 \begin{enumerate} [start=1,label={\bfseries B\arabic*.}]
     \item \textbf{Automatization.}\label{dlintrokbs_B_automatization} As outlined in \ref{dl_intro_kbs_L_human}, human interaction (specially expert knowledge) is essential for generating and maintaining KBS. DL models, on the contrary, have a mostly autonomous behaviour. Therefore, the introduction of DL in KBS may serve to automatize some of the steps required to deploy, maintain and validate KBS, reducing the need of human intervention.
     
@@ -49,7 +49,7 @@ In the second integration approach, the KBS is the primary model, while DL serve
 
 
 \section{Deep Learning Powered Case-Based Reasoning for Medical Document Processing}\label{5_sec:dl_powered_kbs_medical}
-Case-Based Reasoning (CBR) integration with DL is one of the scenarios depicted in Section \ref{sec:sota_dl_kb_intregration}. As denoted, CBR is often posed as an alternative to rule-based systems. This Section presents a use case on the medical domain, where DL modules are injected into a CBR model. One of the most interesting conclusions of the systematic review in \cite{amador_systematic_review_2019} is the predominance of interpretable, knowledge-based systems in the medical domain. Explainability was rated as one of the key features of these models, thus showing its relevance for its application to this domain. Therefore, the CBR acts as the primary model in this scenario, ensuring that the final hybrid DL-powered approach remains interpretable. 
+Case-Based Reasoning (CBR) integration with DL is one of the scenarios depicted in Section \ref{sec:sota_dl_kb_intregration}. As denoted, CBR is often posed as an alternative to rule-based systems. This Section presents a use case on the medical domain, where DL modules are injected into a CBR model. As stated in Section \ref{2_sec:subsec:motivation}, knowledge-based systems are particularly predominant in the medical domain. Explainability was rated as one of the key features of these models, thus showing its relevance for its application to this domain. Therefore, the CBR acts as the primary model in this scenario, ensuring that the final hybrid DL-powered approach remains interpretable. 
 
 \begin{figure}[t]
     \centering
@@ -62,9 +62,7 @@ Figure \ref{fig:overview_CBR_DL} depicts a general overview of the proposed hybr
 
 CBR behaves cyclically, comprising four stages: retrieve, reuse, revise, and retain \citep{overview_cbr}. These stages are differentiated in Figure \ref{fig:overview_CBR_DL}, showing the interactions between phases, as well as between the framework and the user. 
 
-\color{purple}
-
-\paragraph{Retrieve}\label{5_sec:dl_powered_cbr_retrieve}
+\subsection*{Retrieve}\label{5_sec:dl_powered_cbr_retrieve}
 The CBR cycle is initiated when the user inputs a new case problem. A case problem can be simply a text draft, or it can include additional relevant information such as images, related terms or references. In the first stage of the CBR cycle, retrieve, the goal is to determine which of the cases stored in the case base have a higher resemblance to the input. A naïve approach to find the existing closest cases is to use a simple \textit{K-Nearest Neighbours} (K-NN) algorithm, where $K$ is the number of cases to retrieve and the selection is purely based on the distance between the input and the existing samples. K-NN offers a straightforward and efficient solution, but it exhibits two shortcomings that hinder its usage: i) the input data may not always be numerical and easy to measure, and ii) the application domain is expert-oriented, so more specific and revised criteria are required to accurately retrieve cases.
 
 While similarity between reports can be measured according to quantitative metrics such as the age of the patient or demographic data, there are no fixed static criteria that enable straightforward comparison. Some metrics may remain static between comparisons, but others may vary between users. The proposed framework uses an indicator-based retrieval algorithm to overcome these issues. Instead of comparing the cases as a whole, the retrieval algorithm evaluates the values of the different indicators for each case. As depicted in Figure \ref{fig:overview_CBR_DL}, the number of indicators is not predefined and can be adapted to fit different case scenarios. For its application in the medical domain, four indicators are identified:
@@ -94,7 +92,7 @@ Listing \ref{lst:lst_query_sample} is an example of a retrieval query. This quer
 
 Cases that meet the retrieval criteria are ordered in descending order according to their cumulative similarity across the indicators. The top \textit{k} cases demanded by the user are returned.
 
-\paragraph{Reuse}\label{5_sec:dl_powered_cbr_reuse}
+\subsection*{Reuse}\label{5_sec:dl_powered_cbr_reuse}
 As depicted in Figure \ref{fig:overview_CBR_DL}, the reuse stage starts once the top \textit{k} similar cases are retrieved. A brief summary on the results of the indicators of each selected case is provided to the user to keep the transparency of the model. From the instances retrieved in the previous stage, different operations are performed to obtain helpful, relevant information to assist the user in the generation of the report. Different modules perform several operations, as depicted in Figure \ref{fig:overview_CBR_DL}. As denoted by the dashed line, these modules can be implemented using DL. In the present case scenario, four modules are identified:
 \begin{itemize}
     \item M1. \textit{Formatting Module.} Readability is one of the most prominent features of any written document. Syntactic cohesion, as well as correct formatting are some of the elements that make a document readable. In the case of medical documents, while there may exist differences between specialities, there is usually a fixed structure in which the data is presented. From a general standpoint, a medical report comprises four main sections:
@@ -116,13 +114,13 @@ As depicted in Figure \ref{fig:overview_CBR_DL}, the reuse stage starts once the
 
 As users play a key role in CBR models, the recommendations and suggestions offered by the framework are not final. Instead, the user decides which of the suggestions and corrections are to be applied to the input report. When the user approves the final state of the report, a new case is generated and stored in the case base, using the initial report as the problem and its corrected version as the solution. Case bases are not immediately incorporated into the case base, but marked as \textit{to be validated} until an expert validates them.
 
-\paragraph{Revise}\label{5_sec:dl_powered_cbr_revise}
+\subsection*{Revise}\label{5_sec:dl_powered_cbr_revise}
 A new case is generated once the user effectuates the applicable suggestions to the report. New cases are not automatically included in the case base for future iterations of the cycle, as they may include errors that can negatively affect the behaviour of the system. Moreover, if the system stores unreliable cases into the case base without any revision, they may be retrieved in the subsequent iterations, generating erroneous suggestions and corrections. An intermediate step is required to ensure that all cases stored in the case base are useful and relevant. 
 
 In the revise stage, a panel of experts manually checks the upcoming cases, rating and correcting them. The scores provided by the experts must be coherent with the grading system used by the scoring module. Therefore, if the scoring module uses binary scoring, experts must extend this criterium to new cases.
 
 
-\paragraph{Retain}\label{5_sec:dl_powered_cbr_retain}
+\subsection*{Retain}\label{5_sec:dl_powered_cbr_retain}
 One of the main challenges of CBR systems is how to efficiently manage the case base. Ideally, the case base should be optimized, containing the minimum number of relevant cases that ensure the maximum coverage. Non-valid cases are not stored in the case base, but are stored separately to serve as negative samples for the scoring module. 
 
 New cases are being regularly introduced into the case base, subsequently unchaining a reaction within the system. CBR models improve with the inclusion of new cases, which keeps them usable and updated throughout time. In the retain stage of the cycle, besides performing case base maintenance, reuse models are updated and checked. Reuse model updates can be either a replacement for the modules, such as switching from regular expression or rule-based systems (when the number of cases is limited) to DL models when the available data increases. 
@@ -253,7 +251,6 @@ Levenshtein distance \citep{levenshtein} between each original and corrected rep
 
 Figure \ref{fig:entities_comparison} depicts the number of named entities correctly suggested by the framework. In Step 3 of the evaluation, named entities detected in the original report were replaced by escape characters as part of the corruption process. Figures \ref{fig:ecgen_entities} and \ref{fig:mimic_entities} depict the proportion of named entities stripped from the original report and correctly suggested by the system in ECGEN and MIMIC-CXR, respectively. As evidenced by the results, case base optimization induces an improvement in the number of correctly suggested entities. This phenomenon is clearly observed in ECGEN's results (Figure \ref{fig:ecgen_entities}). Only in three cases, the number of detected entities slightly decreases after case base optimization, but significantly improves in four other cases. In MIMIC-CXR (Figure \ref{fig:mimic_entities}), the result is not as consistent as in the previous dataset, which could be due to the difference in the size of the optimized case base between the two datasets. MIMIC-CXR has double the number of cases in its optimized version that ECGEN. Named entities are suggested based on the top $k$ similar cases. Hence, if the retrieved similar cases contain few named entities, it directly impacts the number of suggestions provided by the system. Increasing the value of $k$ in the retrieval could potentially correct this issue.
 
-\color{black}
 \subsection{Design Compliance}\label{5_sec:design_compliance}
 A Case-based reasoning model comprising several boosting DL modules instantiates the insertion proposal in Section \ref{5_sec:dl_intro_kbs_methodology}. Figure \ref{fig:compliance_dl_into_kbs} denotes the specific method design parameters of the proposed framework, which are described as follows:
 
@@ -264,7 +261,7 @@ A Case-based reasoning model comprising several boosting DL modules instantiates
     \label{fig:compliance_dl_into_kbs}
 \end{figure}
 
-\paragraph{Limitations}
+\subsubsection*{Limitations}
 \begin{itemize}
     \item \textbf{Expert knowledge requirement.} CBR models are highly reliant on expert input. This is particularly remarkable in the revise stage, where a panel of experts needs to manually revise the pending cases to make their inclusion in the case base effective (\ref{dl_intro_kbs_L_human}). In CBR, the system improves with the inclusion of new cases within the system. Subsequently, if no expert knowledge is available to validate the cases, the model performance remains static. 
     
@@ -276,7 +273,7 @@ A Case-based reasoning model comprising several boosting DL modules instantiates
     
     
 \end{itemize}
-\paragraph{Considerations}
+\subsubsection*{Considerations}
 \begin{itemize}
     \item \textbf{Expert availability.} In the health domain where the proposed implementation is deployed, expert knowledge is crucial for the correct behaviour of the system. Users are not required to be experts to use the system, and therefore expert knowledge must be integrated within the system so that the output is still valid. Expert knowledge must be available, at least in the initial timeline of the system, to ensure the validity of the output responses and the correct behaviour of the system (\ref{dlintrokbs_C_expert}).
     
@@ -285,7 +282,7 @@ A Case-based reasoning model comprising several boosting DL modules instantiates
     \item \textbf{Sufficient computational resources.} CBR models do not entail elevated computational power, but require sufficient storage. On the contrary, DL models may demand a higher computational power to be able to operate. Therefore, it must be ascertained that both the storage and computational resources are sufficient (\ref{dlintrokbs_C_resource}).
     
 \end{itemize}
-\paragraph{Restrictions}
+\subsubsection*{Restrictions}
 \begin{itemize}
     \item \textbf{Case-based reasoning model performance improves.} The introduction of DL models carries a computational cost. This increment in cost must be reflected in a noticeable improvement in the performance of the model to maintain a balance between benefit and cost. The proposed framework satisfices this constraint, as the inclusion of DL models induces the generation of case solutions that cannot be inferred otherwise (\ref{dlinstrokbs_R_performance}).
     
@@ -293,7 +290,7 @@ A Case-based reasoning model comprising several boosting DL modules instantiates
     
     \item \textbf{Inference process remains understandable.} One of the key advantages of symbolic models with respect to their subsymbolic counterparts are their transparency and interpretability. This property should be therefore preserved. In the proposed implementation, DL models are included seamlessly in the CBR cycle. Therefore, while some minor elements of the retrieve and reuse phases may be opaque, the output of each phase as a whole can be fully understood from the input (\ref{dlintrokbs_LR_interpretability}).
 \end{itemize}
-\paragraph{Benefits}
+\subsubsection*{Benefits}
 \begin{itemize}
     \item \textbf{Reducing human intervention.} Expert knowledge is essential in the early learning stages of the CBR model to compensate the lack of cases contained in the case base. However, when the number of elements in the case base is sufficient to train robust DL models, expert knowledge may be not required as frequently. The replacement of rule-based systems by DL models reduces the need for human intervention, as DL models can automatically fit new data without external specifications (\ref{dlintrokbs_B_automatization}).
     
