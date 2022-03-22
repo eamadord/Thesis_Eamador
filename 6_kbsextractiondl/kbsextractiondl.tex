@@ -53,10 +53,11 @@ In this context, the DL model acts as a passive element, from which KBS is extra
     \item \textbf{Human-focused.}\label{kbsextradl_B_human} DL models work virtually autonomously, minimizing the implication of users within the process. Making the models understandable by humans can increase the active implications of users within the learning process not only increasing their trust, but also enhancing the performance of the model from the inclusion of human knowledge (\ref{kbsextradl_L_human}). 
 \end{enumerate}
 %%HAY DOS CASOS DE USO. DAME TU FUERZA PEGASO QUE SE VIENE LA MADRE DE TODOS LOS INVENTS. 
-\section{User Profiling and Privacy Protection from Black-Box Hyperpersonalization Models}\label{6_sec:mas_bbhos_general}
+\section{User Content Improvement and Privacy Protection on Black-Box Hyperpersonalization Models}\label{6_sec:mas_bbhos_general}
+\elvitodo{Revisar títulos para que todo tenga coherencia con el paper y con la tesis}
 
 One of the main assets of DL models is their capacity to efficiently process vast amounts of heterogeneous data. Online marketing is one of the prominent areas where DL models are predominant, as they can ingest data from several data sources and generate accurate, fast responses. With the improvement of DL, marketing personalization policies have evolved from simpler statistical approaches, such as collaborative filtering, to the denominated \textit{hyper-personalization policies}. While classic personalization techniques group users by general, static traits (e.g. age, location), hyper-personalization policies incorporate dynamic and unique data about users (e.g. navigation data, sensor information). Hyper-personalization policies may improve user experience, but can raise some concerns, especially from the privacy protection perspective:
-
+\color{purple}
 \subsection*{Opacity}
 User data is the scaffold in which hyper-personalization policies are built. Some data is actively provided by the users from their publications in social media. However, a considerable amount of data still comes from mobile sensors and online activity, which is retrieved passively and unbeknownst to the user. Subsequently, when the user is faced with recommendations based solely on passively retrieved data, it can create a sense of rejection founded in a privacy invasion.
 
@@ -137,7 +138,7 @@ In this layer, the user's data input is collected, processed, and sent to the fi
 Finally, an interaction layer is included to present the result of the operations performed in the inferior layers to the user. The data flow in this layer is also bidirectional, as the user not only receives, but introduces information in the system. User input is key to the system, as it conditions its behaviour. The agents of this layer determine what and how the content is displayed to the user. They also collect input from the user and forward it to the inferior layers.
 
 \begin{itemize}
-    \item \textit{summarizing agent.} To maintain the system's transparency, both the output and the log of the operations required for its generation are provided to the user. This agent extracts the logs of the iterations required by the \textit{deciding agent} to reach its final reply, and summarizes the most relevant information. Alongside the output, this agent generates a simple, user-readable record on which GVID received each response, as well as how many iterations were required. Thus, the real user can be conscious of whether the final response was obtained by the UVID or a different user profile (GVID).
+    \item \textit{Summarizing agent.} To maintain the system's transparency, both the output and the log of the operations required for its generation are provided to the user. This agent extracts the logs of the iterations required by the \textit{deciding agent} to reach its final reply, and summarizes the most relevant information. Alongside the output, this agent generates a simple, user-readable record on which GVID received each response, as well as how many iterations were required. Thus, the real user can be conscious of whether the final response was obtained by the UVID or a different user profile (GVID).
     
     \item \textit{Interface agent.} User input is essential for the behavior of the system at its superior level. Appropriate mechanisms to interact with the user and correctly fulfill their requirements are needed. The communication with the user is established bidirectionally, implying that the system not only collects the user's input, but also generates an output that must be clear and readable. Therefore, this agent serves as a direct intermediary between the user and the system. The user's input is collected and transmitted to the lower layer for processing. Besides, this agent receives the output from the \textit{summarizing agent} containing the final BBHOS response and operation logs. This content is then displayed to the user in a simplified and visual format.
 \end{itemize}
@@ -239,9 +240,47 @@ Once the autonomous level finishes its execution, the system remains suspended u
         \item [7.b] The \textit{interface agent} composes a result page from the final entry set and displays it to the user, finishing the execution of the user-triggered layer of system.
     \end{enumerate}
 \end{enumerate}
-
+\color{black}
 \subsection{Design Compliance}\label{6_sec:subsec:design_compliance}
+Section \ref{6_sec:mas_bbhos_general} introduces a hierarchical multi-agent system to extract behavioral patterns and improve user privacy in BBHOS, powered by DL. Figure \ref{fig:compliance_mas_extra_dl} depicts the specific design parameters of the presented use case:
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\linewidth]{6_kbsextractiondl/figures/Instance_MAS_K_extraction_DL.eps}
+    \caption{Overview of the design parameters of MAS extraction on BBHOS. In bold, the general design parameters as depicted in \ref{fig:kbs_extra_dl_overview}.}
+    \label{fig:compliance_mas_extra_dl}
+\end{figure}
 
+\subsubsection*{Limitations}
+\begin{itemize}
+    \item \textbf{Inference opacity.} BBHOS are opaque by default. From a user perspective, the unawareness of why a content is targeted may prevent trust building. From a technical standpoint, opacity hinders the transferability of the model (\ref{kbsextradl_L_opacity}).
+    
+    \item \textbf{User as a passive element.} Even though the user is the core element of personalization, their role in BBHOS is entirely passive. The user is targeted on personalized content, but not actively inquired on the appropriateness of it. Instead, it is devised based on data that is collected unknowingly from the user (\ref{kbsextradl_L_human}).
+    
+    \item \textbf{Potential privacy breaching.} BBHOS rely on user-generated data to generate personalized, targeted content. While the user may initially give consent to provide their data, they may not be aware of the implications of this. Such is the case of microphone-collected data, where the user may not be conscious of being recorded, and subsequently can feel its privacy invaded when the BBHOS provides recommendations based on this data (\ref{kbsextradl_L_ethical}).
+    
+    \item \textbf{Limited adaptability to context changes.} BBHOS systems rely on passively collected data. This data is heterogeneous, reflecting diverse information. Some of this information may be actually relevant and reflect a change in the user context, while other may be misleading and induce noise into the BBHOS (\ref{kbsextradl_L_transferability}). 
+\end{itemize}
+\subsubsection*{Considerations}
+\begin{itemize}
+   \item \textbf{Appropriate agent design.} One of the main challenges in multi-agent systems is the agent design. In this scenario, the goal is to extract behavior patterns of BBHOS about their interactions with users and use them to improve the user's privacy and provide a better output. Agents must be devised to pursue this goal, thus ensuring that human-like behaviors are correctly emulated and BBHOS data is properly analyzed and can be related to specific user profiles (\ref{kbsextradl_C_paradigm})).
+    
+    \item \textbf{Storage availability.} The proposed architecture comprises several storage units, each dedicated to a specific outcome. While the gathered data is not sizeable, the storage capacity required may increase with subsequent system executions. Therefore, the availability of sufficient storage capacity must be guaranteed (\ref{kbsextradl_C_resource}).
+\end{itemize}
+\subsubsection*{Restrictions}
+\begin{itemize}
+    \item \textbf{BBHOS behavior remains unaffected.} One of the goals of the proposed MAS is to analyze the behavior of the BBHOS. Therefore, to extract accurate insights and behavior patterns is essential that the BBHOS remains unchanged, as behavioral modifications can lead to inaccurate and erroneous conclusions (\ref{kbsextradl_R_behaviour}).
+    
+    \item \textbf{System output is understandable by humans.} The user is at the core of the proposed MAS, being the main beneficiary. The output of the system must be aligned with this criterion, and therefore should be readable and understandable by humans (\ref{kbsextradl_R_human}).
+\end{itemize}
+
+\subsubsection*{Benefits}
+\begin{itemize}
+    \item \textbf{Behavior pattern extraction.} Opacity is one of the main setbacks of BBHOS. One of the main benefits of the proposed MAS is the capacity of extracting behavioral patterns from these opaque systems, identifying how the personalized content changes across different profiles and contexts. While behavioral patterns may not be enough to fully explain the inference process of BBHOS, but can provide some insight (\ref{kbsextradl_B_interpretability}). Moreover, these patterns can evidence existing biases amongst the types of content provided to different profiles (\ref{kbsextradl_B_bias}).
+    
+    \item \textbf{User-guided.} While users portray a passive role in BBHOS, in the proposed MAS the user is an active impactful element. The user initiates the execution of the top level of the system, and its interaction with the system conditions the behavior of the agents (\ref{kbsextradl_B_human}). 
+    
+    \item \textbf{User privacy improvement.} The behavioral patterns obtained by the MAS not only serve understandability purposes, but can be used to improve the user's privacy. The user is masked with an agent, which serves as a surrogate and interacts with the BBHOS. This agent can be modified accordingly to the user's goals and specifications to get better outcomes while simultaneously preventing the BBHOS to extract unwanted user data. 
+\end{itemize}
 %\section{A Hierarchical Multi-Agent Architecture Based on Virtual Identities}
 
 %\section{Design Compliance I}
