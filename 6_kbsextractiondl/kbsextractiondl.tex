@@ -1,13 +1,13 @@
 \chapter{Knowledge Extraction from Deep Learning Models}
 \label{chap:kbsextractiondl}
 %ENLAZAR ESTO CON LOS PRINCIPIOS DE EXPLICABILIDAD DE PHILLIPS ET AL..
-This chapter \blfootnote{Elvira Amador-Domínguez, Emilio Serrano, & Daniel Manrique (2021). A hierarchical multi-agent architecture based on virtual identities to explain black-box personalization policies. Expert Syst. Appl., 186, 115731. doi:10.1016/j.eswa.2021.115731} showcases the extraction of knowledge from DL Models. Section \ref{6_sec:kbs_extra_dl_method} provides an overview on the design parameters of KBS extraction from DL models. Two instances of the proposed design are introduced in this chapter. The first instance focuses on \textit{black-box hyperpersonalization models} (BBHOS), DL models devised for user content personalization. Section \ref{6_sec:mas_bbhos_general} introduces this scenario, where a multi-agent system extracts behavioral patterns from the BBHOS. The MAS system is presented in Section \ref{6_sec:subsec:mas_description}, providing an example of its use in Section \ref{6_sec:subsec:case_study}. Section \ref{6_sec:subsec:mas_design_compliance} assesses the compliance of the proposed instance of the model with respect to the general method. 
+This chapter \footnote{Elvira Amador-Domínguez, Emilio Serrano, & Daniel Manrique (2021). A hierarchical multi-agent architecture (MAS) based on virtual identities to explain black-box personalization policies. Expert Syst. Appl., 186, 115731. doi:10.1016/j.eswa.2021.115731} showcases the extraction of knowledge from DL Models. Section \ref{6_sec:kbs_extra_dl_method} provides an overview on the design parameters of KBS extraction from DL models. Two instances of the proposed design are introduced in this chapter. The first instance focuses on \textit{black-box hyperpersonalization models} (BBHOS), DL models devised for user content personalization. Section \ref{6_sec:mas_bbhos_general} introduces this scenario, where a multi-agent system extracts behavioral patterns from the BBHOS. The MAS system is presented in Section \ref{6_sec:subsec:mas_description}, providing an example of its use in Section \ref{6_sec:subsec:case_study}. Section \ref{6_sec:subsec:mas_design_compliance} assesses the compliance of the proposed instance of the model with respect to the general method. 
 
 Section \ref{6_sec:geni_main} outlines the second of the extraction instances. In this scenario, an explainability framework for extracting insights on the inference process of KGE models is presented. The proposed framework, GEnI, is described in Section \ref{6_sec:subsec:geni}. Sections \ref{6_sec:subsec:geni_evaluation} and \ref{6_sec:subsec:geni_results} depict the evaluation and analysis of the framework results, respectively. The compliance of the instance with respect to the general design parameters is portrayed in Section \ref{6_sec:subsec:geni_design_compliance}. Section \ref{6_sec:summary} summarizes the content of the chapter.
 
 
 \section{Knowledge Extraction from Deep Learning Models}\label{6_sec:kbs_extra_dl_method}
-In this context, the DL model acts as a passive element, from which KBS is extracted by means of a middleware model. Method design parameters for KBS extraction from DL models are depicted in Figure \ref{fig:kbs_extra_dl_overview}.
+In this context, the DL model acts as a passive element, from which the KBS is extracted by means of a middleware model. Method design parameters for KBS extraction from DL models are depicted in Figure \ref{fig:kbs_extra_dl_overview}.
 \begin{figure}[t]
     \centering
     \includegraphics[width=\linewidth]{6_kbsextractiondl/figures/K_extraction_DL.eps}
@@ -19,7 +19,7 @@ In this context, the DL model acts as a passive element, from which KBS is extra
 \begin{enumerate} [start=1,label={\bfseries L\arabic*.}]
     \item \textbf{Opacity.} \label{kbsextradl_L_opacity} As outlined in the limitations of KBS insertion in DL (Section \ref{4_sec:methodology_kbs_intro_dl}, \ref{kbsintrodl_L_opacity}), opacity is one of the main drawbacks of DL models. While some recent efforts aim to provide an insight on the inference process followed by a DL model to generate a certain output from a given input, these insights are only approximated. Therefore, explainations can reliably capture the behavior of the DL model, but it cannot be fully ascertain that they are an accurate depiction of the DL model's internal behavior.
 
-    \item \textbf{Lacking human perspective.} \label{kbsextradl_L_human} DL models are devised to operate autonomously, without the need of human intervention. This phenomenon may be beneficial in some scenarios, but it may be detrimental in those scenarios where user perspective is important. Such is the case of health related scenarios, where only expert users make final decisions, as DL model predictions may not be fully trusted or justified. 
+    \item \textbf{Lacking human perspective.} \label{kbsextradl_L_human} DL models are devised to operate autonomously, without the need of human intervention. This phenomenon may be beneficial in some scenarios, but it may be detrimental when the user perspective is important. Such is the case of health related scenarios, where only expert users make final decisions and DL model predictions may not be fully trusted or justified. 
     
     \item \textbf{Ethical limitations.} \label{kbsextradl_L_ethical} DL models infer patterns entirely from training data. Therefore, the inferred patterns are not subject to any ethical considerations. This issue is particularly concerning, as biases within the data can lead to the inference of patterns that may be discriminating or exhibit some ethical concerns.
     
@@ -32,33 +32,33 @@ In this context, the DL model acts as a passive element, from which KBS is extra
     
     \item \textbf{Resource availability.} \label{kbsextradl_C_resource} As evidenced in the previous interactions, the inclusion of DL models generally carries an additional computational cost. In this scenario, where the DL model is a passive element, its computational cost may not be as remarkable. However, the introduction of middleware models may increase the resource demand. Providing the involved models with sufficient computational resources is therefore essential.
     
-    \item \textbf{User expertise.} \label{kbsextradl_C_user} In explainability, the user replaces the DL model as the central element. Therefore, the extracted KBS should not only be aligned with the DL model, but also should be aligned with the final user. User expertise is an essential element in this scenario, as it conditions the KBS selection and behavior.
+    \item \textbf{User expertise.} \label{kbsextradl_C_user} In explainable AI, the focus shifts from the DL model to the user. Therefore, the extracted KBS should not only be aligned with the DL model, but also should be aligned with the final user. User expertise is an essential element in this scenario, as it conditions the KBS selection and behavior.
 \end{enumerate}
 
 \paragraph{Restrictions}
 \begin{enumerate} [start=1,label={\bfseries R\arabic*.}]
     \item \textbf{Accurate behavior reflection.} \label{kbsextradl_R_behavior} If the KBS serves explainatory purposes, then it must be an accurate reflection of the behavior of the DL model. This implies that the KBS should not be considered a replacement for the DL model, nor improve its performance. The KBS must therefore imitate the behavior of the DL model.
     
-    \item \textbf{Invariable performance.} \label{kbsextradl_R_performance} As previously described, the DL model plays a passive role in this interaction.  Whether the DL model serves as a source for KBS extraction, or acts as a black-box element to be explained, its performance must remain invariant and unaffected. This is particularly important regarding explainability, as modifications in the DL model may compromise their integrity, leading to inaccurate insights on its behavior. 
+    \item \textbf{Invariable performance.} \label{kbsextradl_R_performance} Whether the DL model serves as a source for KBS extraction, or acts as a black-box element to be explained, its performance must remain invariant and unaffected. This is particularly important regarding explainability, as modifications in the DL model may compromise their integrity, leading to inaccurate insights on its behavior. 
     
-    \item \textbf{Human-understandable.} \label{kbsextradl_R_human} KBS are inherently symbolic, producing outputs that are human-readable. However, as denoted in \ref{kbsextradl_C_user}, the understability of the output does not only depend on the model, but on the expertise of the final user. Therefore, KBS must not only be readable, but understandable by humans.
+    \item \textbf{Human-understandable.} \label{kbsextradl_R_human} KBS are inherently symbolic, producing outputs that are human-readable. However, as denoted in \ref{kbsextradl_C_user}, the comprehensibility of the output does not only depend on the model, but on the expertise of the final user. Therefore, KBS must not only be readable, but comprehensible by humans.
 \end{enumerate}
 
 \paragraph{Benefits}
 \begin{enumerate} [start=1,label={\bfseries B\arabic*.}]
     \item \textbf{Improved interpretability.}\label{kbsextradl_B_interpretability} Opacity is one of the main hardships regarding DL models (\ref{kbsextradl_L_opacity}). Gaining knowledge on the inference process of DL models increases the trust that users may have on the model (\ref{kbsextradl_L_human}). Moreover, it can serve as a scaffold for improving the transferability of the model (\ref{kbsextradl_L_transferability}).
     
-    \item \textbf{Bias detection.}\label{kbsextradl_B_bias} Inference patterns learned by DL models are solely based on the input training data. Data is subject to errors and biases, which may cause the model to learn inferential patterns that, while accurate from a computational standpoint, may not be ethically correct (\ref{kbsextradl_L_ethical}). Becoming aware on the basis on which inference is performed may enable the detection of biases within the data, which can then be corrected.
+    \item \textbf{Bias detection.}\label{kbsextradl_B_bias} Inference patterns learned by DL models are solely based on the input training data. Data is subject to errors and biases, which may cause the model to learn inferential patterns that, while accurate from a computational standpoint, may not be ethically correct (\ref{kbsextradl_L_ethical}). Being aware of the basis on which inference is performed may enable the detection of biases within the data, which can then be corrected.
     
     \item \textbf{Task automatization.}\label{kbsextradl_B_automatization} In addition to the explainability perspective, KBS extraction from DL can also be treated as a means for automatizing several tasks. In Section \ref{sec:sota_knowledge_extraction_dl}, ontology learning was presented as one of these cases, where ontologies were automatically mined. This approach can be taken for the automatization of different tasks, reducing the human effort required to perform them (\ref{kbsextradl_L_human}).
     
-    \item \textbf{Human-focused.}\label{kbsextradl_B_human} DL models work virtually autonomously, minimizing the implication of users within the process. Making the models understandable by humans can increase the active implications of users within the learning process not only increasing their trust, but also enhancing the performance of the model from the inclusion of human knowledge (\ref{kbsextradl_L_human}). 
+    \item \textbf{Human-focused.}\label{kbsextradl_B_human} DL models work virtually autonomously, minimizing the implication of users within the process. Making the models understandable by humans can increase the active implications of users within the learning process, not only increasing their trust but also enhancing the performance of the model from the inclusion of human knowledge (\ref{kbsextradl_L_human}). 
 \end{enumerate}
 %%HAY DOS CASOS DE USO. DAME TU FUERZA PEGASO QUE SE VIENE LA MADRE DE TODOS LOS INVENTS. 
 \section{Behavioral Pattern Extraction from Black-Box Hyperpersonalization Models}\label{6_sec:mas_bbhos_general}
 
-One of the main assets of DL models is their capacity to efficiently process vast amounts of heterogeneous data. Online marketing is one of the prominent areas where DL models are predominant, as they can ingest data from several data sources and generate accurate, fast responses. With the improvement of DL, marketing personalization policies have evolved from simpler statistical approaches, such as collaborative filtering, to the denominated \textit{hyper-personalization policies}. While classic personalization techniques group users by general, static traits (e.g. age, location), hyper-personalization policies incorporate dynamic and unique data about users (e.g. navigation data, sensor information). Hyper-personalization policies may improve user experience, but can raise some concerns, especially from the privacy protection perspective:
-\color{purple}
+One of the main assets of DL models is their capacity to efficiently process vast amounts of heterogeneous data. Online marketing is one of the prominent areas where DL models are preferred, as they can ingest data from several data sources and generate accurate, fast responses. With the improvement of DL, marketing personalization policies have evolved from simpler statistical approaches, such as collaborative filtering, to the so-called \textit{hyper-personalization policies}. While classic personalization techniques group users by general, static traits (e.g., age, location), hyper-personalization policies incorporate dynamic and unique data about users (e.g., navigation data, sensor information). Hyper-personalization policies may improve user experience, but can raise some concerns, especially from the privacy protection perspective:
+
 \paragraph{Opacity}
 User data is the scaffold in which hyper-personalization policies are built. Some data is actively provided by the users from their publications in social media. However, a considerable amount of data still comes from mobile sensors and online activity, which is retrieved passively and unbeknownst to the user. Subsequently, when the user is faced with recommendations based solely on passively retrieved data, it can create a sense of rejection founded in a privacy invasion.
 
@@ -241,7 +241,7 @@ Once the autonomous level finishes its execution, the system remains suspended u
         \item [7.b] The \textit{interface agent} composes a result page from the final entry set and displays it to the user, finishing the execution of the user-triggered layer of system.
     \end{enumerate}
 \end{enumerate}
-\color{black}
+
 \subsection{Design Compliance}\label{6_sec:subsec:mas_design_compliance}
 Section \ref{6_sec:mas_bbhos_general} introduces a hierarchical multi-agent system to extract behavioral patterns and improve user privacy in BBHOS, powered by DL. Figure \ref{fig:compliance_mas_extra_dl} depicts the specific design parameters of the presented use case:
 \begin{figure}[t]
@@ -255,21 +255,21 @@ Section \ref{6_sec:mas_bbhos_general} introduces a hierarchical multi-agent syst
 \begin{itemize}
     \item \textbf{Inference opacity.} BBHOS are opaque by default. From a user perspective, the unawareness of why a content is targeted may prevent trust building. From a technical standpoint, opacity hinders the transferability of the model (\ref{kbsextradl_L_opacity}).
     
-    \item \textbf{User as a passive element.} Even though the user is the core element of personalization, their role in BBHOS is entirely passive. The user is targeted on personalized content, but not actively inquired on the appropriateness of it. Instead, it is devised based on data that is collected unknowingly from the user (\ref{kbsextradl_L_human}).
+    \item \textbf{User as a passive element.} Even though the user is the core element of personalization, their role in BBHOS is entirely passive. The user is targeted on personalized content, but not actively inquired on its appropriateness. Instead, it is devised based on data that is collected unknowingly from the user (\ref{kbsextradl_L_human}).
     
-    \item \textbf{Potential privacy breaching.} BBHOS rely on user-generated data to generate personalized, targeted content. While the user may initially give consent to provide their data, they may not be aware of the implications of this. Such is the case of microphone-collected data, where the user may not be conscious of being recorded, and subsequently can feel its privacy invaded when the BBHOS provides recommendations based on this data (\ref{kbsextradl_L_ethical}).
+    \item \textbf{Potential privacy breaching.} BBHOS rely on user-generated data to generate personalized, targeted content. While the user may initially give consent to provide their data, they may not be aware of its implications. Such is the case of microphone-collected data, where the user may not be conscious of being recorded, and subsequently can feel its privacy invaded when the BBHOS provides recommendations based on this data (\ref{kbsextradl_L_ethical}).
     
     \item \textbf{Limited adaptability to context changes.} BBHOS systems rely entirely on input data. This data is heterogeneous, reflecting diverse information. Some of this information may be actually relevant and reflect a change in the user context, while other may be misleading and induce noise into the BBHOS (\ref{kbsextradl_L_transferability}). 
 \end{itemize}
 \subsubsection*{Considerations}
 \begin{itemize}
-   \item \textbf{Appropriate agent design.} One of the main challenges in multi-agent systems is the agent design. In this scenario, the goal is to extract behavior patterns of BBHOS about their interactions with users and use them to improve the user's privacy and provide a better output. Agents must be devised to pursue this goal, thus ensuring that human-like behaviors are correctly emulated, and BBHOS data is properly analyzed and can be related to specific user profiles (\ref{kbsextradl_C_paradigm}).
+   \item \textbf{Appropriate agent design.} One of the main challenges in multi-agent systems is the agent design. In this scenario, the goal is to extract behavior patterns of BBHOS about their interactions with users and use them to improve the user's privacy and provide a better output. Agents must be devised to pursue this goal, thus ensuring that human-like behaviors are correctly emulated and accurate behavioral profiles can be extracted (\ref{kbsextradl_C_paradigm}).
     
-    \item \textbf{Storage availability.} The proposed architecture comprises several storage units, each dedicated to a specific outcome. While the gathered data is not sizeable, the storage capacity required may increase with subsequent system executions. Therefore, the availability of sufficient storage capacity must be guaranteed (\ref{kbsextradl_C_resource}).
+    \item \textbf{Storage availability.} The proposed architecture comprises several storage units, each dedicated to a specific outcome. The storage capacity required may increase with subsequent system executions. Therefore, the availability of sufficient storage capacity must be guaranteed (\ref{kbsextradl_C_resource}).
 \end{itemize}
 \subsubsection*{Restrictions}
 \begin{itemize}
-    \item \textbf{BBHOS behavior remains unaffected.} One of the goals of the proposed MAS is to analyze the behavior of the BBHOS. Therefore, to extract accurate insights and behavior patterns is essential that the BBHOS remains unchanged, as behavioral modifications can lead to inaccurate and erroneous conclusions (\ref{kbsextradl_R_behavior}).
+    \item \textbf{BBHOS behavior remains unaffected.} One of the goals of the proposed MAS is to analyze the behavior of the BBHOS. Therefore, the BBHOS must remain unchanged to extract accurate insights and behavior patterns, as behavioral modifications can lead to inaccurate and erroneous conclusions (\ref{kbsextradl_R_behavior}).
     
     \item \textbf{System output is understandable by humans.} The user is at the core of the proposed MAS, being the main beneficiary. The output of the system must be aligned with this criterion, and therefore should be readable and understandable by humans (\ref{kbsextradl_R_human}).
 \end{itemize}
@@ -285,9 +285,8 @@ Section \ref{6_sec:mas_bbhos_general} introduces a hierarchical multi-agent syst
 %\section{A Hierarchical Multi-Agent Architecture Based on Virtual Identities}
 \section{Generating Explainations and Insights on Knowledge Graph Embedding Predictions}\label{6_sec:geni_main}
 %\section{Design Compliance I}
-In Section \ref{4_sec:ontointro_kgc}, the introduction of ontologies into \textit{knowledge graph embedding} (KGE) models was explored as a means to boost performance. Rules were also presented as an alternative to ontologies for semantic initialization, due to their capacity of encoding explicit and static restrictions about the data. However, in the existing rule integration approaches, the focus is on enhancing the performance of the model for \textit{knowledge graph completion} (KGC). Subsequently, the interpretability properties induced by the inclusion of rules within the model are not exploited. Therefore, KGE model explainability still remains a challenging issue. This Section presents a model-agnostic explainability framework for explaining knowledge graph embedding predictions.
+In Section \ref{4_sec:ontointro_kgc}, the introduction of ontologies into \textit{knowledge graph embedding} (KGE) models was explored to boost performance. Rules were also presented as an alternative to ontologies for semantic initialization, due to their capacity of encoding explicit and static restrictions about the data. However, in the existing rule integration approaches, the focus is on enhancing the model performance for \textit{knowledge graph completion} (KGC). Subsequently, the interpretability properties induced by the inclusion of rules within the model are not exploited. Therefore, KGE model explainability still remains a challenging issue. This Section presents a model-agnostic explainability framework for explaining knowledge graph embedding predictions.
 
-\color{purple}
 
 \begin{sidewaystable}
 \resizebox{\textwidth}{!}{
@@ -567,10 +566,9 @@ A different behavior is exhibited on the evaluation of TransH on DBpedia50. One 
 
 The reliability coefficient achieved by TransH on DBpedia50 is slightly lower, scoring a 66\% of predictions changed after retraining. This result can be due to: i) the total amount of explained facts, and ii) the performance of each KGE model. While DistMult scored a MRR of 0.31, TransH only reached a 0.16, which denotes a lesser expressivity of the embeddings. Although it may not be sufficient to establish a relation between the performance of the KGe and the reliability of GEnI, it is an indicator that improving the performance of the KGE model could directly reflect into the results achieved by GEnI.
 
-\color{black}
 
 \subsection{Design Compliance}\label{6_sec:subsec:geni_design_compliance}
-GEnI, an explainability framework for KGE predictions is introduced in Section \ref{6_sec:geni_main}. Figure \ref{fig:design_compliance_geni} portrays the design parameters of the framework on its interaction with KGE models: 
+Figure \ref{fig:design_compliance_geni} portrays the design parameters of the GEnI, the proposed explainability framework for KGE predictions: 
 \begin{figure}[t]
     \centering
     \includegraphics[width=\linewidth]{6_kbsextractiondl/figures/Instance_GENI_extraction_DL.eps}
@@ -580,7 +578,7 @@ GEnI, an explainability framework for KGE predictions is introduced in Section \
 
 \subsubsection*{Limitations}
 \begin{itemize}
-    \item \textbf{Lack of insight on the inference process.} As outlined in Section \ref{6_sec:geni_main}, most KGE models are opaque by design (\ref{kbsextradl_L_opacity}). When the model makes a prediction, only the output and the fact probabilities are known. This information may serve as a reference to extract some conclusions about the inference process. However, the effort of understanding the behavior of the model and the inference process is done by the user, and not the model itself (\ref{kbsextradl_L_human}).
+    \item \textbf{Lack of insight on the inference process.} Most KGE models are opaque by design (\ref{kbsextradl_L_opacity}). When the model makes a prediction, only the output and the fact probabilities are known. This information may serve as a reference to extract some conclusions about the inference process. However, the effort of understanding the behavior of the model and the inference process is done by the user, and not by the model itself (\ref{kbsextradl_L_human}).
     
     \item \textbf{Oblivious to data biases.} KGE models learn from data, which is subject to biases. Moreover, the presence of biases in the data can lead to the generation of misleading inference patterns. Additionally, it can lead to inference patterns that, while accurate, may not be coherent. One example of such biases is the prediction of the profession $nurse$ for those entities that are denoted to have a $female$ genre. (\ref{kbsextradl_L_ethical}). 
     
@@ -589,7 +587,7 @@ GEnI, an explainability framework for KGE predictions is introduced in Section \
 
 \subsubsection*{Considerations}
 \begin{itemize}
-    \item \textbf{Explainable extraction paradigms.} The final goal of the proposal is to accurately explain the inference process of KGE models. Therefore, symbolic paradigms should be used to extract information from the KGE, such that the subsymbollic information encoded within the model is translated into an understandable, human-readable output (\ref{kbsextradl_C_paradigm}). 
+    \item \textbf{Explainable extraction paradigms.} The final goal of the proposal is to accurately explain the inference process of KGE models. Therefore, symbolic paradigms should be used to extract information from the KGE, such that the subsymbollic information encoded in the model is translated into an understandable, human-readable output (\ref{kbsextradl_C_paradigm}). 
     
     \item \textbf{Output understandability.} The selected extraction models are symbolic and can therefore be read by humans. The raw extracted insights, while readable, may not be understood by non-expert users (\ref{kbsextradl_C_user}). Therefore, the output must be reformulated in a non-expert mode such that it can be understood by humans.
 \end{itemize}
@@ -598,14 +596,14 @@ GEnI, an explainability framework for KGE predictions is introduced in Section \
 \begin{itemize}
     \item \textbf{Extracted insights accurately reflect the KGE behavior.} One of the key challenges of explainability approaches is reliability. This is an essential aspect of the proposed framework, where insights are mined from the embeddings and not the data to accurately reflect the behavior of the model. Moreover, the performance of the proposed framework is directly proportional to the performance of the KGE model, as evidenced by the experimentation results (\ref{kbsextradl_R_behavior}). 
     
-    \item \textbf{KGE model remains static.} The KGE model is the element to be explained. For the extracted insights and explanations to accurately reflect the model behavior, it is essential that the KGE model remains unchanged during the process. If the KGE model changes, then the extracted insights may turn inaccurate (\ref{kbsextradl_R_performance}). 
+    \item \textbf{KGE model remains static.} The KGE model is the element to explain. For the extracted insights and explanations to accurately reflect the model behavior, it is essential that the KGE model remains unchanged during the process. If the KGE model changes, then the extracted insights may turn inaccurate (\ref{kbsextradl_R_performance}). 
     
-    \item \textbf{Output is readable and understandable by humans.} Symbolic models are readable by default. Understandability induces an additional level with respect to readability, where the output not only must be presented in a human-readable format, but accessible and simplified. The output provided by the proposed framework not only is expressed in natural language, but summarizes the most important findings of the explainability process such that they can be easily understood by humans (\ref{kbsextradl_R_human}). 
+    \item \textbf{Output is readable and understandable by humans.} Symbolic models are inherently readable. Understandability induces an additional level regarding readability, where the output not only must be presented in a human-readable format, but accessible and simplified. The output provided by the proposed framework not only is expressed in natural language, but summarizes the most important findings of the explainability process such that they can be easily understood by humans (\ref{kbsextradl_R_human}). 
 \end{itemize}
 
 \subsubsection*{Benefits}
 \begin{itemize}
-    \item \textbf{Explainable inference.} The main and most prominent benefit is the increased understandability of the inference process of the KGE model. While the proposed framework may not be able to fully explain all model predictions (both correct and incorrect), it gives a clear and accurate insight on some of the inferential mechanisms used by the model (\ref{kbsextradl_B_interpretability}).
+    \item \textbf{Explainable inference.} The main and most prominent benefit is the increased understandability of the inference process of the KGE model. While the proposed framework may not be able to fully explain all model predictions (both correct and incorrect), it provides a clear and accurate insight on some of the inferential mechanisms used by the model (\ref{kbsextradl_B_interpretability}).
     
     \item \textbf{Data bias detection.} As previously remarked, KGE models are subject to learning biased inferential patterns. These patterns may lead to inaccurate predictions. Insights on the inference can help finding the potential causes of the bias (\ref{kbsextradl_B_bias}).   
     
