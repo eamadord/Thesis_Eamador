@@ -1,7 +1,8 @@
 \chapter{Knowledge Extraction from Deep Learning Models}
 \label{chap:kbsextractiondl}
 %ENLAZAR ESTO CON LOS PRINCIPIOS DE EXPLICABILIDAD DE PHILLIPS ET AL..
-This chapter \footnote{Elvira Amador-Domínguez, Emilio Serrano, & Daniel Manrique (2021). A hierarchical multi-agent architecture (MAS) based on virtual identities to explain black-box personalization policies. Expert Syst. Appl., 186, 115731. doi:10.1016/j.eswa.2021.115731} showcases the extraction of knowledge from DL Models. Section \ref{6_sec:kbs_extra_dl_method} provides an overview on the design parameters of KBS extraction from DL models. Two instances of the proposed design are introduced in this chapter. The first instance focuses on \textit{black-box hyperpersonalization models} (BBHOS), DL models devised for user content personalization. Section \ref{6_sec:mas_bbhos_general} introduces this scenario, where a multi-agent system extracts behavioral patterns from the BBHOS. The MAS system is presented in Section \ref{6_sec:subsec:mas_description}, providing an example of its use in Section \ref{6_sec:subsec:case_study}. Section \ref{6_sec:subsec:mas_design_compliance} assesses the compliance of the proposed instance of the model with respect to the general method. 
+This chapter\footnote{This chapter is based on the work: References
+Amador-Domínguez, E., Serrano, E., & Manrique, D. (2021). A hierarchical multi-agent architecture based on virtual identities to explain black-box personalization policies. Expert Systems with Applications, 186, 115731. doi:10.1016/j.eswa.2021.115731} showcases the extraction of knowledge from DL Models. Section \ref{6_sec:kbs_extra_dl_method} provides an overview on the design parameters of KBS extraction from DL models. Two instances of the proposed design are introduced in this chapter. The first instance focuses on \textit{black-box hyperpersonalization models} (BBHOS), DL models devised for user content personalization. Section \ref{6_sec:mas_bbhos_general} introduces this scenario, where a multi-agent system extracts behavioral patterns from the BBHOS. The MAS system is presented in Section \ref{6_sec:subsec:mas_description}, providing an example of its use in Section \ref{6_sec:subsec:case_study}. Section \ref{6_sec:subsec:mas_design_compliance} assesses the compliance of the proposed instance of the model with respect to the general method. 
 
 Section \ref{6_sec:geni_main} outlines the second of the extraction instances. In this scenario, an explainability framework for extracting insights on the inference process of KGE models is presented. The proposed framework, GEnI, is described in Section \ref{6_sec:subsec:geni}. Sections \ref{6_sec:subsec:geni_evaluation} and \ref{6_sec:subsec:geni_results} depict the evaluation and analysis of the framework results, respectively. The compliance of the instance with respect to the general design parameters is portrayed in Section \ref{6_sec:subsec:geni_design_compliance}. Section \ref{6_sec:summary} summarizes the content of the chapter.
 
@@ -182,7 +183,7 @@ This Section presents a case study to illustrate the proposed architecture. This
 
 \begin{figure}[t!]
     \centering
-    \includegraphics[width=.89\linewidth]{6_kbsextractiondl/figures/Use_Case.eps}
+    \includegraphics[width=.9\linewidth]{6_kbsextractiondl/figures/Use_Case.eps}
     \caption{Use case of the proposed architecture.}
     \label{fig:mas_use_case}
 \end{figure}
@@ -566,9 +567,9 @@ A different behavior is exhibited on the evaluation of TransH on DBpedia50. One 
 
 The reliability coefficient achieved by TransH on DBpedia50 is slightly lower, scoring a 66\% of predictions changed after retraining. This result can be due to: i) the total amount of explained facts, and ii) the performance of each KGE model. While DistMult scored a MRR of 0.31, TransH only reached a 0.16, which denotes a lesser expressivity of the embeddings. Although it may not be sufficient to establish a relation between the performance of the KGe and the reliability of GEnI, it is an indicator that improving the performance of the KGE model could directly reflect into the results achieved by GEnI.
 
-
 \subsection{Design Compliance}\label{6_sec:subsec:geni_design_compliance}
 Figure \ref{fig:design_compliance_geni} portrays the design parameters of the GEnI, the proposed explainability framework for KGE predictions: 
+
 \begin{figure}[t]
     \centering
     \includegraphics[width=\linewidth]{6_kbsextractiondl/figures/Instance_GENI_extraction_DL.eps}

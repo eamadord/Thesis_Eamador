@@ -1,14 +1,97 @@
-\chapter{Conclusions}
+\chapter{Conclusions and Future Work}
 \label{chap:conc}
-TBD
-\section{Conclusions}
+The final chapter of this thesis addresses the conclusions (Section \ref{7_sec:conclusions}) of the research, as well as outlining the potential lines for future research (Section \ref{7_sec:future_research}). Section \ref{7_sec:research_results} summarizes the research results achieved during the development of this thesis.
+
+\section{Conclusions}\label{7_sec:conclusions}
+This thesis provides a design method for knowledge-based systems and deep learning models according to their interactions from three different perspectives: knowledge-based systems insertion into deep learning models, deep learning model insertion into knowledge-based systems and knowledge-based system extraction from deep learning models. The proposed design method addresses the limitations exhibited in previous existing design approaches. Previous approaches set predefined roles for symbolic and subsymbolic models, where the first are used for representation and the later for reasoning. Moreover, the symbolic approaches explored in the literature for integration mostly limit to rule-based systems, with neural networks being the prominent subsymbolic models. This thesis extends the role of symbolic approaches, represented by knowledge-based systems, from purely representation paradigms to reasoning models. Moreover, several different paradigm combinations are successfully explored in this thesis, extending the range of possible integrations. The design method presented in this thesis also considers contextual and technical aspects that were not previously considered. Therefore, besides presenting the \textit{limitations} on the primary model and the potential \textit{benefits} that motivate the integration, \textit{considerations} on the technical and contextual aspects are formulated to assess the feasibility of the integration. Also, a set of \textit{restrictions} are enunciated to evaluate the correctness of the integration. 
+
+An instance of each integration design method is generated to evaluate the applicability of the proposed design. Suitable scenarios for the application of the proposed design are detected. The studied application scenarios pose challenges that cannot be overcome with a single model, thus motivating the integration. 
+
+The first instantiation (knowledge-based system insertion into deep learning models) focuses on knowledge graph completion, one of the prominent areas of neurosymbolic integration. Knowledge graph embedding models, the prominent paradigm of this area, presented several limitations including the lack of inference of explicit restrictions and its incapability of reasoning over unseen inputs. These limitations can be addressed with the encoding of ontologies within the knowledge graph embedding model. A semantic-based initialization is formulated that successfully integrates ontological information about the entities within the knowledge graph embedding model, subsequently accelerating and improving the final results, while doting the model with the capacity of reasoning over unseen inputs.
+
+In the second integration (deep learning introduction into knowledge-based systems), the proposed design is instantiated in the context of medical document generation. This context presents a quaint application scenario, as most document generation approaches are reliant on deep learning, but AI applications in the medical domain are highly dependant on expert knowledge. A case-based reasoning model powered by deep learning modules is presented that successfully reconciles both components under a unified framework. The introduction of deep learning models within the case-based reasoning model eases the reduce of human intervention while still considering user input, as well as improving the scalability and inference capacity of the model. 
+
+Regarding knowledge-based system extraction from deep learning models, two application scenarios were considered for instantiation, each presenting different particularities. The first scenario introduces a multi-agent architecture that acts as a middleware model for the extraction of behavioral user patterns from black-box hyperpersonalization policies. Besides the extraction of behavioral paterns, the proposed multi-agent architecture increases the privacy of the user while improving the results of the target hyperpersonalization system. The second application continues the work instantiated in the first integration, focusing on explaining the predictions of knowledge graph embedding models. For this purpose, the framework GEnI is proposed. This framework extracts rules, correlations and insights on the inferential process of knowledge graph embedding models. The information mined from the model not only is human-readable and understandable, but helps detecting potential biases within the model. 
+
+The first of the hypotheses (H1) claimed that \textit{a design method for the integration of knowledge-based systems and deep learning models can be proposed to accurately describe any integration instance}. This hypothesis is validated throughout the definition of a design method for each potential integration and its subsequent instantiation across different application scenarios. Then, for each instantiation, its compliance with respect to the general design is assessed. This evaluation showed that all the proposed instantiations can be successfully explained in terms of the proposed design, and that their specific parameters are also instances of the general parameters. 
+
+The second hypothesis (H2) states that \textit{knowledge-based systems and deep learning models are not antagonistic, but complementary, and their integration can enable the resolution of problems that could not be achieved otherwise}. H2 is validated throughout different instance implementations, where the successful integration of knowledge-based systems and deep learning across different application scenarios enables the resolution of complex tasks that may not be achieved otherwise. Moreover, it is demonstrated that the existing synergies between the two types of models enables the generation of final systems that combine their advantages while minimizing their disadvantages.
 
 
-\section{Contributions}
-%%AQUI VAN TODOS LOS PAPERS, SOFTWARE (ANEXOS) Y ESTANCIA
+\section{Future Research}\label{7_sec:future_research}
+This thesis presents both high-level (integration methods) and low-level (resource) contributions. These two levels do not concur independently, but form a cycle where the higher-level advances are then materialized into resources. Future steps on both levels are introduced hereafter:
 
-\section{Future Work}
-%%Más a nivel de recursos
-%%EXTENDING GENI
+\subsection*{Integration Methods}
+Regarding integration methods, the following research lines can be addressed:
+\begin{itemize}
+    \item \textbf{Dimension and parameter revision.} The continuous evolution within deep learning and knowledge-based systems requires a constant revision of the design method. In this area, additional dimensions to the model addressing unexplored aspects could be proposed, deepening in some of the aspects addressed in previously existing methods that remained unaddressed in this thesis. Examples of these are data representation or coupling degree between models. In the same vein, the proposed dimensional parameters per integration method should be revised to be coherent with the state-of-the-art. 
+    
+    \item \textbf{Application scenario detection.} This thesis explored several application scenarios where the integration of knowledge-based systems and deep learning models enabled the resolution of challenging scenarios. Profiling these scenarios and establishing guidelines on which tasks are more prone to require the instantiation of the proposed design method would subsequently facilitate its application. Moreover, it would also enable the discovery of potential new dimensions of parameters. 
+    
+    \item \textbf{Composing instance integration.} The AI spectrum is vast and comprises a wide variety of models. The work in this thesis showcased the variety of potential successful integrations between knowledge-based systems and deep learning models. The selection of compatible paradigms that fit each application scenario is not straightforward and may pose a challenge that hinders the use of integration. Future research should be conducted in detecting model pairs that are compatible with each other according to their design parameters. Similarly, a set of recommendation guidelines that help detecting the best pairing given a set of parameters should be researched and established.
+\end{itemize}
+
+%%A nivel teórico:
+%%Aumentar número de parámetros de diseño para incluir elementos formales (representación, implementación, etc).
+
+%Encontrar nuevos escenarios de uso donde la integración sea beneficiosa
 
 %%Ofrecer un recomendador que dados los parametros y uno de los paradigmas te recomiende el paradigma complementario que mejor se ajuste
+
+\subsection*{Resources}
+Regarding the instantiations and the generated resources, the following future lines of work are identified:
+\begin{itemize}
+    \item \textbf{Extending GEnI.} This framework is one of the contributions of this thesis, capable of extracting insights and explanations on the inference process of knowledge graph embedding predictions. GEnI achieves promising results and serves as a stepping stone for future explainability proposals in the area. However, several improvements could be made to further enhance the framework:
+    \begin{itemize}
+        \item \textit{Studying the impact on the node degree with respect to the final predictions.} Knowledge graphs comprise a series of entities (nodes) connected to each other by means of relations (edges), subsequently forming facts. The number of times each entity is featured in a fact is not balanced, with some entities being featured significantly more. In terms of graphs, more featured entities should have a higher in-out degree as they connect to several nodes across multiple edges. From an inferential standpoint, those entities that are more prominently featured should be identified by the model and used as anchors to make predictions about less featured entities. Therefore, this phenomenon should therefore be reflected in the extracted insights and explanations.
+        \item \textit{Improving clustering embedding algorithms.} C-means is used to automatically detect relation clusters, while agglomerating hierarchical clustering is used for entity aggregation. While these clustering approaches offer good results, they are not particularly efficient and do not scale well when the number of relations or entities increases. Research on how to efficiently aggregate relations and entities in a scalable and accurate way should be conducted and would further enhance the performance of the framework.
+        \item \textit{Influential fact detection from embeddings.} One of the core principles of GEnI is that information must be mined from the embeddings and not the data. For influential detection, however, data is first required to retrieve those facts that are connected to the fact to be explained, which are then validated against the embeddings. This approach does not strictly break the aforementioned principle, but should be replaced by an embedding-only strategy capable of obtaining the same set of related facts. 
+    \end{itemize}
+    \item \textbf{Implementing and assessing the behavior of the proposed multi-agent system.} Section \ref{6_sec:mas_bbhos_general} depicts a multi-agent architecture capable of extracting using profiles from black-box hyperpersonalization systems. This architecture is then studied and evaluated from a theoretical standpoint. Implementing the proposed architecture and evaluating it on real hyperpersonalization systems not only could serve to assess the performance of the model in terms of user privacy increment and system explanation, but enable the detection of new design parameters that may not be detected otherwise.
+    
+    \item \textbf{Establishing a complete pipeline for knowledge graph completion.} Knowledge graph completion offers an extensive set of challenges that can be overcome with the use of integration. In this thesis, this task is featured in two different integrations: knowledge-based insertion into deep learning models and knowledge-based extraction from deep learning. While these two integrations have been treated separately in this thesis, a complete pipeline can be built, such that $KBS_{1} (insertion)\rightarrow DL (extraction)\rightarrow KBS_{2}$. This pipeline could serve to evaluate, for example, the impact that the insertion of different knowledge-based systems within knowledge graph embedding models has on the explainability of the model.
+\end{itemize}
+
+%%Más a nivel de recursos
+%% Estudiar la implicación que tiene el incluir KBS en KGE en lo referente a explicabilidad
+
+%% Implementar el MAS propuesto 
+%%EXTENDING GENI
+
+\section{Research Results}\label{7_sec:research_results}
+This thesis produced several research results, in addition to the contributions described in Section \ref{3_sec:problem_statement}, which are described hereafter:
+\subsection{Publications}
+Research results were published in journals and conferences under peer evaluation: 
+\subsubsection*{Journals}
+\begin{itemize}
+    \item \textbf{Amador-Domínguez, E.}, Serrano, E., Manrique, D., and Paz, J. F. D. (2019). Prediction and Decision-Making in Intelligent Environments Supported by Knowledge Graphs, A Systematic Review. Sensors, 19(8), 1774. \url{https://doi.org/10.3390/s19081774} 
+    \item \textbf{Amador-Domínguez, E.}, Serrano, E., Manrique, D., Hohenecker, P., and Lukasiewicz, T. (2021). An ontology-based deep learning approach for triple classification with out-of-knowledge-base entities. Inf. Sci., 564, 85–102. \url{https://doi.org/10.1016/j.ins.2021.02.018} 
+    \item \textbf{Amador-Domínguez, E.}, Serrano, E., Manrique, D., and Bajo, J. (2021). A Case-Based Reasoning Model Powered by Deep Learning for Radiology Report Recommendation. Int. J. Interact. Multim. Artif. Intell., 7(2), 15. \url{https://doi.org/10.9781/ijimai.2021.08.011} 
+    \item \textbf{Amador-Domínguez, E.}, Serrano, E., and Manrique, D. (2021). A hierarchical multi-agent architecture based on virtual identities to explain black-box personalization policies. Expert Syst. Appl., 186, 115731. \url{https://doi.org/10.1016/j.eswa.2021.115731} 
+\end{itemize}
+\subsubsection*{Conferences}
+\begin{itemize}
+    \item \textbf{Amador-Domínguez, E.}, Serrano, E., Mateos-Nobre, J. D., and Ayala-Muñoz, A. (2019). An Intelligent and Autoadaptive System of Virtual Identities Based on Deep Learning for the Analysis of Online Advertising Networks. In F. de la Prieta, A. González-Briones, P. Pawlewski, D. Calvaresi, E. del Val, F. Lopes, V. Julián, E. Osaba, and R. Sanchez-Iborra (Eds.), Highlights of Practical Applications of Survivable Agents and Multi-Agent Systems. The PAAMS Collection - International Workshops of PAAMS 2019, Ávila, Spain, June 26-28, 2019, Proceedings (Vol. 1047, pp. 302–309). Springer.\ur{https://doi.org/10.1007/978-3-030-24299-2\_26} 
+    
+    \item \textbf{Amador-Domínguez, E.}, Hohenecker, P., Lukasiewicz, T., Manrique, D., and Serrano, E. (2019). An Ontology-Based Deep Learning Approach for Knowledge Graph Completion with Fresh Entities. In F. Herrera, K. Matsui, and S. Rodríguez-González (Eds.), Distributed Computing and Artificial Intelligence, 16th International Conference, DCAI 2019, Ávila, Spain, 26-28 June, 2019 (Vol. 1003, pp. 125–133). Springer. 
+    \url{https://doi.org/10.1007/978-3-030-23887-2\_15} 
+\end{itemize}
+\subsection{Work in Research Projects}
+Prior and during the development of this thesis, the author participated in the following research and innovation:
+\begin{itemize}
+    \item \textit{Un sistema inteligente y autoadaptativo de identidades virtuales para el análisis de redes de publicidad online (DeepAd)} [$1^{st}$ June, 2018 to $31^{st}$ December, 2018]: this project, in collaboration with the company Semminer, served to establish the first limitations from an explainability standpoint regarding black-box hyperpersonalization systems. The results obtained in this project served to motivate further research on this subject, which later served to formulate the design method for knowledge-based system extraction from deep learning models, as well as inspiring the use of multi-agent systems for behavioral pattern extraction from hyperpersonalization policies.
+    
+    \item \textit{AI4EU: Healthcare Pilot} (GA-825619) [February, 2020 to December, 2021]: this European project served to instantiate the proposed design method for the insertion of deep learning models into a knowledge-based system. This project offered a challenging implementation scenario for the proposed design method, as it was oriented to experts from the medical domain. Therefore, it served to validate the proposed design, as well as providing a real-use implementation case.
+\end{itemize}
+\subsection{Software Resources}
+Some of the research results developed throughout this thesis are also available as software resources:
+\begin{itemize}
+    \item \textit{r.AID.ologist}. This framework was developed as part of the AI4EU Healtcare Pilot project. It implements the proposed design method for deep learning insertion into knowledge-based systems for medical document generation (depicted in Section \ref{5_sec:raidologist}) for its application on the radiology domain. It is available as part of the AI4EU's AI Resource Catalog at \url{https://www.ai4europe.eu/research/ai-catalog/raidologist}
+    
+    \item \textit{GEnI: A Framework for Generating Explanations and Insights on Knowledge Graph Embedding Predictions}. This resource implements the explainability approach for knowledge graph embedding predictions outlined in Section \ref{6_sec:geni_main}. Its source code is available at \url{https://github.com/oeg-upm/GEnI}
+\end{itemize}
+\subsection{Research Stays}
+In order to establish collaborations with external research institutions, the following research stay was held:
+\begin{itemize}
+    \item \textbf{Knowledge Representation and Reasoning Group, Vrije Universiteit Amsterdam} at Amsterdam, Netherlands, from the $30^{th}$ of August to the $30^{th}$ of November, under the supervision of Dr. Peter Bloem. This stay served to further refine the work on explainability over knowledge-graph embedding predictions. Moreover, different research collaborations were established with several members of the group, mainly regarding the integration of knowledge-based systems and deep learning models in the context of knowledge graph completion.
+\end{itemize}
