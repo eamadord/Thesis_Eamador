@@ -18,7 +18,7 @@ After analyzing the state-of-the-art, the following limitations were identified,
 \section{Problem Statement} \label{3_sec:problem_statement}
 This thesis presents a design method for hybrid learning models, focusing on the integration of knowledge-based systems (KBS) and deep learning (DL) models. The proposed design method not only comprises theoretical aspects on the integration, but functional and technical aspects that are unaddressed by previous approaches.  Moreover, it enables the integration of a wide variety of KBS and DL models in addition to the baseline integration of rule-based systems and neural networks.  
 
-Several neurosymbolic system categorizations were outlined in Section \ref{2_sec:subsec:categorization}, each focusing on a different aspect. This thesis proposes a categorization based on the integration mechanism: introduction (or insertion) and extraction. Introduction approaches combine KBS and DL models under a unified framework to perform a certain task. In extraction, one of the models is either mined or used to mine knowledge from the other. 
+Several neurosymbolic system categorizations were outlined in Section \ref{2_sec:subsec:categorization}, each focusing on a different aspect. This thesis proposes a categorization based on the integration mechanism: introduction (or insertion), and extraction. Insertion approaches combine KBS and DL models under a unified framework to perform a task. In extraction, one of the models is either mined or used to mine knowledge from the other. 
 
 \begin{figure}[t]
     \centering
@@ -57,7 +57,7 @@ As outlined in Section \ref{3_sec:problem_statement}, the main goal of this thes
 
 \subsection{Contributions}
 According to the proposed goals, the contributions can be grouped into two categories: interaction design methods and resources.
-Regarding interaction design methods, the contributions are as follows:
+Regarding the interaction design methods, the contributions are as follows:
 \begin{enumerate}[start=1,label={\bfseries C\arabic*:}]
     \item Design method for the insertion of knowledge-based systems into deep learning models.
     \item Design method for the insertion of deep learning models into knowledge-based systems.
@@ -87,7 +87,7 @@ The work in this thesis is developed under the following assumptions:
     \item Instances based on the proposed design method comprise a continuous integration cycle, such that if one of the models change, this change must be extended to its counterpart.
 \end{enumerate}
 \subsection{Restrictions}
-The following restrictions limit the contributions of this thesis and may be used to lead future research works:
+The following restrictions limit the contributions of this thesis and may be used to lead future research:
 \begin{enumerate}[start=1,label={\bfseries R\arabic*:}]
     \item The design method presented in this thesis only applies to hybrid models \citep{hilario_overview_nodate} and modular models \citep{mcgarry_hybrid_1999}.
     \item The proposed design method only applies to integrations strictly between a knowledge-based system and a deep learning model. 
@@ -96,7 +96,7 @@ The following restrictions limit the contributions of this thesis and may be use
     \item Design method instances do not need to comply with all the general parameters, but should at least comply with one parameter from each dimension. 
 \end{enumerate}
 
-Figure \ref{fig:methodology_general} depicts the hypotheses, goals, contributions, assumptions and restrictions, highlighting the relations between them. 
+Figure \ref{fig:methodology_general} depicts the hypotheses, goals, contributions, assumptions, and restrictions, highlighting the relations between them. 
 
 \section{Research Methodology}\label{3_sec:research_methodology}
 
@@ -110,7 +110,7 @@ Figure \ref{fig:methodology_general} depicts the hypotheses, goals, contribution
 The research methodology employed in this thesis follows an incremental strategy. Figure \ref{fig:research_method} outlines the general research procedure, showcasing the research milestones and contributions generated. The procedure is divided into four phases. The first phase corresponds to the study of the state-of-the-art and the definition of the research problem. Phases two, three, and four correspond to each of the interactions between KBS and DL modeled in this thesis. Phases from two to four are not executed in a strictly sequential order, as there exists a slight overlap between the end of each phase and the beginning of the following. The tasks, milestones, and contributions achieved on each phase are described as follows:
   
 \begin{itemize}
-    \item \textbf{Phase 1. Research problem definition.} This phase corresponds to the initial stages of the thesis. First, a state-of-the-art revision on the subject of neurosymbolic integration in the context of ambient intelligence was conducted. This revision helped outlining the main limitations and motivations for neurosymbolic integration, which found the motivation of this thesis. Moreover, it showcased that, while there was a considerable heterogeneity between the featured symbolic approaches, most of the subsymbolic approaches were deep learning models. Therefore, the scope of this thesis narrowed down the integration to two subcategories of symbolic and subsymbolic AI: knowledge-based systems and deep learning models. 
+    \item \textbf{Phase 1. Research problem definition.} This phase corresponds to the initial stages of the thesis. First, a state-of-the-art revision regarding neurosymbolic integration in the context of ambient intelligence was conducted. This revision helped outline the main limitations and motivations for neurosymbolic integration, which found the motivation of this thesis. Moreover, it showcased that, while there was a considerable heterogeneity between the featured symbolic approaches, most of the subsymbolic approaches were deep learning models. Therefore, the scope of this thesis narrowed down the integration to two subcategories of symbolic and subsymbolic AI: knowledge-based systems and deep learning models. 
     
     The revision was then extended to existing neurosymbolic design proposals, from which the limitations exposed in Section \ref{3_sec:limitations} were drawn. The research problem addressed this thesis was then formulated based on the detected limitations, motivation and the defined scope: defining a design method for knowledge-based systems and deep learning models. Three potential interactions between the two approaches were detected: KBS insertion into DL models, DL insertion into KBS, KBS extraction from DL models. A specific design model for each interaction is required. Moreover, these designs must be instantiated in appropriate use-case scenarios to assess the applicability of the proposal.
     
@@ -124,5 +124,5 @@ The research methodology employed in this thesis follows an incremental strategy
     
     The first scenario focuses on \textit{black-box hyperpersonalization online systems}, deep learning models that generate personalized content based on passively user-retrieved data. The DL model in this context is targeted to human users, and therefore a paradigm capable of accurately simulating them is required to extract behavioral patterns. After identifying the problem limitations, a solution is designed based on a multi-agent system. The solution is then presented in the context of a case study to exemplify the behavior and adequacy of the system. Finally, the proposed integration solution is evaluated with respect to the parameters of the general design to ensure its compliance.
     
-    The second scenario refocuses on KGC, extending the research from phase 2. While the research conducted in this area focused on enhancing the performance of KGE models, the research conducted in this phase aims to explain the inference process followed by these models to generate predictions. The limitations of KGE models are then addressed under the extraction perspective. A rule-supported framework is devised to deal with these limitations. The proposed framework is implemented and evaluated both in the context of the case scenario and with respect to the general design parameters. 
+    The second scenario refocuses on KGC, extending the research from Phase 2. While the research conducted in this area focused on enhancing the performance of KGE models, the research conducted in this phase aims to explain the inference process followed by these models to generate predictions. The limitations of KGE models are then addressed under the extraction perspective. A rule-supported framework is devised to deal with these limitations. The proposed framework is implemented and evaluated both in the context of the case scenario and with respect to the general design parameters. 
 \end{itemize}
