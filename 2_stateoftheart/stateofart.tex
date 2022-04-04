@@ -1,6 +1,6 @@
-\chapter{State of the Art}
+\chapter{State-of-the-Art}
 \label{chap:soa}
-
+This chapter presents an overview on state-of-the-art on neurosymbolic AI, outlining the most relevant works that motivate the research on this thesis.
 \section{The Artificial Intelligence Spectrum} \label{sec:the_ai_spectrum}
 %%Referencias a los tipos de modelos y a los modelos hibridos que hay y a los estudios quasifilosoficos sobre por que unos pisan a otros, reemplazan a otros, mejoran a otros, etc.
 
@@ -212,7 +212,7 @@ Rules and deep learning models is one of the most recurrent combinations in neur
     \label{fig:van_bekkum_kgc}
 \end{figure}
 
-Knowledge Graph Completion \citep{nickel_review_ml_kg_2016,wang_kge_survey_2017} is one of the main scenarios of neurosymbolic integration. Knowledge Graphs are composed by three elements: a set of entities $\mathcal{E}$, a set of relations $\mathcal{R}$, and the interactions between entities and relations, denoted as \textit{facts} or triples. Facts follow the fixed structure $(s,p,o)$, where $s$ and $o$ are the \textit{subject} and \textit{object} entities respectively, and $p$ is the \textit{predicate} that connects them. KGC aims to mine new facts from the existing KG information. Two main subtasks can be identified within KGC: link prediction and triple classification. In triple classification, the goal is to determine whether a potential fact $(s',p',o')$ is feasible or not. In link prediction, given an incomplete fact $(?,p,o)$ or $(s,p,?)$, the goal is to find the remaining element that maximizes the feasibility of the fact. 
+Knowledge Graph Completion (KGC) \citep{nickel_review_ml_kg_2016,wang_kge_survey_2017} is one of the main scenarios of neurosymbolic integration. Knowledge Graphs (KGs) are composed by three elements: a set of entities $\mathcal{E}$, a set of relations $\mathcal{R}$, and the interactions between entities and relations, denoted as \textit{facts} or triples. Facts follow the fixed structure $(s,p,o)$, where $s$ and $o$ are the \textit{subject} and \textit{object} entities respectively, and $p$ is the \textit{predicate} that connects them. KGC aims to mine new facts from the existing KG information. Two main subtasks can be identified within KGC: link prediction and triple classification. In triple classification, the goal is to determine whether a potential fact $(s',p',o')$ is feasible or not. In link prediction, given an incomplete fact $(?,p,o)$ or $(s,p,?)$, the goal is to find the remaining element that maximizes the feasibility of the fact. 
 
 Figure \ref{fig:van_bekkum_kgc} depicts the design patterns (according to \cite{van_bekkum_modular_2021}) of the two main approaches for KGC. Figure \ref{fig:van_bekkum_kgc_kge} depicts the general pattern of a Knowledge Graph Embedding model for KGC. These neurosymbolic models follow a straightforward approach, where the symbolic input (KG) is converted into a tensor representation with an embedding operation. This subsymbolic representation can be used to infer new facts, which can be then decoded back to a symbolic format. Graph Neural Networks (Figure \ref{fig:van_bekkum_kgc_gnn}) can also be used for this purpose. These models require the integration of background semantic knowledge to embed the input KG into a vectorial space. The resulting representations can be used to train a neural network, which are used to deduce new facts.
 

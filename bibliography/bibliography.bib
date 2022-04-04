@@ -5474,6 +5474,46 @@ series = {SIGMOD '08}
   year = 1998
 }
 
+@inproceedings{raina_2009_gpu,
+author = {Raina, Rajat and Madhavan, Anand and Ng, Andrew Y.},
+title = {Large-Scale Deep Unsupervised Learning Using Graphics Processors},
+year = {2009},
+isbn = {9781605585161},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/1553374.1553486},
+doi = {10.1145/1553374.1553486},
+abstract = {The promise of unsupervised learning methods lies in their potential to use vast amounts of unlabeled data to learn complex, highly nonlinear models with millions of free parameters. We consider two well-known unsupervised learning models, deep belief networks (DBNs) and sparse coding, that have recently been applied to a flurry of machine learning applications (Hinton &amp; Salakhutdinov, 2006; Raina et al., 2007). Unfortunately, current learning algorithms for both models are too slow for large-scale applications, forcing researchers to focus on smaller-scale models, or to use fewer training examples.In this paper, we suggest massively parallel methods to help resolve these problems. We argue that modern graphics processors far surpass the computational capabilities of multicore CPUs, and have the potential to revolutionize the applicability of deep unsupervised learning methods. We develop general principles for massively parallelizing unsupervised learning tasks using graphics processors. We show that these principles can be applied to successfully scaling up learning algorithms for both DBNs and sparse coding. Our implementation of DBN learning is up to 70 times faster than a dual-core CPU implementation for large models. For example, we are able to reduce the time required to learn a four-layer DBN with 100 million free parameters from several weeks to around a single day. For sparse coding, we develop a simple, inherently parallel algorithm, that leads to a 5 to 15-fold speedup over previous methods.},
+booktitle = {Proceedings of the 26th Annual International Conference on Machine Learning},
+pages = {873–880},
+numpages = {8},
+location = {Montreal, Quebec, Canada},
+series = {ICML '09}
+}
+
+@inproceedings{glorot_2014_relu,
+  added-at = {2014-04-01T20:16:10.000+0200},
+  author = {Glorot, Xavier and Bordes, Antoine and Bengio, Yoshua},
+  biburl = {https://www.bibsonomy.org/bibtex/256f5ffd25378f109c8cc14394bcfdabb/prlz77},
+  booktitle = {AISTATS},
+  crossref = {conf/aistats/2011},
+  editor = {Gordon, Geoffrey J. and Dunson, David B. and Dudík, Miroslav},
+  ee = {http://www.jmlr.org/proceedings/papers/v15/glorot11a/glorot11a.pdf},
+  interhash = {fbf04ef5079b11118f3f3184b1068d88},
+  intrahash = {56f5ffd25378f109c8cc14394bcfdabb},
+  keywords = {Bengio Deep Networks Neural Rectifier Relu Sparse},
+  pages = {315-323},
+  publisher = {JMLR.org},
+  series = {JMLR Proceedings},
+  timestamp = {2014-04-01T20:16:10.000+0200},
+  title = {Deep Sparse Rectifier Neural Networks.},
+  url = {http://dblp.uni-trier.de/db/journals/jmlr/jmlrp15.html#GlorotBB11},
+  volume = 15,
+  year = 2011
+}
+
+
+
 @misc{embedding_visualization,
 url={https://graphvite.io/pretrained\_models}}
 
