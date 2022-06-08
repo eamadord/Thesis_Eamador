@@ -1,13 +1,13 @@
 \chapter{Problem Statement, Goals, and Research Methodology}\label{chap:methodology}
 
-The goal of this thesis is to advance the state-of-the-art in neurosymbolic AI by introducing a design method. This chapter presents the limitations detected in the state-of-the-art that motivate the research conducted in this thesis (Section \ref{3_sec:limitations}). Section \ref{3_sec:problem_statement} depicts the research problem addressed, outlining the hypotheses, goals, contributions, assumptions, and restrictions. The research methodology followed in this thesis is presented in Section \ref{3_sec:research_methodology}.
+This chapter presents the limitations detected in the state-of-the-art that motivate the research conducted in this thesis (Section \ref{3_sec:limitations}). Section \ref{3_sec:problem_statement} depicts the research problem addressed, outlining the hypotheses, goals, contributions, assumptions, and restrictions. The research methodology followed in this thesis is presented in Section \ref{3_sec:research_methodology}.
 
 \section{State-of-the-art Limitations}\label{3_sec:limitations}
 After analyzing the state-of-the-art, the following limitations were identified, which motivate the research presented in this thesis:
 \begin{itemize}
     \item \textbf{Predefined roles for symbolic and subsymbolic models.} \cite{besold_neural-symbolic_2017} introduce a set of principles for neurosymbolic integration. One of the key aspects of this work is the distinction between representation and reasoning in neurosymbolic systems. This work denotes that symbolic models are used for representation, while subsymbolic models are used for reasoning. This statement is further validated by the work of \cite{garcez_neural-symbolic_2019}. The use of symbolic models as reasoning paradigms is therefore dismissed and not explored.
     
-    \item \textbf{Integrations are mostly limited to rule-based systems and neural networks.} The AI spectrum, as outlined in Section \ref{sec:the_ai_spectrum}, comprises a wide variety of paradigms. In neurosymbolic systems, however, only rule-based systems and neural networks are featured, leaving a wide range of both symbolic and subsymbolic approaches unexplored. 
+    \item \textbf{Integrations are mostly limited to rule-based systems and neural networks.} The AI spectrum, as outlined in Section \ref{sec:the_ai_spectrum}, comprises a wide variety of paradigms. In neurosymbolic systems, however, rule-based systems and neural networks are featured almost exclusively, leaving a wide range of both symbolic and subsymbolic approaches unexplored. 
     
     \item \textbf{Limitations of neurosymbolic integration are not explored.} Most works in neurosymbolic design focus on the benefits or positive aspects derived from the integration of symbolic and subsymbolic models. The specific limitations that motivate certain neurosymbolic integrations are not outlined. This gives a biased perspective on the subject, as only presents the positive aspects.
     
@@ -16,24 +16,24 @@ After analyzing the state-of-the-art, the following limitations were identified,
 
 
 \section{Problem Statement} \label{3_sec:problem_statement}
-This thesis presents a design method for hybrid learning models, focusing on the integration of knowledge-based systems (KBS) and deep learning (DL) models. The proposed design method not only comprises theoretical aspects on the integration, but functional and technical aspects that are unaddressed by previous approaches.  Moreover, it enables the integration of a wide variety of KBS and DL models in addition to the baseline integration of rule-based systems and neural networks.  
+This thesis presents a design method for hybrid learning models, focusing on the integration of knowledge-based systems (KBS) and deep learning (DL) models. The proposed design method not only comprises technical aspects of the integration, but functional and practical aspects that are unaddressed by previous approaches.  Moreover, it enables the integration of a wide variety of KBS and DL models in addition to the baseline integration of rule-based systems and neural networks.  
 
 Several neurosymbolic system categorizations were outlined in Section \ref{2_sec:subsec:categorization}, each focusing on a different aspect. This thesis proposes a categorization based on the integration mechanism: introduction (or insertion), and extraction. Insertion approaches combine KBS and DL models under a unified framework to perform a task. In extraction, one of the models is either mined or used to mine knowledge from the other. 
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=.9\linewidth]{3_objectives/figures/overview_method.eps}
-    \caption{Overview on the integration approaches and method design parameters proposed in this thesis.}
+    \includegraphics[width=.85\linewidth]{3_objectives/figures/overview_method.eps}
+    \caption{Overview on the integration approaches and general design method proposed in this thesis.}
     \label{fig:thesis_overview}
 \end{figure}
 
 Figure \ref{fig:thesis_overview} showcases the three possible interactions between KBS and DL according to the aforementioned perspective: KBS insertion into DL models, DL introduction into KBS, and KBS extraction from DL models. While the introduction is bidirectional, the extraction is only directed from DL to KBS. According to the provided definition for extraction, DL extraction from KBS is unfeasible, and it is therefore not considered in this thesis. 
 
-This thesis presents a design method for the representation of each of the three possible interactions between KBS and DL. Besides studying the potential benefits and the existing limitations of each model that motivate the integration, this method also contemplates previous requirements, as well as a set of criteria that must be met for the integration to be successful. The proposed design method comprises four dimensions, which are defined in a sequential order:
+This thesis presents a design method for the representation of each of the three possible interactions between KBS and DL. Besides studying the potential benefits and the existing limitations of each model that motivate the integration, this method also contemplates previous requirements, as well as a set of criteria that must be met for the integration to be successful. The proposed general design method comprises four dimensions, which are defined in a sequential order:
 \begin{itemize}
-    \item \textbf{Limitations.} Integration is motivated by the existence of limitations in one of the paradigms that could be resolved with the inclusion of a model from the opposite side of the spectrum. Limitations must be clearly identified before the integration. Model selection is based on the detected limitations and the goal of the system. This dimension only alludes to the model features.
+    \item \textbf{Limitations.} Integration is motivated by the existence of limitations in one of the paradigms that could be resolved with the inclusion of a model from the opposite side of the spectrum. Limitations must be clearly identified before the integration. Model selection is based on the detected limitations and the goal of the final system. This dimension only alludes to the model features.
     
-    \item \textbf{Considerations.} Limitations must be framed into context. This dimension relates to the practical and contextual aspects of the integration. Infrastructural, user-related, and data aspects are depicted in this dimension.
+    \item \textbf{Considerations.} Limitations must be framed in context. This dimension relates to the practical and contextual aspects of the integration. Infrastructural, user-related, and data aspects are depicted in this dimension.
     
     \item \textbf{Restrictions.} Integration carries an effort and serves a purpose. The effort made must not only be reflected in the results, but must also comply with a series of restrictions. Restrictions ensure that the integration not only is successful, but also that it is coherent and that the neurosymbolic system is justified for the given task and context.
     
@@ -44,7 +44,7 @@ This thesis presents a design method for the representation of each of the three
 Once the research problem has been described, the following research hypotheses are formulated:
 \begin{enumerate} [start=1,label={\bfseries H\arabic*:}]
     \item A design method for the integration of knowledge-based systems and deep learning models can be proposed to accurately describe most integration instances. 
-    \item Knowledge-based systems and deep learning models are not antagonistic, but complementary, and their integration can facilitate the resolution of several research tasks.
+    \item Knowledge-based systems and deep learning models are not antagonistic, but complementary, and their integration facilitates the resolution of several research tasks.
 \end{enumerate}
 
 \subsection{Goals}
@@ -59,15 +59,16 @@ The main goal of this thesis is to propose a general design method for the integ
 According to the proposed goals, the contributions can be grouped into two categories: interaction design methods and resources.
 Regarding the interaction design methods, the contributions are as follows:
 \begin{enumerate}[start=1,label={\bfseries C\arabic*:}]
+    \item A general design method for neurosymbolic integration.
     \item A design method for the insertion of knowledge-based systems into deep learning models.
     \item A design method for the insertion of deep learning models into knowledge-based systems.
     \item A design method for knowledge-based system extraction from deep learning models.
 \end{enumerate}
-The design models depicted in contributions \textbf{C1, C2} and \textbf{C3} are instantiated on different use cases, generating the following resource contributions:
-\begin{enumerate}[start=4,label={\bfseries C\arabic*:}]
+The design models depicted in contributions \textbf{C2, C3} and \textbf{C4} are instantiated on different use cases, generating the following resource contributions:
+\begin{enumerate}[start=5,label={\bfseries C\arabic*:}]
     \item A semantic-based initialization method for knowledge graph embedding models.
     \item A modular case-based reasoning framework powered by deep learning models for medical document generation.
-    \item A multi-agent system architecture for the extraction of behavioral patterns from black-box hyperpersonalization systems.
+    \item A multi-agent system for the extraction of behavioral patterns from black-box hyperpersonalization online systems.
     \item GEnI (Generating Explanations and Insights for knowedge graph embedding predictions).
 \end{enumerate}
 
@@ -111,7 +112,7 @@ The research methodology employed in this thesis follows an incremental strategy
 \begin{itemize}
     \item \textbf{Phase 1. Research problem definition.} This phase corresponds to the initial stages of the thesis. First, a state-of-the-art revision regarding neurosymbolic integration in the context of ambient intelligence was conducted. This revision helped outline the main limitations and motivations for neurosymbolic integration, which found the motivation of this thesis. Moreover, it evidenced that despite the heterogeneity between the featured symbolic approaches, most of the subsymbolic approaches were based on deep learning. Therefore, the scope of this thesis narrowed down the integration to two subcategories of symbolic and subsymbolic AI: knowledge-based systems and deep learning models. 
     
-    The revision was then extended to existing neurosymbolic design proposals, from which the limitations exposed in Section \ref{3_sec:limitations} were drawn. The research problem addressed in this thesis was then formulated based on the detected limitations, motivation, and scope: defining a design method for knowledge-based systems and deep learning models. Three potential interactions between the two approaches were detected: KBS insertion into DL models, DL insertion into KBS, KBS extraction from DL models. A specific design model for each interaction is required. Moreover, these designs must be instantiated in appropriate use-case scenarios to assess the applicability of the proposal.
+    The revision was then extended to existing neurosymbolic design proposals, from which the limitations exposed in Section \ref{3_sec:limitations} were drawn. The research problem addressed in this thesis was then formulated based on the detected limitations, motivation, and scope: defining a design method for knowledge-based systems and deep learning models that combines technical and practical aspects. Three potential interactions between the two approaches were detected: KBS insertion into DL models, DL insertion into KBS, KBS extraction from DL models. A specific design model for each interaction is required. Moreover, these designs must be instantiated in appropriate use-case scenarios to assess the applicability of the proposal.
     
     \item \textbf{Phase 2. Knowledge-based system insertion into deep learning models.} After defining the potential interactions between KBS and DL models, the first of the interactions is studied: the insertion of KBS into DL models. The initial step of this phase defines the appropriate design parameters to perform the introduction. The validity of this design is then assessed through its implementation on a use case. Knowledge graph completion (KGC) is selected as the case scenario, as it offers a challenging and conductive environment for the application of neurosymbolic models. First, the limitations existing within knowledge graph embedding (KGE) models, the main paradigm of KGC, are identified. KGE models act as the primary DL model in the integration, while ontologies are selected as the KBS counterpart. This solution is then materialized into a semantic-based initialization proposal, being one of the contributions of this thesis. The proposed instantiation is then evaluated not only on its technical effectiveness, but on its compliance with the general design method.
     

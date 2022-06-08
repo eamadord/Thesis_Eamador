@@ -148,19 +148,14 @@ title = {OWL Web Ontology Language Reference}
  address = {Hingham, MA, USA},
 } 
 
-@article{kursuncu_knowledge_2020,
+@inproceedings{kursuncu_knowledge_2020,
 	title = {Knowledge {Infused} {Learning} ({K}-{IL}): {Towards} {Deep} {Incorporation} of {Knowledge} in {Deep} {Learning}},
 	shorttitle = {Knowledge {Infused} {Learning} ({K}-{IL})},
-	url = {http://arxiv.org/abs/1912.00512},
-	abstract = {Learning the underlying patterns in data goes beyond instance-based generalization to external knowledge represented in structured graphs or networks. Deep learning that primarily constitutes neural computing stream in AI has shown significant advances in probabilistically learning latent patterns using a multi-layered network of computational nodes (i.e., neurons/hidden units). Structured knowledge that underlies symbolic computing approaches and often supports reasoning, has also seen significant growth in recent years, in the form of broad-based (e.g., DBPedia, Yago) and domain, industry or application specific knowledge graphs. A common substrate with careful integration of the two will raise opportunities to develop neuro-symbolic learning approaches for AI, where conceptual and probabilistic representations are combined. As the incorporation of external knowledge will aid in supervising the learning of features for the model, deep infusion of representational knowledge from knowledge graphs within hidden layers will further enhance the learning process. Although much work remains, we believe that knowledge graphs will play an increasing role in developing hybrid neuro-symbolic intelligent systems (bottom-up deep learning with top-down symbolic computing) as well as in building explainable AI systems for which knowledge graphs will provide scaffolding for punctuating neural computing. In this position paper, we describe our motivation for such a neuro-symbolic approach and framework that combines knowledge graph and neural networks.},
-	urldate = {2022-02-10},
-	journal = {arXiv:1912.00512 [cs]},
+	booktitle = {Proceedings of the AAAI 2020 Spring Symposium on Combining Machine Learning and Knowledge Engineering in Practice },
 	author = {Kursuncu, Ugur and Gaur, Manas and Sheth, Amit},
-	month = {feb},
+	month = {Spring},
 	year = {2020},
-	note = {arXiv: 1912.00512},
 	keywords = {Computer Science - Artificial Intelligence, Computer Science - Computation and Language, Computer Science - Machine Learning},
-	file = {arXiv Fulltext PDF:/Users/eamador/Zotero/storage/XVQCKEPN/Kursuncu et al. - 2020 - Knowledge Infused Learning (K-IL) Towards Deep In.pdf:application/pdf;arXiv.org Snapshot:/Users/eamador/Zotero/storage/I8DYH4BX/1912.html:text/html},
 }
 
 
@@ -3989,15 +3984,22 @@ keywords = "Knowledge representation, Multi-source, Textual information",
       archivePrefix={arXiv},
       primaryClass={cs.LG}
 }
-
-@misc{pezeshkpour_2019_investigating,
-      title={Investigating Robustness and Interpretability of Link Prediction via Adversarial Modifications}, 
-      author={Pouya Pezeshkpour and Yifan Tian and Sameer Singh},
-      year={2019},
-      eprint={1905.00563},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG}
+@inproceedings{pezeshkpour_2019_investigating,
+    title = "Investigating Robustness and Interpretability of Link Prediction via Adversarial Modifications",
+    author = "Pezeshkpour, Pouya  and
+      Tian, Yifan  and
+      Singh, Sameer",
+    booktitle = "Proceedings of the 2019 Conference of the North {A}merican Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers)",
+    month = jun,
+    year = "2019",
+    address = "Minneapolis, Minnesota",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/N19-1337",
+    doi = "10.18653/v1/N19-1337",
+    pages = "3336--3347",
+    abstract = "Representing entities and relations in an embedding space is a well-studied approach for machine learning on relational data. Existing approaches, however, primarily focus on improving accuracy and overlook other aspects such as robustness and interpretability. In this paper, we propose adversarial modifications for link prediction models: identifying the fact to add into or remove from the knowledge graph that changes the prediction for a target fact after the model is retrained. Using these single modifications of the graph, we identify the most influential fact for a predicted link and evaluate the sensitivity of the model to the addition of fake facts. We introduce an efficient approach to estimate the effect of such modifications by approximating the change in the embeddings when the knowledge graph changes. To avoid the combinatorial search over all possible facts, we train a network to decode embeddings to their corresponding graph components, allowing the use of gradient-based optimization to identify the adversarial modification. We use these techniques to evaluate the robustness of link prediction models (by measuring sensitivity to additional facts), study interpretability through the facts most responsible for predictions (by identifying the most influential neighbors), and detect incorrect facts in the knowledge base.",
 }
+
 
 @article{arya_one_2019,
 	title = {One {Explanation} {Does} {Not} {Fit} {All}: {A} {Toolkit} and {Taxonomy} of {AI} {Explainability} {Techniques}},
@@ -4258,7 +4260,7 @@ keywords = {concept discovery, term recognition, Ontology learning, application 
 	volume = {2846},
 	abstract = {Deep learning has achieved state-of-the-art results in various application domains ranging from image recognition to language translation and game playing. However, it is now generally accepted that deep learning alone has not been able to satisfy the requirement of fairness and, ultimately, trust in Artificial Intelligence (AI). In this paper, we propose an interactive neural-symbolic approach for fairness in AI based on the Logic Tensor Network (LTN) framework. We show that the extraction of symbolic knowledge from LTN-based deep networks combined with fairness constraints offer a general method for instilling fairness into deep networks via continual learning. Explainable AI approaches which otherwise could identify but not fix fairness issues are shown to be enriched with an ability to improve fairness results. Experimental results on three real-world data sets used to predict income, credit risk and recidivism in financial applications show that our approach can satisfy fairness metrics while maintaining state-of-the-art classification performance. © 2021 Copyright for this paper by its authors. Use permitted under Creative Commons License Attribution 4.0 International (CC BY 4.0). CEUR Workshop Proceedings (CEUR-WS.org)},
 	language = {English},
-	author = {Wagner, B. and d'Avila Garcez, A.},
+	author = {Wagner, B. and D'Avila Garcez, A.},
 	year = {2021},
 	note = {ISSN: 1613-0073},
 	keywords = {Deep learning with knowledge representation, Explainability, Fairness, Neurosymbolic AI},
@@ -4307,35 +4309,42 @@ keywords = {concept discovery, term recognition, Ontology learning, application 
 	file = {Ilkou y Koutraki - Symbolic Vs Sub-symbolic AI Methods Friends or En.pdf:/Users/eamador/Zotero/storage/B3LGPQXG/Ilkou y Koutraki - Symbolic Vs Sub-symbolic AI Methods Friends or En.pdf:application/pdf},
 }
 
+@INCOLLECTION{description_logics,
+  title     = "Description Logics",
+  booktitle = "Encyclopedia of Social Network Analysis and Mining",
+  author    = "Krisnadhi, Adila and Hitzler, Pascal",
+  publisher = "Springer New York",
+  pages     = "572--581",
+  year      =  2018,
+  address   = "New York, NY"
+}
+
+
+
 @article{garcez_neural-symbolic_2019,
-	title = {Neural-{Symbolic} {Computing}: {An} {Effective} {Methodology} for {Principled} {Integration} of {Machine} {Learning} and {Reasoning}},
-	shorttitle = {Neural-{Symbolic} {Computing}},
-	url = {http://arxiv.org/abs/1905.06088},
-	abstract = {Current advances in Artificial Intelligence and machine learning in general, and deep learning in particular have reached unprecedented impact not only across research communities, but also over popular media channels. However, concerns about interpretability and accountability of AI have been raised by influential thinkers. In spite of the recent impact of AI, several works have identified the need for principled knowledge representation and reasoning mechanisms integrated with deep learning-based systems to provide sound and explainable models for such systems. Neural-symbolic computing aims at integrating, as foreseen by Valiant, two most fundamental cognitive abilities: the ability to learn from the environment, and the ability to reason from what has been learned. Neural-symbolic computing has been an active topic of research for many years, reconciling the advantages of robust learning in neural networks and reasoning and interpretability of symbolic representation. In this paper, we survey recent accomplishments of neural-symbolic computing as a principled methodology for integrated machine learning and reasoning. We illustrate the effectiveness of the approach by outlining the main characteristics of the methodology: principled integration of neural learning with symbolic knowledge representation and reasoning allowing for the construction of explainable AI systems. The insights provided by neural-symbolic computing shed new light on the increasingly prominent need for interpretable and accountable AI systems.},
-	urldate = {2021-12-27},
-	journal = {arXiv:1905.06088 [cs]},
-	author = {Garcez, Artur d'Avila and Gori, Marco and Lamb, Luis C. and Serafini, Luciano and Spranger, Michael and Tran, Son N.},
-	month = may,
-	year = {2019},
-	note = {arXiv: 1905.06088},
-	keywords = {Computer Science - Artificial Intelligence},
-	file = {arXiv Fulltext PDF:/Users/eamador/Zotero/storage/PC7ELRG3/Garcez et al. - 2019 - Neural-Symbolic Computing An Effective Methodolog.pdf:application/pdf;arXiv.org Snapshot:/Users/eamador/Zotero/storage/ZGXW26FW/1905.html:text/html},
+  author={Artur D'Avila Garcez and Marco Gori and Luís C. Lamb and Luciano Serafini and Michael Spranger and Son N. Tran},
+  title={Neural-symbolic Computing: An Effective Methodology for Principled Integration of Machine Learning and Reasoning},
+  year={2019},
+  cdate={1546300800000},
+  journal={FLAP},
+  volume={6},
+  number={4},
+  pages={611-632},
+  url={https://collegepublications.co.uk/ifcolog/?00033}
 }
 
-@article{bader_dimensions_2005,
-	title = {Dimensions of {Neural}-symbolic {Integration} - {A} {Structured} {Survey}},
-	url = {http://arxiv.org/abs/cs/0511042},
-	abstract = {Research on integrated neural-symbolic systems has made significant progress in the recent past. In particular the understanding of ways to deal with symbolic knowledge within connectionist systems (also called artificial neural networks) has reached a critical mass which enables the community to strive for applicable implementations and use cases. Recent work has covered a great variety of logics used in artificial intelligence and provides a multitude of techniques for dealing with them within the context of artificial neural networks. We present a comprehensive survey of the field of neural-symbolic integration, including a new classification of system according to their architectures and abilities.},
-	urldate = {2021-12-27},
-	journal = {arXiv:cs/0511042},
-	author = {Bader, Sebastian and Hitzler, Pascal},
-	month = nov,
-	year = {2005},
-	note = {arXiv: cs/0511042},
-	keywords = {Computer Science - Artificial Intelligence, Computer Science - Logic in Computer Science, Computer Science - Neural and Evolutionary Computing},
-	file = {arXiv Fulltext PDF:/Users/eamador/Zotero/storage/ZTCXPSCN/Bader y Hitzler - 2005 - Dimensions of Neural-symbolic Integration - A Stru.pdf:application/pdf;arXiv.org Snapshot:/Users/eamador/Zotero/storage/MQU7ZXW4/0511042.html:text/html},
+@incollection{bader_dimensions_2005,
+  author    = {Sebastian Bader and Pascal Hitzler},
+  title     = {Dimensions of neural-symbolic integration {\textemdash} a
+               structured survey},
+  editor    = {S. Artemov and H. Barringer and A. S. {d'Avila} Garcez and L. C.
+               Lamb and J. Woods},
+  booktitle = {We Will Show Them: Essays in Honour of Dov Gabbay},
+  volume    = {1},
+  publisher = {King's College Publications},
+  year      = {2005},
+  pages     = {167-194}
 }
-
 @article{lieberman_symbolic_nodate,
 	title = {Symbolic vs. {Subsymbolic} {AI}},
 	language = {en},
@@ -4754,7 +4763,7 @@ Publisher: Multidisciplinary Digital Publishing Institute},
 	abstract = {Current advances in Artificial Intelligence and machine learning in general, and deep learning in particular have reached unprecedented impact not only across research communities, but also over popular media channels. However, concerns about interpretability and accountability of AI have been raised by influential thinkers. In spite of the recent impact of AI, several works have identified the need for principled knowledge representation and reasoning mechanisms integrated with deep learning-based systems to provide sound and explainable models for such systems. Neural-symbolic computing aims at integrating, as foreseen by Valiant, two most fundamental cognitive abilities: the ability to learn from the environment, and the ability to reason from what has been learned. Neural-symbolic computing has been an active topic of research for many years, reconciling the advantages of robust learning in neural networks and reasoning and interpretability of symbolic representation. In this paper, we survey recent accomplishments of neural-symbolic computing as a principled methodology for integrated machine learning and reasoning. We illustrate the effectiveness of the approach by outlining the main characteristics of the methodology: principled integration of neural learning with symbolic knowledge representation and reasoning allowing for the construction of explainable AI systems. The insights provided by neural-symbolic computing shed new light on the increasingly prominent need for interpretable and accountable AI systems.},
 	urldate = {2021-12-27},
 	journal = {arXiv:1905.06088 [cs]},
-	author = {Garcez, Artur d'Avila and Gori, Marco and Lamb, Luis C. and Serafini, Luciano and Spranger, Michael and Tran, Son N.},
+	author = {Garcez, Artur D'Avila and Gori, Marco and Lamb, Luis C. and Serafini, Luciano and Spranger, Michael and Tran, Son N.},
 	month = may,
 	year = {2019},
 	note = {arXiv: 1905.06088},
@@ -4781,7 +4790,7 @@ Publisher: Multidisciplinary Digital Publishing Institute},
 	abstract = {Current advances in Artificial Intelligence (AI) and Machine Learning (ML) have achieved unprecedented impact across research communities and industry. Nevertheless, concerns about trust, safety, interpretability and accountability of AI were raised by influential thinkers. Many have identified the need for well-founded knowledge representation and reasoning to be integrated with deep learning and for sound explainability. Neural-symbolic computing has been an active area of research for many years seeking to bring together robust learning in neural networks with reasoning and explainability via symbolic representations for network models. In this paper, we relate recent and early research results in neurosymbolic AI with the objective of identifying the key ingredients of the next wave of AI systems. We focus on research that integrates in a principled way neural network-based learning with symbolic knowledge representation and logical reasoning. The insights provided by 20 years of neural-symbolic computing are shown to shed new light onto the increasingly prominent role of trust, safety, interpretability and accountability of AI. We also identify promising directions and challenges for the next decade of AI research from the perspective of neural-symbolic systems.},
 	urldate = {2022-01-20},
 	journal = {arXiv:2012.05876 [cs]},
-	author = {Garcez, Artur d'Avila and Lamb, Luis C.},
+	author = {Garcez, Artur D'Avila and Lamb, Luis C.},
 	month = dec,
 	year = {2020},
 	note = {arXiv: 2012.05876},
@@ -4847,20 +4856,10 @@ Publisher: Multidisciplinary Digital Publishing Institute},
 	author = {Hitzler, Pascal and Bianchi, Federico and Ebrahimi, Monireh and Sarker, Kamruzzaman},
 	pages = {10},
 }
-
-@article{besold_neural-symbolic_2017,
-	title = {Neural-{Symbolic} {Learning} and {Reasoning}: {A} {Survey} and {Interpretation}},
-	shorttitle = {Neural-{Symbolic} {Learning} and {Reasoning}},
-	url = {http://arxiv.org/abs/1711.03902},
-	abstract = {The study and understanding of human behaviour is relevant to computer science, artificial intelligence, neural computation, cognitive science, philosophy, psychology, and several other areas. Presupposing cognition as basis of behaviour, among the most prominent tools in the modelling of behaviour are computational-logic systems, connectionist models of cognition, and models of uncertainty. Recent studies in cognitive science, artificial intelligence, and psychology have produced a number of cognitive models of reasoning, learning, and language that are underpinned by computation. In addition, efforts in computer science research have led to the development of cognitive computational systems integrating machine learning and automated reasoning. Such systems have shown promise in a range of applications, including computational biology, fault diagnosis, training and assessment in simulators, and software verification. This joint survey reviews the personal ideas and views of several researchers on neural-symbolic learning and reasoning. The article is organised in three parts: Firstly, we frame the scope and goals of neural-symbolic computation and have a look at the theoretical foundations. We then proceed to describe the realisations of neural-symbolic computation, systems, and applications. Finally we present the challenges facing the area and avenues for further research.},
-	urldate = {2022-01-14},
-	journal = {arXiv:1711.03902 [cs]},
-	author = {Besold, Tarek R. and Garcez, Artur d'Avila and Bader, Sebastian and Bowman, Howard and Domingos, Pedro and Hitzler, Pascal and Kuehnberger, Kai-Uwe and Lamb, Luis C. and Lowd, Daniel and Lima, Priscila Machado Vieira and de Penning, Leo and Pinkas, Gadi and Poon, Hoifung and Zaverucha, Gerson},
-	month = nov,
+@unpublished {besold_neural-symbolic_2017,
+	title = {Neural-Symbolic Learning and Reasoning: A Survey and Interpretation},
 	year = {2017},
-	note = {arXiv: 1711.03902},
-	keywords = {Computer Science - Artificial Intelligence},
-	file = {arXiv Fulltext PDF:/home/eamador/Zotero/storage/V4ZTVJXS/Besold et al. - 2017 - Neural-Symbolic Learning and Reasoning A Survey a.pdf:application/pdf;arXiv.org Snapshot:/home/eamador/Zotero/storage/BSZIUHDB/1711.html:text/html},
+	author = {Tarek R. Besold and Artur S. d{\textquoteright}Avila Garcez and Sebastian Bader and Howard Bowman and Pedro Domingos and Pascal Hitzler and Kai-Uwe K{\"u}hnberger and Lu{\'\i}s C. Lamb and Daniel Lowd and Priscila Machado Vieira Lima and Leo de Penning and Gadi Pinkas and Hoifung Poon and Gerson Zaverucha}
 }
 
 @article{valiant_three_2003,
@@ -4876,6 +4875,25 @@ Publisher: Multidisciplinary Digital Publishing Institute},
 	year = {2003},
 	pages = {96--99},
 	file = {Full Text PDF:/home/eamador/Zotero/storage/HN548ZPL/Valiant - 2003 - Three problems in computer science.pdf:application/pdf},
+}
+
+
+@article{rossi_knowledge_2021,
+	title = {Knowledge {Graph} {Embedding} for {Link} {Prediction}: {A} {Comparative} {Analysis}},
+	volume = {15},
+	issn = {1556-4681},
+	shorttitle = {Knowledge {Graph} {Embedding} for {Link} {Prediction}},
+	url = {https://doi.org/10.1145/3424672},
+	doi = {10.1145/3424672},
+	abstract = {Knowledge Graphs (KGs) have found many applications in industrial and in academic settings, which in turn, have motivated considerable research efforts towards large-scale information extraction from a variety of sources. Despite such efforts, it is well known that even the largest KGs suffer from incompleteness; Link Prediction (LP) techniques address this issue by identifying missing facts among entities already in the KG. Among the recent LP techniques, those based on KG embeddings have achieved very promising performance in some benchmarks. Despite the fast-growing literature on the subject, insufficient attention has been paid to the effect of the design choices in those methods. Moreover, the standard practice in this area is to report accuracy by aggregating over a large number of test facts in which some entities are vastly more represented than others; this allows LP methods to exhibit good results by just attending to structural properties that include such entities, while ignoring the remaining majority of the KG. This analysis provides a comprehensive comparison of embedding-based LP methods, extending the dimensions of analysis beyond what is commonly available in the literature. We experimentally compare the effectiveness and efficiency of 18 state-of-the-art methods, consider a rule-based baseline, and report detailed analysis over the most popular benchmarks in the literature.},
+	number = {2},
+	urldate = {2022-05-19},
+	journal = {ACM Transactions on Knowledge Discovery from Data},
+	author = {Rossi, Andrea and Barbosa, Denilson and Firmani, Donatella and Matinata, Antonio and Merialdo, Paolo},
+	year = {2021},
+	keywords = {link prediction, Knowledge graphs, comparative analysis, knowledge graph embeddings},
+	pages = {14:1--14:49},
+	file = {Versión enviada:/home/eamador/Zotero/storage/PKHFXR9W/Rossi et al. - 2021 - Knowledge Graph Embedding for Link Prediction A C.pdf:application/pdf},
 }
 
 
@@ -4903,7 +4921,7 @@ author={Gal{\'a}rraga, Luis
 and Teflioudi, Christina
 and Hose, Katja
 and Suchanek, Fabian M.},
-title={Fast rule mining in ontological knowledge bases with AMIE{\$}{\$}+{\$}{\$}},
+title={Fast rule mining in ontological knowledge bases with AMIE+},
 journal={The VLDB Journal},
 year={2015},
 month={Dec},
@@ -5016,18 +5034,15 @@ url={https://openreview.net/forum?id=HkgEQnRqYQ},
     pages = "5185--5194",
     abstract = "Knowledge graphs are structured representations of real world facts. However, they typically contain only a small subset of all possible facts. Link prediction is a task of inferring missing facts based on existing ones. We propose TuckER, a relatively straightforward but powerful linear model based on Tucker decomposition of the binary tensor representation of knowledge graph triples. TuckER outperforms previous state-of-the-art models across standard link prediction datasets, acting as a strong baseline for more elaborate models. We show that TuckER is a fully expressive model, derive sufficient bounds on its embedding dimensionalities and demonstrate that several previously introduced linear models can be viewed as special cases of TuckER.",
 }
-
-@article{ruge,
-	title = {Knowledge {Graph} {Embedding} with {Iterative} {Guidance} from {Soft} {Rules}},
-	url = {http://arxiv.org/abs/1711.11231},
-	abstract = {Embedding knowledge graphs (KGs) into continuous vector spaces is a focus of current research. Combining such an embedding model with logic rules has recently attracted increasing attention. Most previous attempts made a one-time injection of logic rules, ignoring the interactive nature between embedding learning and logical inference. And they focused only on hard rules, which always hold with no exception and usually require extensive manual effort to create or validate. In this paper, we propose Rule-Guided Embedding (RUGE), a novel paradigm of KG embedding with iterative guidance from soft rules. RUGE enables an embedding model to learn simultaneously from 1) labeled triples that have been directly observed in a given KG, 2) unlabeled triples whose labels are going to be predicted iteratively, and 3) soft rules with various confidence levels extracted automatically from the KG. In the learning process, RUGE iteratively queries rules to obtain soft labels for unlabeled triples, and integrates such newly labeled triples to update the embedding model. Through this iterative procedure, knowledge embodied in logic rules may be better transferred into the learned embeddings. We evaluate RUGE in link prediction on Freebase and YAGO. Experimental results show that: 1) with rule knowledge injected iteratively, RUGE achieves significant and consistent improvements over state-of-the-art baselines; and 2) despite their uncertainties, automatically extracted soft rules are highly beneficial to KG embedding, even those with moderate confidence levels. The code and data used for this paper can be obtained from https://github.com/iieir-km/RUGE.},
-	urldate = {2021-04-15},
-	journal = {arXiv:1711.11231 [cs]},
-	author = {Guo, Shu and Wang, Quan and Wang, Lihong and Wang, Bin and Guo, Li},
-	month = nov,
-	year = {2017},
-	note = {arXiv: 1711.11231},
-	keywords = {Computer Science - Artificial Intelligence},
+@inproceedings{ruge,
+  author={Shu Guo and Quan Wang and Lihong Wang and Bin Wang and Li Guo},
+  title={Knowledge Graph Embedding With Iterative Guidance From Soft Rules},
+  year={2018},
+  cdate={1514764800000},
+  pages={4816-4823},
+  url={https://www.aaai.org/ocs/index.php/AAAI/AAAI18/paper/view/16369},
+  booktitle={AAAI},
+  crossref={conf/aaai/2018}
 }
 
 @inproceedings{rulerec,
